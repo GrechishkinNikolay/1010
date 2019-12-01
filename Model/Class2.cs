@@ -8,5 +8,6 @@ namespace Model
 {
   class Class2
   {
+    //Hello
   }
 }
