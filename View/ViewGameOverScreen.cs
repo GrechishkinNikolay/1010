@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace View
 {
-  class Class2
+  public class ViewGameOverScreen
   {
-    //Hello 3
   }
 }

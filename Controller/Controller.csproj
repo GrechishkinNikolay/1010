@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{58D968E0-98A3-4DE4-A2EE-4F55CD7E0699}</ProjectGuid>
+    <ProjectGuid>{67DC37B6-3215-41F2-8A52-76E761E2CA64}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Model</RootNamespace>
-    <AssemblyName>Model</AssemblyName>
+    <RootNamespace>Controller</RootNamespace>
+    <AssemblyName>Controller</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,11 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelGameOverScreen.cs" />
-    <Compile Include="ModelGamePlay.cs" />
-    <Compile Include="ModelMenu.cs" />
-    <Compile Include="ModelRecordsScreen.cs" />
+    <Compile Include="ControllerGameOverScreen.cs" />
+    <Compile Include="ControllerGamePlay.cs" />
+    <Compile Include="ControllerMenu.cs" />
+    <Compile Include="ControllerRecordsScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{58D968E0-98A3-4DE4-A2EE-4F55CD7E0699}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

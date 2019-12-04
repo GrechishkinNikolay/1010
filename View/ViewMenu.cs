@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlockPuzzle
+namespace View
 {
-    public class Class1
+    public abstract class ViewMenu
     {
+
     }
 }
