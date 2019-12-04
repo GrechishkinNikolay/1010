@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace View
 {
-  public class ViewRecordsScreen
+  public abstract class ViewRecordsScreen
   {
   }
 }

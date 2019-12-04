@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace View
 {
-  public class ViewGamePlay
+  public abstract class ViewGamePlay
   {
   }
 }

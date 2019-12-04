@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace View
 {
-  public class ViewGameOverScreen
+  public abstract class ViewGameOverScreen
   {
   }
 }
+

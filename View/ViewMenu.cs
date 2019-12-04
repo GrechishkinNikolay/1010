@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace View
 {
-    public abstract class ViewMenu
-    {
+  public abstract class ViewMenu
+  {
 
-    }
+  }
 }
