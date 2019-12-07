@@ -10,7 +10,23 @@ namespace Model
   {
     private const int COUNT_ROW = 10;
     private const int COUNT_COLUMN = 10;
+    private const int SHAPE_WIDTH = 3;
+    private const int SHAPE_HEIGHT = 3;
+
+    private Field _gameField;
+
+    public Field GameField
+    {
+      get
+      {
+        return _gameField;
+      }
+      set
+      {
+        _gameField = value;
+      }
+    }
 
 
+    }
   }
-}

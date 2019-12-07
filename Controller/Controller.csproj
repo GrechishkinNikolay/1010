@@ -45,6 +45,10 @@
     <Compile Include="ControllerGamePlay.cs" />
     <Compile Include="ControllerMenu.cs" />
     <Compile Include="ControllerRecordsScreen.cs" />
+    <Compile Include="Delegates\DelegateMoveDown.cs" />
+    <Compile Include="Delegates\DelegateMoveLeft.cs" />
+    <Compile Include="Delegates\DelegateMoveRight.cs" />
+    <Compile Include="Delegates\DelegateMoveUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

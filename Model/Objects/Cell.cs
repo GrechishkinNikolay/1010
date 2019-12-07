@@ -6,9 +6,22 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-  class Cell
+  public class Cell
   {
     private bool _isFull;
+    private Сoordinates coordinates;
+
+    public Сoordinates Сoordinates
+    {
+      get
+      {
+        return coordinates;
+      }
+      set
+      {
+        coordinates = value;
+      }
+    }
 
     public bool IsFull
     {
@@ -21,7 +34,6 @@ namespace Model
         _isFull = value;
       }
     }
-
 
     public Cell(bool isFull)
     {
