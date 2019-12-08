@@ -21,6 +21,17 @@ namespace Model
         _playingField = value;
       }
     }
-
+    public Field(int parRowCount, int parColomnCount)
+    {
+      _playingField = new Cell[parRowCount][];
+      for (int i = 0; i < _playingField.Length; i++)
+      {
+        _playingField[i] = new Cell[parColomnCount];
+        for (int j = 0; j < _playingField[i].Length; j++)
+        {
+          _playingField[i][j] = new Cell(false);
+        }
+      }
+    }
   }
 }

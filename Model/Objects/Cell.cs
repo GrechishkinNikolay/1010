@@ -9,19 +9,19 @@ namespace Model
   public class Cell
   {
     private bool _isFull;
-    private Сoordinates coordinates;
+    //private Сoordinates coordinates;
 
-    public Сoordinates Сoordinates
-    {
-      get
-      {
-        return coordinates;
-      }
-      set
-      {
-        coordinates = value;
-      }
-    }
+    //public Сoordinates Сoordinates
+    //{
+    //  get
+    //  {
+    //    return coordinates;
+    //  }
+    //  set
+    //  {
+    //    coordinates = value;
+    //  }
+    //}
 
     public bool IsFull
     {

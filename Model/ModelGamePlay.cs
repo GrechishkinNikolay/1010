@@ -27,6 +27,10 @@ namespace Model
       }
     }
 
-
+    public ModelGamePlay()
+    {
+      _gameField = new Field(COUNT_ROW, COUNT_COLUMN);
     }
+
   }
+}
