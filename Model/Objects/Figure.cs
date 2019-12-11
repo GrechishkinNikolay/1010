@@ -21,9 +21,24 @@ namespace Model
         FigureShape = value;
       }
     }
-    public Figure(Cell[][] parCells)
+    public Figure(string parfigureCode)
     {
+      for (int i = 0; i < parfigureCode.Length; i++)
+      {
+        for (int j = 0; j < 3; j++)
+        {
+          _figureShape[i][j] = parfigureCode[3*i + j]
+        }
+      }
       _figureShape = parCells;
+    }
+
+    public Figure FillFigure(string parfigureCode)
+    {
+      for (int i = 0; i < str; i++)
+      {
+
+      }
     }
   }
 }
