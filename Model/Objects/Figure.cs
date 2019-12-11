@@ -27,17 +27,8 @@ namespace Model
       {
         for (int j = 0; j < 3; j++)
         {
-          _figureShape[i][j] = parfigureCode[3*i + j]
+          _figureShape[i][j].IsFull = parfigureCode[3 * i + j] == '1';
         }
-      }
-      _figureShape = parCells;
-    }
-
-    public Figure FillFigure(string parfigureCode)
-    {
-      for (int i = 0; i < str; i++)
-      {
-
       }
     }
   }
