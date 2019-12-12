@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace Model
     private const int COUNT_COLUMN = 10;
 
     private Field _gameField;
+    private FiguresShapes _figuresShapes;
+    public Coordinates _pointerCoordinates { get; set; }
+
 
     public Field GameField
     {
@@ -28,6 +32,7 @@ namespace Model
     public ModelGamePlay()
     {
       _gameField = new Field(COUNT_ROW, COUNT_COLUMN);
+      _figuresShapes = new FiguresShapes(FigureCodeKeeper.FiguresCodes);
     }
 
   }

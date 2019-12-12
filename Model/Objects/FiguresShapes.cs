@@ -15,9 +15,8 @@ namespace Model.Objects
       _figures = new Figure[parFiguresCodes.Length];
       for (int i = 0; i < _figures.Length; i++)
       {
-
+        _figures[i] = new Figure(parFiguresCodes[i]);
       }
     }
-
   }
 }

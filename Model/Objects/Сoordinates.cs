@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-  public class Сoordinates
+  public class Coordinates
   {
     private int _x;
     private int _y;
@@ -36,7 +36,7 @@ namespace Model
       }
     }
 
-    public Сoordinates(int x, int y)
+    public Coordinates(int x, int y)
     {
       _x = x;
       _y = y;
