@@ -35,5 +35,38 @@ namespace Model
       _figuresShapes = new FiguresShapes(FigureCodeKeeper.FiguresCodes);
     }
 
+    public void MoveFigureUp()
+    {
+      if (_pointerCoordinates.Y > 0)
+      {
+        _pointerCoordinates.Y -= 1;
+
+      }
+    }
+    public void MoveFigureUp()
+    {
+      if (_pointerCoordinates.Y > 0)
+      {
+        _pointerCoordinates.Y -= 1;
+
+      }
+    }
+    public void MoveFigureUp()
+    {
+      if (_pointerCoordinates.Y > 0)
+      {
+        _pointerCoordinates.Y -= 1;
+
+      }
+    }
+    public void MoveFigureUp()
+    {
+      if (_pointerCoordinates.Y > 0)
+      {
+        _pointerCoordinates.Y -= 1;
+
+      }
+    }
+
   }
 }

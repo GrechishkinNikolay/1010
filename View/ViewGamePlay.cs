@@ -8,5 +8,6 @@ namespace View
 {
   public abstract class ViewGamePlay
   {
+
   }
 }
