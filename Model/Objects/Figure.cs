@@ -8,58 +8,40 @@ namespace Model
 {
   public class Figure
   {
-    private const int FIGURE_SIZE = 3;
-    private Cell[][] _figureShape;
-    private int _widthFigure;
-    private int _heightFigure;
-
-    public int HeightFigure
+    public static int FIGURE_SIZE
     {
-      get
-      {
-        return _heightFigure;
-      }
-      set
-      {
-        _heightFigure = value;
-      }
+      get;
+    } = 3;
+
+    public Cell[][] FigureShape
+    {
+      get;
+      set;
     }
 
     public int WidthFigure
     {
-      get
-      {
-        return _widthFigure;
-      }
-      set
-      {
-        _widthFigure = value;
-      }
+      get;
+      set;
     }
 
-    public int FigureShape
+    public int HeightFigure
     {
-      get
-      {
-        return FigureShape;
-      }
-      set
-      {
-        FigureShape = value;
-      }
+      get;
+      set;
     }
 
-    public Figure(string parfigureCode)
+    public Figure(string parFigureCode)
     {
-      for (int i = 0; i < parfigureCode.Length; i++)
+      for (int i = 0; i < parFigureCode.Length; i++)
       {
-        for (int j = 0; j < FIGURE_SIZE; j++)
+        for (int j = 0; j < FIGURE_SIZE - 1; j++)
         {
-          _figureShape[i][j].IsFull = (parfigureCode[FIGURE_SIZE * i + j] == '1');
-          if (parfigureCode[FIGURE_SIZE * i + j] == '1')
+          FigureShape[i % FIGURE_SIZE][j].IsFull = (parFigureCode[FIGURE_SIZE * i + j] == '1');
+          if (parFigureCode[FIGURE_SIZE * i + j] == '1')
           {
-            _widthFigure = j + 1;
-            _heightFigure = i + 1;
+            WidthFigure = j + 1;
+            HeightFigure = i + 1;
           }
         }
       }

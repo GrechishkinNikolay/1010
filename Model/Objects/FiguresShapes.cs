@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace Model.Objects
 {
-  class FiguresShapes
+  public class FiguresShapes
   {
-    private readonly Figure[] _figures;
+    public Figure[] Figures
+    {
+      get;
+    }
 
     public FiguresShapes(string[] parFiguresCodes)
     {
-      _figures = new Figure[parFiguresCodes.Length];
-      for (int i = 0; i < _figures.Length; i++)
+      Figures = new Figure[parFiguresCodes.Length];
+      for (int i = 0; i < Figures.Length; i++)
       {
-        _figures[i] = new Figure(parFiguresCodes[i]);
+        Figures[i] = new Figure(parFiguresCodes[i]);
       }
     }
   }

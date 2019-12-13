@@ -12,59 +12,73 @@ namespace Model
     private const int COUNT_ROW = 10;
     private const int COUNT_COLUMN = 10;
 
-    private Field _gameField;
-    private FiguresShapes _figuresShapes;
-    public Coordinates _pointerCoordinates { get; set; }
+    public int ActiveFigureNumber
+    {
+      get;
+      set;
+    }
 
+    public FiguresShapes FiguresShapes
+    {
+      get;
+      set;
+    }
+
+    public Coordinates PointerCoordinates
+    {
+      get;
+      set;
+    }
 
     public Field GameField
     {
-      get
-      {
-        return _gameField;
-      }
-      set
-      {
-        _gameField = value;
-      }
+      get;
+      set;
     }
 
     public ModelGamePlay()
     {
-      _gameField = new Field(COUNT_ROW, COUNT_COLUMN);
-      _figuresShapes = new FiguresShapes(FigureCodeKeeper.FiguresCodes);
+      GameField = new Field(COUNT_ROW, COUNT_COLUMN);
+      FiguresShapes = new FiguresShapes(FigureCodeKeeper.FiguresCodes);
     }
 
-    public void MoveFigureUp()
+    public void PutTheFigure()
     {
-      if (_pointerCoordinates.Y > 0)
+      for (int i = 0; i < Figure.FIGURE_SIZE; i++)
       {
-        _pointerCoordinates.Y -= 1;
+        for (int i = 0; i < length; i++)
+        {
 
+        }
       }
     }
+
     public void MoveFigureUp()
     {
-      if (_pointerCoordinates.Y > 0)
+      if (PointerCoordinates.Y > 0)
       {
-        _pointerCoordinates.Y -= 1;
-
+        PointerCoordinates.Y -= 1;
       }
     }
-    public void MoveFigureUp()
+    public void MoveFigureLeft()
     {
-      if (_pointerCoordinates.Y > 0)
+      if (PointerCoordinates.X > 0)
       {
-        _pointerCoordinates.Y -= 1;
-
+        PointerCoordinates.X -= 1;
       }
     }
-    public void MoveFigureUp()
+    public void MoveFigureDown()
     {
-      if (_pointerCoordinates.Y > 0)
+      if (PointerCoordinates.Y + FiguresShapes.Figures[ActiveFigureNumber].HeightFigure < COUNT_ROW)
       {
-        _pointerCoordinates.Y -= 1;
-
+        PointerCoordinates.Y += 1;
+      }
+    }
+    public void MoveFigureRight()
+    {
+      if (PointerCoordinates.Y + FiguresShapes.Figures[ActiveFigureNumber].WidthFigure < COUNT_COLUMN)
+      {
+        PointerCoordinates.X += 1;
       }
     }
 

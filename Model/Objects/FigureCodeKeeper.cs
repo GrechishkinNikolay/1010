@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Objects
 {
-  class FigureCodeKeeper
+  public class FigureCodeKeeper
   {
     private static readonly string LONG_L_FIGURE = "100100111";
     private static readonly string LONG_I_FIGURE = "100100100";
