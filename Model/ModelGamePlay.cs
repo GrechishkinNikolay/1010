@@ -11,6 +11,7 @@ namespace Model
   {
     private const int COUNT_ROW = 10;
     private const int COUNT_COLUMN = 10;
+    private static Random _prng = new Random();
 
     public int ActiveFigureNumber
     {
@@ -51,7 +52,7 @@ namespace Model
           GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X] = FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j];
         }
       }
-      ActiveFigureNumber = Random()
+      ActiveFigureNumber = _prng.Next(0, FiguresShapes.Figures.Length);
     }
 
     public void MoveFigureUp()
