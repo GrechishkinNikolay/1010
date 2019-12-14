@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//This is Windows Forms!
+//Merge from model to WindowsForms
 namespace Model
 {
   public class ModelGamePlay
