@@ -46,9 +46,9 @@ namespace Model
     {
       for (int i = 0; i < Figure.FIGURE_SIZE; i++)
       {
-        for (int i = 0; i < length; i++)
+        for (int j = 0; j < Figure.FIGURE_SIZE; j++)
         {
-
+          GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X] = FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j];
         }
       }
     }

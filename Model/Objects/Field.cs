@@ -8,28 +8,21 @@ namespace Model
 {
   public class Field
   {
-    private Cell[][] _playingField;
-
     public Cell[][] PlayingField
     {
-      get
-      {
-        return _playingField;
-      }
-      set
-      {
-        _playingField = value;
-      }
+      get;
+      set;
     }
+
     public Field(int parRowCount, int parColomnCount)
     {
-      _playingField = new Cell[parRowCount][];
-      for (int i = 0; i < _playingField.Length; i++)
+      PlayingField = new Cell[parRowCount][];
+      for (int i = 0; i < PlayingField.Length; i++)
       {
-        _playingField[i] = new Cell[parColomnCount];
-        for (int j = 0; j < _playingField[i].Length; j++)
+        PlayingField[i] = new Cell[parColomnCount];
+        for (int j = 0; j < PlayingField[i].Length; j++)
         {
-          _playingField[i][j] = new Cell(false);
+          PlayingField[i][j] = new Cell(false);
         }
       }
     }
