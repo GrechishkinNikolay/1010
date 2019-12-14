@@ -51,6 +51,7 @@ namespace Model
           GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X] = FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j];
         }
       }
+      ActiveFigureNumber = Random()
     }
 
     public void MoveFigureUp()
