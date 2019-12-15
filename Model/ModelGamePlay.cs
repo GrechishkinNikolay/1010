@@ -11,7 +11,7 @@ namespace Model
   {
     private const int COUNT_ROW = 10;
     private const int COUNT_COLUMN = 10;
-    private static Random _prng = new Random();
+    private static Random _pseudoRandomNumberGenerator = new Random();
 
     public int ActiveFigureNumber
     {
@@ -52,7 +52,30 @@ namespace Model
           GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X] = FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j];
         }
       }
-      ActiveFigureNumber = _prng.Next(0, FiguresShapes.Figures.Length);
+      ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
+    }
+
+    public void DeleteFilledRowsAndColumns()
+    {
+      for (int i = 0; i < COUNT_ROW; i++)
+      {
+        if (IsFullCellsSet(GameField.PlayingField[i]))
+        { 
+
+        }
+      }
+    }
+
+    public bool IsFullCellsSet(Cell[] parCellsSet)
+    {
+      foreach (Cell cell in parCellsSet)
+      {
+        if (!cell.IsFull)
+        {
+          return false;
+        }
+      }
+      return true;
     }
 
     public void MoveFigureUp()

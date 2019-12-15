@@ -8,7 +8,6 @@ namespace Model
 {
   public class Cell
   {
-    private bool _isFull;
     //private Сoordinates coordinates;
 
     //public Сoordinates Сoordinates
@@ -22,22 +21,15 @@ namespace Model
     //    coordinates = value;
     //  }
     //}
-
     public bool IsFull
     {
-      get
-      {
-        return _isFull;
-      }
-      set
-      {
-        _isFull = value;
-      }
+      get;
+      set;
     }
 
-    public Cell(bool isFull)
+    public Cell(bool parIsFull)
     {
-      _isFull = isFull;
+      IsFull = parIsFull;
     }
   }
 }

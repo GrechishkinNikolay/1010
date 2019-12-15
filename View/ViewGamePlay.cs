@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace View
 {
-  public abstract class ViewGamePlay
+  public interface ViewGamePlay
   {
-
+    void DrawGameField();
+    void DrawActiveFigure();
   }
 }
