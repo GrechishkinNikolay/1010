@@ -25,6 +25,11 @@ namespace Model
       set;
     }
 
+    public int PointsForFigure
+    {
+      get;
+    }
+
     public int HeightFigure
     {
       get;
@@ -42,6 +47,7 @@ namespace Model
           {
             WidthFigure = j + 1;
             HeightFigure = i + 1;
+            PointsForFigure++;
           }
         }
       }
