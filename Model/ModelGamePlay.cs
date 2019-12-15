@@ -37,6 +37,12 @@ namespace Model
       set;
     }
 
+    public int Score
+    {
+      get;
+      set;
+    }
+
     public ModelGamePlay()
     {
       GameField = new Field(COUNT_ROW, COUNT_COLUMN);
@@ -57,12 +63,20 @@ namespace Model
 
     public void DeleteFilledRowsAndColumns()
     {
-      for (int i = 0; i < COUNT_ROW; i++)
+      foreach (Cell[] cells in GameField.PlayingField)
       {
-        if (IsFullCellsSet(GameField.PlayingField[i]))
-        { 
-
+        if (IsFullCellsSet(cells))
+        {
+          foreach (Cell cell in cells)
+          {
+            cell.IsFull = false;
+          }
         }
+      }
+
+      for (int i = 0; i < GameField.PlayingField[]; i++)
+      {
+
       }
     }
 
