@@ -23,6 +23,5 @@ namespace Model.Objects
         return _figuresCodes;
       }
     }
-
   }
 }
