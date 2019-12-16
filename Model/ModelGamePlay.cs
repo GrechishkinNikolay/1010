@@ -11,7 +11,7 @@ namespace Model
   {
     private const int COUNT_ROW = 10;
     private const int COUNT_COLUMN = 10;
-    private static Random _prng = new Random();
+    private static Random _pseudoRandomNumberGenerator = new Random();
 
     public int ActiveFigureNumber
     {
@@ -37,22 +37,94 @@ namespace Model
       set;
     }
 
+    public int Score
+    {
+      get;
+      set;
+    }
+
     public ModelGamePlay()
     {
       GameField = new Field(COUNT_ROW, COUNT_COLUMN);
       FiguresShapes = new FiguresShapes(FigureCodeKeeper.FiguresCodes);
     }
+  
+    public bool CanWePlaceFigure()
+    {
+      for (int i = 0; i < FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
+      {
+        for (int j = 0; j < FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
+        {
+          if (!(FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull && GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull))
+          {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
 
     public void PutTheFigure()
     {
-      for (int i = 0; i < Figure.FIGURE_SIZE; i++)
+      if (CanWePlaceFigure())
       {
-        for (int j = 0; j < Figure.FIGURE_SIZE; j++)
+        for (int i = 0; i < Figure.FIGURE_SIZE; i++)
         {
-          GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X] = FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j];
+          for (int j = 0; j < Figure.FIGURE_SIZE; j++)
+          {
+            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X] = FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j];
+          }
+        }
+        ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
+        DeleteFilledRowsAndColumns();
+        Score += FiguresShapes.Figures[ActiveFigureNumber].PointsForFigure;
+      }
+    }
+
+    public void DeleteFilledRowsAndColumns()
+    {
+      foreach (Cell[] cells in GameField.PlayingField)
+      {
+        if (IsFullCellsSet(cells))
+        {
+          foreach (Cell cell in cells)
+          {
+            cell.IsFull = false;
+          }
         }
       }
-      ActiveFigureNumber = _prng.Next(0, FiguresShapes.Figures.Length);
+      Cell[] columnCells = new Cell[COUNT_ROW];
+      for (int i = 0; i < COUNT_COLUMN; i++)
+      {
+        for (int j = 0; j < COUNT_ROW; j++)
+        {
+          columnCells[j] = GameField.PlayingField[j][i];
+        }
+        if (IsFullCellsSet(columnCells))
+        {
+          ClearColumn(i);
+        }
+      }
+    }
+
+    public void ClearColumn(int parI)
+    {
+      for (int j = 0; j < COUNT_ROW; j++)
+      {
+        GameField.PlayingField[j][parI].IsFull = false;
+      }
+    }
+
+    public bool IsFullCellsSet(Cell[] parCellsSet)
+    {
+      foreach (Cell cell in parCellsSet)
+      {
+        if (!cell.IsFull)
+        {
+          return false;
+        }
+      }
+      return true;
     }
 
     public void MoveFigureUp()
