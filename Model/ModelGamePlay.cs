@@ -78,6 +78,8 @@ namespace Model
         ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
         DeleteFilledRowsAndColumns();
         Score += FiguresShapes.Figures[ActiveFigureNumber].PointsForFigure;
+        PointerCoordinates.X = 4;
+        PointerCoordinates.Y = 3;
       }
     }
 
