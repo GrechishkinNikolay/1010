@@ -46,5 +46,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewWindows.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{58D968E0-98A3-4DE4-A2EE-4F55CD7E0699}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

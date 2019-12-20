@@ -44,5 +44,11 @@
     <Compile Include="ControllerWindows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ViewWindowsForms\ViewWindowsForms.csproj">
+      <Project>{4db0be87-3220-48f9-ba6f-c0a996cb2e9d}</Project>
+      <Name>ViewWindowsForms</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
