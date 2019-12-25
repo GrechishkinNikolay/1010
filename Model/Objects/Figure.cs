@@ -38,6 +38,14 @@ namespace Model
 
     public Figure(string parFigureCode)
     {
+      for (int i = 0; i < FIGURE_SIZE; i++)
+      {
+        FigureShape[i] = new Cell[FIGURE_SIZE];
+        for (int i = 0; i < length; i++)
+        {
+
+        }
+      }
       for (int i = 0; i < parFigureCode.Length; i++)
       {
         for (int j = 0; j < FIGURE_SIZE - 1; j++)

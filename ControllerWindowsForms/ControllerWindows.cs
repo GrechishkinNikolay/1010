@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,9 @@ namespace ControllerWindowsForms
     }
     public ControllerWindows()
     {
+      ModelGamePlay modelGamePlay = new ModelGamePlay();
       ViewWindows viewWindows = new ViewWindows();
+      viewWindows.IsGame = true;
     }
   }
 }

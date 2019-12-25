@@ -15,9 +15,10 @@ namespace StartBlockPuzzle
     [STAThread]
     static void Main()
     {
+
+      ControllerWindows controllerWindows = new ControllerWindows();
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      ControllerWindows controllerWindows = new ControllerWindows();
     }
   }
 }
