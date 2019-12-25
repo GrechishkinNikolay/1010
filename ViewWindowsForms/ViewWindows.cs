@@ -53,14 +53,11 @@ namespace ViewWindowsForms
       GameForm.Height = 400;
       GameForm.Width = 500;
       GameForm.FormBorderStyle = FormBorderStyle.FixedSingle;
-
-      PanelDrawing = new Panel();
-      PanelDrawing.Location = new Point(5, 5);
-      GameForm.Controls.Add(PanelDrawing);
-      Graphics targetgraphics = PanelDrawing.CreateGraphics();
-      Rectangle targetrectangle = PanelDrawing.ClientRectangle;
-      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, targetrectangle);
-
+      
+      Graphics targetgraphics = GameForm.CreateGraphics();
+      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(
+        targetgraphics, 
+        new Rectangle(0,0, GameForm.Width, GameForm.Height));
       FieldRectangles = new RectangleF[COUNT_ROW][];
       for (int i = 0; i < COUNT_ROW; i++)
       {
@@ -76,9 +73,10 @@ namespace ViewWindowsForms
           FieldRectangles[i][j].Y = 30 * j;
         }
       }
-      IsGame = false;
+      IsGame = true;
       _DrawingThread = new Thread(RedrawCycle);
       _DrawingThread.IsBackground = true;
+      _DrawingThread.Start();
       Application.Run(GameForm);
     }
 

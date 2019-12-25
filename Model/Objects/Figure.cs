@@ -38,6 +38,7 @@ namespace Model
 
     public Figure(string parFigureCode)
     {
+      FigureShape = new Cell[FIGURE_SIZE][];
       for (int i = 0; i < FIGURE_SIZE; i++)
       {
         FigureShape[i] = new Cell[FIGURE_SIZE];
@@ -48,10 +49,10 @@ namespace Model
       }
       for (int i = 0; i < parFigureCode.Length; i++)
       {
-        for (int j = 0; j < FIGURE_SIZE - 1; j++)
+        for (int j = 0; j < FIGURE_SIZE; j++)
         {
-          FigureShape[i % FIGURE_SIZE][j].IsFull = (parFigureCode[FIGURE_SIZE * i + j] == '1');
-          if (parFigureCode[FIGURE_SIZE * i + j] == '1')
+          FigureShape[i % FIGURE_SIZE][j].IsFull = (parFigureCode[i] == '1');
+          if (parFigureCode[i] == '1')
           {
             WidthFigure = j + 1;
             HeightFigure = i + 1;
