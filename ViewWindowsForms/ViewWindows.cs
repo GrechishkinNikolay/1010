@@ -51,8 +51,8 @@ namespace ViewWindowsForms
     {
       GameForm = new Form();
       GameForm.Height = 400;
-      GameForm.Width = 500;
-      GameForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+      GameForm.Width = 400;
+      //GameForm.FormBorderStyle = FormBorderStyle.FixedSingle;
       
       Graphics targetgraphics = GameForm.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(
@@ -69,8 +69,8 @@ namespace ViewWindowsForms
         {
           FieldRectangles[i][j].Width = 30;
           FieldRectangles[i][j].Height = 30;
-          FieldRectangles[i][j].X = 30 * i;
-          FieldRectangles[i][j].Y = 30 * j;
+          FieldRectangles[i][j].X = 33 * i + 5;
+          FieldRectangles[i][j].Y = 33 * j + 50;
         }
       }
       IsGame = true;
@@ -96,6 +96,7 @@ namespace ViewWindowsForms
       while (IsGame)
       {
         _bufferedGraphics.Graphics.Clear(SystemColors.Control);
+
         ShowField();
         _bufferedGraphics.Render();
       }
