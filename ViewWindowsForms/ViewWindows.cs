@@ -40,6 +40,7 @@ namespace ViewWindowsForms
       get;
       set;
     }
+    public ModelGamePlay ModelGamePlay { get; set; }
     public static Form GameForm
     {
       get;
@@ -47,17 +48,18 @@ namespace ViewWindowsForms
     }
 
 
-    public ViewWindows()
+    public ViewWindows(ModelGamePlay parModelGamePlay)
     {
+      ModelGamePlay = parModelGamePlay;
       GameForm = new Form();
-      GameForm.Height = 400;
-      GameForm.Width = 400;
+      GameForm.Height = 440;
+      GameForm.Width = 350;
       //GameForm.FormBorderStyle = FormBorderStyle.FixedSingle;
-      
+
       Graphics targetgraphics = GameForm.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(
-        targetgraphics, 
-        new Rectangle(0,0, GameForm.Width, GameForm.Height));
+        targetgraphics,
+        new Rectangle(0, 0, GameForm.Width, GameForm.Height));
       FieldRectangles = new RectangleF[COUNT_ROW][];
       for (int i = 0; i < COUNT_ROW; i++)
       {
@@ -69,8 +71,8 @@ namespace ViewWindowsForms
         {
           FieldRectangles[i][j].Width = 30;
           FieldRectangles[i][j].Height = 30;
-          FieldRectangles[i][j].X = 33 * i + 5;
-          FieldRectangles[i][j].Y = 33 * j + 50;
+          FieldRectangles[i][j].X = 32 * i + 5;
+          FieldRectangles[i][j].Y = 32 * j + 60;
         }
       }
       IsGame = true;
@@ -86,7 +88,7 @@ namespace ViewWindowsForms
       {
         for (int j = 0; j < FieldRectangles[i].Length; j++)
         {
-          _bufferedGraphics.Graphics.DrawRectangle(Pens.Blue, Rectangle.Ceiling(FieldRectangles[i][j]));
+          _bufferedGraphics.Graphics.DrawRectangle(Pens.Gray, Rectangle.Ceiling(FieldRectangles[i][j]));
         }
       }
     }
@@ -95,7 +97,7 @@ namespace ViewWindowsForms
     {
       while (IsGame)
       {
-        _bufferedGraphics.Graphics.Clear(SystemColors.Control);
+        _bufferedGraphics.Graphics.Clear(Color.Black);
 
         ShowField();
         _bufferedGraphics.Render();
