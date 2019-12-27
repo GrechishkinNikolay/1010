@@ -18,7 +18,7 @@ namespace ControllerWindowsForms
     public ControllerWindows()
     {
       ModelGamePlay modelGamePlay = new ModelGamePlay();
-      ViewWindows viewWindows = new ViewWindows(modelGamePlay);
+      ViewWindows viewWindows = new ViewWindows();
       viewWindows.IsGame = true;
     }
   }
