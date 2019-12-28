@@ -12,8 +12,6 @@ namespace ViewWindowsForms
 {
   public class ViewWindows
   {
-    private const int COUNT_COLUMN = 10;
-    private const int COUNT_ROW = 10;
     /// <summary>
     /// Координаты правой границы
     /// </summary>
@@ -52,8 +50,8 @@ namespace ViewWindowsForms
     {
       ModelGamePlay = parModelGamePlay;
       GameForm = new Form();
-      GameForm.Height = 440;
-      GameForm.Width = 350;
+      //GameForm.Height = 350;
+      //GameForm.Width = 350;
       //GameForm.FormBorderStyle = FormBorderStyle.FixedSingle;
 
       Graphics targetgraphics = GameForm.CreateGraphics();
@@ -61,7 +59,7 @@ namespace ViewWindowsForms
         targetgraphics,
         new Rectangle(0, 0, GameForm.Width, GameForm.Height));
       FieldRectangles = new RectangleF[ModelGamePlay.COUNT_ROW][];
-      for (int i = 0; i < COUNT_ROW; i++)
+      for (int i = 0; i < ModelGamePlay.COUNT_ROW; i++)
       {
         FieldRectangles[i] = new RectangleF[ModelGamePlay.COUNT_COLUMN];
       }
@@ -69,10 +67,10 @@ namespace ViewWindowsForms
       {
         for (int j = 0; j < FieldRectangles[i].Length; j++)
         {
-          FieldRectangles[i][j].Width = 30;
-          FieldRectangles[i][j].Height = 30;
-          FieldRectangles[i][j].X = 32 * i + 5;
-          FieldRectangles[i][j].Y = 32 * j + 60;
+          FieldRectangles[i][j].Width = GameForm.Width / ModelGamePlay.COUNT_COLUMN - 5;
+          FieldRectangles[i][j].Height = GameForm.Height / ModelGamePlay.COUNT_ROW - 5;
+          FieldRectangles[i][j].X = 32 * i;
+          FieldRectangles[i][j].Y = 32 * j;
         }
       }
       IsGame = true;
@@ -97,7 +95,7 @@ namespace ViewWindowsForms
     {
       while (IsGame)
       {
-        _bufferedGraphics.Graphics.Clear(Color.DarkSlateGray);
+        _bufferedGraphics.Graphics.Clear(Color.Black);
 
         ShowField();
         _bufferedGraphics.Render();
