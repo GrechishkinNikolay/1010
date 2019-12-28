@@ -60,10 +60,10 @@ namespace ViewWindowsForms
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(
         targetgraphics,
         new Rectangle(0, 0, GameForm.Width, GameForm.Height));
-      FieldRectangles = new RectangleF[COUNT_ROW][];
+      FieldRectangles = new RectangleF[ModelGamePlay.COUNT_ROW][];
       for (int i = 0; i < COUNT_ROW; i++)
       {
-        FieldRectangles[i] = new RectangleF[COUNT_COLUMN];
+        FieldRectangles[i] = new RectangleF[ModelGamePlay.COUNT_COLUMN];
       }
       for (int i = 0; i < FieldRectangles.Length; i++)
       {
@@ -88,7 +88,7 @@ namespace ViewWindowsForms
       {
         for (int j = 0; j < FieldRectangles[i].Length; j++)
         {
-          _bufferedGraphics.Graphics.DrawRectangle(Pens.Gray, Rectangle.Ceiling(FieldRectangles[i][j]));
+          _bufferedGraphics.Graphics.FillRectangle(Brushes.DimGray, FieldRectangles[i][j]);
         }
       }
     }
@@ -97,7 +97,7 @@ namespace ViewWindowsForms
     {
       while (IsGame)
       {
-        _bufferedGraphics.Graphics.Clear(Color.Black);
+        _bufferedGraphics.Graphics.Clear(Color.DarkSlateGray);
 
         ShowField();
         _bufferedGraphics.Render();
