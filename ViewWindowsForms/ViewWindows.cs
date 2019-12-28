@@ -50,9 +50,9 @@ namespace ViewWindowsForms
     {
       ModelGamePlay = parModelGamePlay;
       GameForm = new Form();
-      //GameForm.Height = 350;
-      //GameForm.Width = 350;
-      //GameForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+      GameForm.Height = 430;
+      GameForm.Width = 345;
+      GameForm.FormBorderStyle = FormBorderStyle.FixedSingle;
 
       Graphics targetgraphics = GameForm.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(
@@ -67,10 +67,10 @@ namespace ViewWindowsForms
       {
         for (int j = 0; j < FieldRectangles[i].Length; j++)
         {
-          FieldRectangles[i][j].Width = GameForm.Width / ModelGamePlay.COUNT_COLUMN - 5;
-          FieldRectangles[i][j].Height = GameForm.Height / ModelGamePlay.COUNT_ROW - 5;
-          FieldRectangles[i][j].X = 32 * i;
-          FieldRectangles[i][j].Y = 32 * j;
+          FieldRectangles[i][j].Width = 30;
+          FieldRectangles[i][j].Height =  30;
+          FieldRectangles[i][j].X = 32 * i + 5;
+          FieldRectangles[i][j].Y = 32 * j + 60;
         }
       }
       IsGame = true;
