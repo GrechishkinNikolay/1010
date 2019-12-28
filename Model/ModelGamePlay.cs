@@ -49,6 +49,18 @@ namespace Model
       FiguresShapes = new FiguresShapes(FigureCodeKeeper.FiguresCodes);
     }
   
+    public void SpawnNewFigure()
+    {
+      for (int i = 0; i < FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
+      {
+        for (int j = 0; j < FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
+        {
+          GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures = 
+            FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull;
+        }
+      }
+    }
+
     public bool CanWePlaceFigure()
     {
       for (int i = 0; i < FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
@@ -76,10 +88,10 @@ namespace Model
             GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X] = FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j];
           }
         }
-        ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
         DeleteFilledRowsAndColumns();
+        ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
         Score += FiguresShapes.Figures[ActiveFigureNumber].PointsForFigure;
-        PointerCoordinates.X = 4;
+        PointerCoordinates.X = 3;
         PointerCoordinates.Y = 3;
       }
     }
@@ -94,6 +106,7 @@ namespace Model
           {
             cell.IsFull = false;
           }
+          Score += 10;
         }
       }
       Cell[] columnCells = new Cell[COUNT_ROW];
@@ -107,6 +120,7 @@ namespace Model
         {
           ClearColumn(i);
         }
+        Score += 10;
       }
     }
 

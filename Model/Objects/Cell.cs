@@ -8,24 +8,12 @@ namespace Model
 {
   public class Cell
   {
-    //private Сoordinates coordinates;
-
-    //public Сoordinates Сoordinates
-    //{
-    //  get
-    //  {
-    //    return coordinates;
-    //  }
-    //  set
-    //  {
-    //    coordinates = value;
-    //  }
-    //}
     public bool IsFull
     {
       get;
       set;
     }
+    public bool IsFilledWithFigures { get; set; }
 
     public Cell(bool parIsFull)
     {
