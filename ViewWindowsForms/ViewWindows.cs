@@ -94,7 +94,6 @@ namespace ViewWindowsForms
       while (IsGame)
       {
         _bufferedGraphics.Graphics.Clear(Color.Black);
-
         ShowField();
         _bufferedGraphics.Render();
       }
