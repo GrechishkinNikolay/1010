@@ -23,8 +23,6 @@ namespace ViewWindowsForms
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации
     /// </summary>
-    Panel _PanelDrawing;
-    public Panel PanelDrawing { get; set; }
     private BufferedGraphics _bufferedGraphics = null;
     private volatile bool _isGame;
     private Thread _DrawingThread;
