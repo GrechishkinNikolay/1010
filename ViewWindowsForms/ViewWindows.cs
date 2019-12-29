@@ -13,31 +13,21 @@ namespace ViewWindowsForms
   public class ViewWindows
   {
     /// <summary>
-    /// Координаты правой границы
-    /// </summary>
-    private float _Right = 0.0F;
-    /// <summary>
-    /// Координаты нижней границы
-    /// </summary>
-    private float _Bottom = 0.0F;
-    /// <summary>
     /// Рисование с использованием технологии двойной буферизации
     /// </summary>
     private BufferedGraphics _bufferedGraphics = null;
     private volatile bool _isGame;
-    private Thread _DrawingThread;
-    public bool IsGame
-    {
-      get { return _isGame; }
-      set { _isGame = value; }
-    }
+    private Thread _drawingThread;
+    /// <summary>
+    /// Прямоугольники 
+    /// </summary>
     public RectangleF[][] FieldRectangles
     {
       get;
       set;
     }
     public ModelGamePlay ModelGamePlay { get; set; }
-    public static Form GameForm
+    public Form GameForm
     {
       get;
       set;
@@ -71,10 +61,15 @@ namespace ViewWindowsForms
           FieldRectangles[i][j].Y = 32 * j + 60;
         }
       }
-      IsGame = true;
-      _DrawingThread = new Thread(RedrawCycle);
-      _DrawingThread.IsBackground = true;
-      _DrawingThread.Start();
+      //ModelGamePlay.IsGame = true;
+      ModelGamePlay.SpawnNewFigure();
+      _drawingThread = new Thread(RedrawCycle);
+      _drawingThread.IsBackground = true;
+      _drawingThread.Start();
+    }
+
+    public void RunForm()
+    {
       Application.Run(GameForm);
     }
 
@@ -89,12 +84,27 @@ namespace ViewWindowsForms
       }
     }
 
+    public void ShowActiveFigure()
+    {
+      for (int i = 0; i < ModelGamePlay.FiguresShapes.Figures[ModelGamePlay.ActiveFigureNumber].HeightFigure; i++)
+      {
+        for (int j = 0; j < ModelGamePlay.FiguresShapes.Figures[ModelGamePlay.ActiveFigureNumber].WidthFigure; j++)
+        {
+          if (ModelGamePlay.GameField.PlayingField[i + ModelGamePlay.PointerCoordinates.Y][j + ModelGamePlay.PointerCoordinates.X].IsFilledWithFigures)
+          {
+            _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, FieldRectangles[i + ModelGamePlay.PointerCoordinates.Y][j + ModelGamePlay.PointerCoordinates.X]);
+          }
+        }
+      }
+    }
+
     public void RedrawCycle()
     {
-      while (IsGame)
+      while (ModelGamePlay.IsGame)
       {
         _bufferedGraphics.Graphics.Clear(Color.Black);
         ShowField();
+        ShowActiveFigure();
         _bufferedGraphics.Render();
       }
     }

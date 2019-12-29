@@ -55,7 +55,7 @@ namespace Model
           if (parFigureCode[i] == '1')
           {
             WidthFigure = j + 1;
-            HeightFigure = i + 1;
+            HeightFigure = (i % FIGURE_SIZE) + 1;
             PointsForFigure++;
           }
         }

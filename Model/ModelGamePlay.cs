@@ -18,7 +18,13 @@ namespace Model
       get;
       set;
     }
+    private bool _isGame;
 
+    public bool IsGame
+    {
+      get { return _isGame; }
+      set { _isGame = value; }
+    }
     public FiguresShapes FiguresShapes
     {
       get;
@@ -47,6 +53,7 @@ namespace Model
     {
       GameField = new Field(COUNT_ROW, COUNT_COLUMN);
       FiguresShapes = new FiguresShapes(FigureCodeKeeper.FiguresCodes);
+      PointerCoordinates = new Coordinates(3, 3);
     }
   
     public void SpawnNewFigure()
@@ -93,6 +100,7 @@ namespace Model
         Score += FiguresShapes.Figures[ActiveFigureNumber].PointsForFigure;
         PointerCoordinates.X = 3;
         PointerCoordinates.Y = 3;
+        SpawnNewFigure();
       }
     }
 
