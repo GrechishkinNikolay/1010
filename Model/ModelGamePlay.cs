@@ -65,7 +65,7 @@ namespace Model
         {
           if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull)
           {
-           // GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures = false;
+            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures = false;
           }
         }
       }
@@ -95,8 +95,10 @@ namespace Model
         {
           for (int j = 0; j < Figure.FIGURE_SIZE; j++)
           {
-            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull =
-              FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFilledWithFigures;
+            if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull)
+            {
+              GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull = true;
+            }
           }
         }
         DeleteFilledRowsAndColumns();
@@ -179,7 +181,7 @@ namespace Model
     }
     public void MoveFigureRight()
     {
-      if (PointerCoordinates.Y + FiguresShapes.Figures[ActiveFigureNumber].WidthFigure < COUNT_COLUMN)
+      if (PointerCoordinates.X + FiguresShapes.Figures[ActiveFigureNumber].WidthFigure < COUNT_COLUMN)
       {
         PointerCoordinates.X += 1;
       }

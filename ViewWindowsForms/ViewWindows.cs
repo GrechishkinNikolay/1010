@@ -56,9 +56,9 @@ namespace ViewWindowsForms
         for (int j = 0; j < FieldRectangles[i].Length; j++)
         {
           FieldRectangles[i][j].Width = 30;
-          FieldRectangles[i][j].Height =  30;
-          FieldRectangles[i][j].X = 32 * i + 5;
-          FieldRectangles[i][j].Y = 32 * j + 60;
+          FieldRectangles[i][j].Height = 30;
+          FieldRectangles[i][j].X = 32 * j + 5;
+          FieldRectangles[i][j].Y = 32 * i + 60;
         }
       }
       ModelGamePlay.SpawnNewFigure();
@@ -80,7 +80,7 @@ namespace ViewWindowsForms
         {
           if (ModelGamePlay.GameField.PlayingField[i][j].IsFull)
           {
-            _bufferedGraphics.Graphics.FillRectangle(Brushes.Blue, FieldRectangles[i][j]);
+            _bufferedGraphics.Graphics.FillRectangle(Brushes.Brown, FieldRectangles[i][j]);
           }
           else
           {

@@ -38,12 +38,16 @@ namespace ControllerWindowsForms
         case Keys.Escape:
           break;
         case Keys.Left:
+          _modelGamePlay.MoveFigureLeft();
           break;
         case Keys.Up:
+          _modelGamePlay.MoveFigureUp();
           break;
         case Keys.Right:
+          _modelGamePlay.MoveFigureRight();
           break;
         case Keys.Down:
+          _modelGamePlay.MoveFigureDown();
           break;
         default:
           break;
