@@ -56,15 +56,17 @@ namespace Model
       PointerCoordinates = new Coordinates(3, 3);
       ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
     }
-  
+
     public void SpawnNewFigure()
     {
       for (int i = 0; i < FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
       {
         for (int j = 0; j < FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
         {
-          GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures = 
-            FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull;
+          if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull)
+          {
+           // GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures = false;
+          }
         }
       }
     }
@@ -93,8 +95,8 @@ namespace Model
         {
           for (int j = 0; j < Figure.FIGURE_SIZE; j++)
           {
-            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures =
-              FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull;
+            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull =
+              FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFilledWithFigures;
           }
         }
         DeleteFilledRowsAndColumns();
