@@ -47,17 +47,15 @@ namespace Model
           FigureShape[i][j] = new Cell(false);
         }
       }
+      int columnNumber = 0;
       for (int i = 0; i < parFigureCode.Length; i++)
       {
-        for (int j = 0; j < FIGURE_SIZE; j++)
+        FigureShape[i / FIGURE_SIZE][i % FIGURE_SIZE].IsFull = (parFigureCode[i] == '1');
+        if (parFigureCode[i] == '1')
         {
-          FigureShape[i % FIGURE_SIZE][j].IsFull = (parFigureCode[i] == '1');
-          if (parFigureCode[i] == '1')
-          {
-            WidthFigure = j + 1;
-            HeightFigure = (i % FIGURE_SIZE) + 1;
-            PointsForFigure++;
-          }
+          WidthFigure = i % FIGURE_SIZE + 1;
+          HeightFigure = i / FIGURE_SIZE + 1;
+          PointsForFigure++;
         }
       }
     }

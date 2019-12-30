@@ -30,9 +30,23 @@ namespace ControllerWindowsForms
     }
     public void OnKeyDown(object sender, KeyEventArgs e)
     {
-      if (e.KeyCode == Keys.Enter)
+      switch (e.KeyCode)
       {
-        throw new Exception();
+        case Keys.Enter:
+          _modelGamePlay.PutTheFigure();
+          break;
+        case Keys.Escape:
+          break;
+        case Keys.Left:
+          break;
+        case Keys.Up:
+          break;
+        case Keys.Right:
+          break;
+        case Keys.Down:
+          break;
+        default:
+          break;
       }
     }
   }

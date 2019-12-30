@@ -54,6 +54,7 @@ namespace Model
       GameField = new Field(COUNT_ROW, COUNT_COLUMN);
       FiguresShapes = new FiguresShapes(FigureCodeKeeper.FiguresCodes);
       PointerCoordinates = new Coordinates(3, 3);
+      ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
     }
   
     public void SpawnNewFigure()
@@ -74,8 +75,8 @@ namespace Model
       {
         for (int j = 0; j < FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
         {
-          if (!(FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull &&
-            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull))
+          if (GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull &&
+            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures)
           {
             return false;
           }
@@ -92,7 +93,8 @@ namespace Model
         {
           for (int j = 0; j < Figure.FIGURE_SIZE; j++)
           {
-            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X] = FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j];
+            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures =
+              FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull;
           }
         }
         DeleteFilledRowsAndColumns();
@@ -127,8 +129,8 @@ namespace Model
         if (IsFullCellsSet(columnCells))
         {
           ClearColumn(i);
+          Score += 10;
         }
-        Score += 10;
       }
     }
 

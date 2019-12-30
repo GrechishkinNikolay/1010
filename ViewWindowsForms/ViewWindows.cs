@@ -61,7 +61,6 @@ namespace ViewWindowsForms
           FieldRectangles[i][j].Y = 32 * j + 60;
         }
       }
-      //ModelGamePlay.IsGame = true;
       ModelGamePlay.SpawnNewFigure();
       _drawingThread = new Thread(RedrawCycle);
       _drawingThread.IsBackground = true;
@@ -79,7 +78,14 @@ namespace ViewWindowsForms
       {
         for (int j = 0; j < FieldRectangles[i].Length; j++)
         {
-          _bufferedGraphics.Graphics.FillRectangle(Brushes.DimGray, FieldRectangles[i][j]);
+          if (ModelGamePlay.GameField.PlayingField[i][j].IsFull)
+          {
+            _bufferedGraphics.Graphics.FillRectangle(Brushes.Blue, FieldRectangles[i][j]);
+          }
+          else
+          {
+            _bufferedGraphics.Graphics.FillRectangle(Brushes.DimGray, FieldRectangles[i][j]);
+          }
         }
       }
     }
@@ -90,7 +96,7 @@ namespace ViewWindowsForms
       {
         for (int j = 0; j < ModelGamePlay.FiguresShapes.Figures[ModelGamePlay.ActiveFigureNumber].WidthFigure; j++)
         {
-          if (ModelGamePlay.GameField.PlayingField[i + ModelGamePlay.PointerCoordinates.Y][j + ModelGamePlay.PointerCoordinates.X].IsFilledWithFigures)
+          if (ModelGamePlay.FiguresShapes.Figures[ModelGamePlay.ActiveFigureNumber].FigureShape[i][j].IsFull)
           {
             _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, FieldRectangles[i + ModelGamePlay.PointerCoordinates.Y][j + ModelGamePlay.PointerCoordinates.X]);
           }
