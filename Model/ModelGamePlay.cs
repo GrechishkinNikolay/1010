@@ -102,8 +102,8 @@ namespace Model
           }
         }
         DeleteFilledRowsAndColumns();
-        ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
         Score += FiguresShapes.Figures[ActiveFigureNumber].PointsForFigure;
+        ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
         PointerCoordinates.X = 3;
         PointerCoordinates.Y = 3;
         SpawnNewFigure();

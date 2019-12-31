@@ -26,6 +26,8 @@ namespace ViewWindowsForms
       get;
       set;
     }
+    private Font ScoreFont { get; set; }
+    public FontFamily ScoreFontFamily { get; set; }
     public ModelGamePlay ModelGamePlay { get; set; }
     public Form GameForm
     {
@@ -43,9 +45,7 @@ namespace ViewWindowsForms
       GameForm.FormBorderStyle = FormBorderStyle.FixedSingle;
 
       Graphics targetgraphics = GameForm.CreateGraphics();
-      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(
-        targetgraphics,
-        new Rectangle(0, 0, GameForm.Width, GameForm.Height));
+      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, GameForm.Width, GameForm.Height));
       FieldRectangles = new RectangleF[ModelGamePlay.COUNT_ROW][];
       for (int i = 0; i < ModelGamePlay.COUNT_ROW; i++)
       {
@@ -61,6 +61,8 @@ namespace ViewWindowsForms
           FieldRectangles[i][j].Y = 32 * i + 60;
         }
       }
+      ScoreFontFamily = new FontFamily("Impact");
+      ScoreFont = new Font(ScoreFontFamily, 30);
       ModelGamePlay.SpawnNewFigure();
       _drawingThread = new Thread(RedrawCycle);
       _drawingThread.IsBackground = true;
@@ -72,7 +74,7 @@ namespace ViewWindowsForms
       Application.Run(GameForm);
     }
 
-    public void ShowField()
+    public void DrawField()
     {
       for (int i = 0; i < FieldRectangles.Length; i++)
       {
@@ -90,7 +92,12 @@ namespace ViewWindowsForms
       }
     }
 
-    public void ShowActiveFigure()
+    public void DrawScore()
+    {
+      _bufferedGraphics.Graphics.DrawString("Score: " + ModelGamePlay.Score, ScoreFont, Brushes.Chocolate, 10, 10);
+    }
+
+    public void DrawActiveFigure()
     {
       for (int i = 0; i < ModelGamePlay.FiguresShapes.Figures[ModelGamePlay.ActiveFigureNumber].HeightFigure; i++)
       {
@@ -109,8 +116,9 @@ namespace ViewWindowsForms
       while (ModelGamePlay.IsGame)
       {
         _bufferedGraphics.Graphics.Clear(Color.Black);
-        ShowField();
-        ShowActiveFigure();
+        DrawField();
+        DrawActiveFigure();
+        DrawScore();
         _bufferedGraphics.Render();
       }
     }
