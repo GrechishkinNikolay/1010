@@ -77,8 +77,8 @@ namespace Model
       {
         for (int j = 0; j < FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
         {
-          if (GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull &&
-            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures)
+          if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull &&
+            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull)
           {
             return false;
           }
