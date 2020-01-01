@@ -47,13 +47,12 @@ namespace Model
           FigureShape[i][j] = new Cell(false);
         }
       }
-      int columnNumber = 0;
       for (int i = 0; i < parFigureCode.Length; i++)
       {
         FigureShape[i / FIGURE_SIZE][i % FIGURE_SIZE].IsFull = (parFigureCode[i] == '1');
         if (parFigureCode[i] == '1')
         {
-          WidthFigure = i % FIGURE_SIZE + 1;
+          WidthFigure = (i % FIGURE_SIZE + 1) > WidthFigure ? i % FIGURE_SIZE + 1 : WidthFigure;
           HeightFigure = i / FIGURE_SIZE + 1;
           PointsForFigure++;
         }

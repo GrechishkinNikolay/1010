@@ -65,7 +65,7 @@ namespace Model
         {
           if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull)
           {
-           // GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures = false;
+            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures = false;
           }
         }
       }
@@ -77,8 +77,8 @@ namespace Model
       {
         for (int j = 0; j < FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
         {
-          if (GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull &&
-            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFilledWithFigures)
+          if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull &&
+            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull)
           {
             return false;
           }
@@ -95,13 +95,15 @@ namespace Model
         {
           for (int j = 0; j < Figure.FIGURE_SIZE; j++)
           {
-            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull =
-              FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFilledWithFigures;
+            if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull)
+            {
+              GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull = true;
+            }
           }
         }
         DeleteFilledRowsAndColumns();
-        ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
         Score += FiguresShapes.Figures[ActiveFigureNumber].PointsForFigure;
+        ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
         PointerCoordinates.X = 3;
         PointerCoordinates.Y = 3;
         SpawnNewFigure();
@@ -179,7 +181,7 @@ namespace Model
     }
     public void MoveFigureRight()
     {
-      if (PointerCoordinates.Y + FiguresShapes.Figures[ActiveFigureNumber].WidthFigure < COUNT_COLUMN)
+      if (PointerCoordinates.X + FiguresShapes.Figures[ActiveFigureNumber].WidthFigure < COUNT_COLUMN)
       {
         PointerCoordinates.X += 1;
       }

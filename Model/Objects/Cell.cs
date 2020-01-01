@@ -8,11 +8,17 @@ namespace Model
 {
   public class Cell
   {
+    /// <summary>
+    /// Заполнена ли клетка
+    /// </summary>
     public bool IsFull
     {
       get;
       set;
     }
+    /// <summary>
+    /// Заполнена ли клетка активной фигурой
+    /// </summary>
     public bool IsFilledWithFigures { get; set; }
 
     public Cell(bool parIsFull)
