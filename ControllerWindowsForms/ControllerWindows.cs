@@ -17,7 +17,6 @@ namespace ControllerWindowsForms
       get;
       set;
     }
-    private Thread _threadControl;
     private ModelGamePlay _modelGamePlay;
     private ViewWindows _viewWindows;
     public ControllerWindows()
@@ -49,7 +48,7 @@ namespace ControllerWindowsForms
         case Keys.Down:
           _modelGamePlay.MoveFigureDown();
           break;
-        default:
+        default:  
           break;
       }
     }
