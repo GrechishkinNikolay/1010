@@ -8,6 +8,7 @@ namespace Model
 {
   public class ModelMenu
   {
+    public List<String> MenuItems { get; private set; } = new List<string>(3) { "Играть", "Справка", "Выход" };
     /// <summary>
     /// Выбранный пункт меню
     /// </summary>
@@ -26,7 +27,19 @@ namespace Model
         }
       }
     }
-
-
+    public void MoveMenuPointerUp()
+    {
+      if (_selectedMenuItem != 0)
+      {
+        _selectedMenuItem--;
+      }
+    }
+    public void MoveMenuPointerDown()
+    {
+      if (_selectedMenuItem != 2)
+      {
+        _selectedMenuItem++;
+      }
+    }
   }
 }
