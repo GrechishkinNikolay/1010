@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ControllerGameOverScreen.cs" />
     <Compile Include="ControllerGamePlay.cs" />
+    <Compile Include="ControllerManager.cs" />
     <Compile Include="ControllerMenu.cs" />
     <Compile Include="ControllerRecordsScreen.cs" />
     <Compile Include="Delegates\DelegateMoveDown.cs" />
