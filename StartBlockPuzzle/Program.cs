@@ -1,4 +1,5 @@
-﻿using ControllerWindowsForms;
+﻿using Controller;
+using ControllerWindowsForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,10 @@ namespace StartBlockPuzzle
     [STAThread]
     static void Main()
     {
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-      ControllerGamePlayWindows controllerWindows = new ControllerGamePlayWindows();
+      ControllerManager.GetInstance
+      //Application.EnableVisualStyles();
+      //Application.SetCompatibleTextRenderingDefault(false);
+      //ControllerGamePlayWindows controllerWindows = new ControllerGamePlayWindows();
     }
   }
 }

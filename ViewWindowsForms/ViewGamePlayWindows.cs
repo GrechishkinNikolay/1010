@@ -11,7 +11,7 @@ using View;
 
 namespace ViewWindowsForms
 {
-  public class ViewGamePlayWindows : ViewGamePlay
+  public class ViewGamePlayWindows : IViewGamePlay
   {
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации

@@ -6,15 +6,31 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
-  class ControllerManager
+  public class ControllerManager
   {
+    /// <summary>
+    /// Объект менеджера
+    /// </summary>
     private static ControllerManager _instance = null;
+    public 
+    /// <summary>
+    /// Приватный конструктор
+    /// </summary>
     private ControllerManager() { }
+    /// <summary>
+    /// Метод получения экземпляра 
+    /// </summary>
+    /// <returns></returns>
     public static ControllerManager GetInstance()
     {
       if (_instance == null)
         _instance = new ControllerManager();
       return _instance;
+    }
+
+    public void Start()
+    {
+
     }
   }
 }

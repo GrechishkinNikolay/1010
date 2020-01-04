@@ -12,13 +12,9 @@ namespace Controller
   public class ControllerGamePlay
   {
     private ModelGamePlay _modelGamePlay;
-    private ViewGamePlay _viewGamePlay;
-    public event dMoveRight OnClickButtonRight;
-    public event dMoveLeft OnClickButtonLeft;
-    public event dMoveUp OnClickButtonUp;
-    public event dMoveDown OnClickButtonDown;
+    private IViewGamePlay _viewGamePlay;
 
-    public ControllerGamePlay(ModelGamePlay parModelGamePlay, ViewGamePlay parViewGamePlay)
+    public ControllerGamePlay(ModelGamePlay parModelGamePlay, IViewGamePlay parViewGamePlay)
     {
       _modelGamePlay = parModelGamePlay;
       _viewGamePlay = parViewGamePlay;

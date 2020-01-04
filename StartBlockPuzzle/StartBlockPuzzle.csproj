@@ -75,6 +75,10 @@
       <Project>{1830bbc5-79dd-430c-bfec-11df180314a3}</Project>
       <Name>ControllerWindowsForms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{67dc37b6-3215-41f2-8a52-76e761e2ca64}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
