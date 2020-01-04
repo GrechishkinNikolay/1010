@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using View;
 
 namespace ViewWindowsForms
 {
-  public class ViewWindows
+  public class ViewGamePlayWindows : ViewGamePlay
   {
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации
@@ -36,7 +37,7 @@ namespace ViewWindowsForms
     }
 
 
-    public ViewWindows(ModelGamePlay parModelGamePlay)
+    public ViewGamePlayWindows(ModelGamePlay parModelGamePlay)
     {
       ModelGamePlay = parModelGamePlay;
       GameForm = new Form();

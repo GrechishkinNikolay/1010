@@ -8,7 +8,8 @@ namespace View
 {
   public interface ViewGamePlay
   {
-    void DrawGameField();
+    void DrawField();
     void DrawActiveFigure();
+    void DrawScore();
   }
 }

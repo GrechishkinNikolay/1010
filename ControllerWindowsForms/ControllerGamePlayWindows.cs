@@ -10,19 +10,19 @@ using ViewWindowsForms;
 
 namespace ControllerWindowsForms
 {
-  public class ControllerWindows
+  public class ControllerGamePlayWindows
   {
-    public ViewWindows ViewWindows
+    public ViewGamePlayWindows ViewWindows
     {
       get;
       set;
     }
     private ModelGamePlay _modelGamePlay;
-    private ViewWindows _viewWindows;
-    public ControllerWindows()
+    private ViewGamePlayWindows _viewWindows;
+    public ControllerGamePlayWindows()
     {
       _modelGamePlay = new ModelGamePlay();
-      _viewWindows = new ViewWindows(_modelGamePlay);
+      _viewWindows = new ViewGamePlayWindows(_modelGamePlay);
       _modelGamePlay.IsGame = true;
       _viewWindows.GameForm.KeyDown += OnKeyDown;
       _viewWindows.RunForm();

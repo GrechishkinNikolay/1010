@@ -17,7 +17,7 @@ namespace StartBlockPuzzle
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      ControllerWindows controllerWindows = new ControllerWindows();
+      ControllerGamePlayWindows controllerWindows = new ControllerGamePlayWindows();
     }
   }
 }
