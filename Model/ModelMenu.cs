@@ -8,7 +8,6 @@ namespace Model
 {
   public class ModelMenu
   {
-    public List<String> MenuItems { get; private set; } = new List<string>(3) { "Играть", "Справка", "Выход" };
     /// <summary>
     /// Выбранный пункт меню
     /// </summary>
@@ -27,6 +26,13 @@ namespace Model
         }
       }
     }
+    /// <summary>
+    /// Список пунктов меню
+    /// </summary>
+    public List<String> MenuItems { get; private set; } = new List<string>(3) { "Играть", "Справка", "Выход" };
+    /// <summary>
+    /// Переместить указатель меню вверх
+    /// </summary>
     public void MoveMenuPointerUp()
     {
       if (_selectedMenuItem != 0)
@@ -34,6 +40,9 @@ namespace Model
         _selectedMenuItem--;
       }
     }
+    /// <summary>
+    /// Переместить указатель меню вниз
+    /// </summary>
     public void MoveMenuPointerDown()
     {
       if (_selectedMenuItem != 2)
