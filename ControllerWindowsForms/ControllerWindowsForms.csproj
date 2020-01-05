@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControllerWindows.cs" />
     <Compile Include="ControllerGamePlayWindows.cs" />
+    <Compile Include="ControllerMenuWindows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +55,10 @@
     <ProjectReference Include="..\ViewWindowsForms\ViewWindowsForms.csproj">
       <Project>{4db0be87-3220-48f9-ba6f-c0a996cb2e9d}</Project>
       <Name>ViewWindowsForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\View\View.csproj">
+      <Project>{3731401D-E76A-43EF-B549-74CB37C6B074}</Project>
+      <Name>View</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

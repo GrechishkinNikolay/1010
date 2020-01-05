@@ -10,7 +10,7 @@ using ViewWindowsForms;
 
 namespace ControllerWindowsForms
 {
-  public class ControllerGamePlayWindows
+  public class ControllerGamePlayWindows : ControllerWindows
   {
     public ViewGamePlayWindows ViewWindows
     {
@@ -24,7 +24,7 @@ namespace ControllerWindowsForms
       _modelGamePlay = new ModelGamePlay();
       _viewWindows = new ViewGamePlayWindows(_modelGamePlay);
       _modelGamePlay.IsGame = true;
-      _viewWindows.GameForm.KeyDown += OnKeyDown;
+      _viewWindows.Form.KeyDown += OnKeyDown;
       _viewWindows.RunForm();
     }
     public void OnKeyDown(object sender, KeyEventArgs e)

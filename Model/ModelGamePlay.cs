@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-  public class ModelGamePlay
+  public class ModelGamePlay : Model
   {
     public const int COUNT_ROW = 10;
     public const int COUNT_COLUMN = 10;

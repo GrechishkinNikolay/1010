@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace View
+namespace ViewWindowsForms
 {
-  public interface IViewGamePlay
+  public interface IViewWindows
   {
-    void DrawField();
-    void DrawActiveFigure();
-    void DrawScore();
     void RedrawCycle();
+    Form Form { get; set; }
   }
 }

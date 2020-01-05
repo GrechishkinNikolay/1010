@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace View
+namespace Model
 {
-  interface IViewMenu
+  public class Model
   {
+    public bool IsRunning { get; set; }
   }
 }

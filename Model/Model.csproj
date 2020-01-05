@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model.cs" />
     <Compile Include="Objects\Cell.cs" />
     <Compile Include="Objects\Field.cs" />
     <Compile Include="Objects\Figure.cs" />

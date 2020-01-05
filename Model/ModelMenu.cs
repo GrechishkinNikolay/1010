@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-  public class ModelMenu
+  public class ModelMenu : Model
   {
+    public bool IsMenu { get; set; }
     /// <summary>
     /// Выбранный пункт меню
     /// </summary>
@@ -39,6 +40,10 @@ namespace Model
       {
         _selectedMenuItem--;
       }
+    }
+    public void ClickOnSelectedMenuItem()
+    {
+
     }
     /// <summary>
     /// Переместить указатель меню вниз

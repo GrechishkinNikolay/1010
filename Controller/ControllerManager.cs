@@ -1,13 +1,18 @@
-﻿using System;
+﻿using ControllerWindowsForms;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using View;
+using ViewWindowsForms;
 
 namespace Controller
 {
   public class ControllerManager
-  {
+  { 
+    private ControllerWindows _controllerWindows;
     /// <summary>
     /// Объект менеджера
     /// </summary>
@@ -27,9 +32,17 @@ namespace Controller
       return _instance;
     }
 
+    bool exitGame = false;
+
     public void Start()
     {
 
+      //while (!exitGame)
+      //{
+      //  controller.Execute();
+      //  switch (controller.ExitState) { case ...: controller = ...; }
+      //}
+      _instance._controllerWindows = new ControllerMenuWindows();
     }
   }
 }

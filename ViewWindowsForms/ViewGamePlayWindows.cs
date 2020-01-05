@@ -11,13 +11,12 @@ using View;
 
 namespace ViewWindowsForms
 {
-  public class ViewGamePlayWindows : IViewGamePlay
+  public class ViewGamePlayWindows : IViewWindows
   {
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации
     /// </summary>
     private BufferedGraphics _bufferedGraphics = null;
-    private volatile bool _isGame;
     private Thread _drawingThread;
     /// <summary>
     /// Прямоугольники 
@@ -30,7 +29,7 @@ namespace ViewWindowsForms
     private Font ScoreFont { get; set; }
     public FontFamily ScoreFontFamily { get; set; }
     public ModelGamePlay ModelGamePlay { get; set; }
-    public Form GameForm
+    public Form Form
     {
       get;
       set;
@@ -40,13 +39,13 @@ namespace ViewWindowsForms
     public ViewGamePlayWindows(ModelGamePlay parModelGamePlay)
     {
       ModelGamePlay = parModelGamePlay;
-      GameForm = new Form();
-      GameForm.Height = 430;
-      GameForm.Width = 345;
-      GameForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+      Form = new Form();
+      Form.Height = 430;
+      Form.Width = 345;
+      Form.FormBorderStyle = FormBorderStyle.FixedSingle;
 
-      Graphics targetgraphics = GameForm.CreateGraphics();
-      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, GameForm.Width, GameForm.Height));
+      Graphics targetgraphics = Form.CreateGraphics();
+      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, Form.Width, Form.Height));
       FieldRectangles = new RectangleF[ModelGamePlay.COUNT_ROW][];
       for (int i = 0; i < ModelGamePlay.COUNT_ROW; i++)
       {
@@ -72,7 +71,7 @@ namespace ViewWindowsForms
 
     public void RunForm()
     {
-      Application.Run(GameForm);
+      Application.Run(Form);
     }
 
     public void DrawField()
