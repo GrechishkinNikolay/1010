@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IViewMenu.cs" />
     <Compile Include="ViewGameOverScreen.cs" />
     <Compile Include="ViewGamePlay.cs" />
-    <Compile Include="ViewMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewRecordsScreen.cs" />
   </ItemGroup>

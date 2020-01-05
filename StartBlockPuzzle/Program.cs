@@ -16,7 +16,8 @@ namespace StartBlockPuzzle
     [STAThread]
     static void Main()
     {
-      ControllerManager.GetInstance
+      ControllerManager controllerManager = ControllerManager.GetInstance();
+      controllerManager.Start();
       //Application.EnableVisualStyles();
       //Application.SetCompatibleTextRenderingDefault(false);
       //ControllerGamePlayWindows controllerWindows = new ControllerGamePlayWindows();

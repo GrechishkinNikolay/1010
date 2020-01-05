@@ -12,7 +12,6 @@ namespace Controller
     /// Объект менеджера
     /// </summary>
     private static ControllerManager _instance = null;
-    public 
     /// <summary>
     /// Приватный конструктор
     /// </summary>
