@@ -5,13 +5,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ViewWindowsForms;
 
-namespace ControllerWindowsForms 
+namespace ControllerWindowsForms
 {
   public class ControllerManager : Controller
-  { 
+  {
+    private EWindows _nextWindow;
+    private readonly Object _lockNextWindow = new Object();
+    public EWindows NextWindow
+    {
+      get
+      {
+        lock (_lockNextWindow)
+        {
+          return _nextWindow;
+        }
+      }
+      set
+      {
+        lock (_lockNextWindow)
+        {
+          _nextWindow = value;
+          _changeWindow = true;
+        }
+      }
+    }
+    private volatile bool _changeWindow = false;
     private ControllerWindows _controllerWindows;
     /// <summary>
     /// Объект менеджера
@@ -32,15 +54,23 @@ namespace ControllerWindowsForms
       return _instance;
     }
 
-    public override EWindows Execute()
+    public EWindows Execute()
     {
-      //while (!exitGame)
-      //{
-      //  controller.Execute();
-      //  switch (controller.ExitState) { case ...: controller = ...; }
-      //}_instance._controllerWindows = new ControllerGamePlayWindows();
-      ControllerWindows controller = new ControllerMenuWindows();
-      
+      ControllerCreatorWindows controllerCreatorWindows = new ControllerCreatorWindows();
+      Controller controller = new ControllerMenuWindows();
+      while (true)
+      {
+        while (!_changeWindow)
+        {
+          Thread.Sleep(100);
+        }
+        _changeWindow = false;
+        if (NextWindow == EWindows.Exit)
+        {
+          break;
+        }
+        controller = controllerCreatorWindows.GetController(NextWindow);
+      }
       return EWindows.Exit;
     }
   }

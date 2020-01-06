@@ -64,7 +64,8 @@ namespace ViewWindowsForms
       _drawingThread.Start();
       if (Application.OpenForms.Count == 0)
       {
-        Application.Run(Form);
+        Thread the = new Thread(() => { Application.Run(Form); });
+        the.Start();
       }
     }
     public void RedrawCycle()
@@ -73,6 +74,8 @@ namespace ViewWindowsForms
       {
         _bufferedGraphics.Graphics.Clear(Color.Black);
         _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, MenuItemRectangles[0]);
+        _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, MenuItemRectangles[1]);
+        _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, MenuItemRectangles[2]);
         _bufferedGraphics.Render();
       }
     }

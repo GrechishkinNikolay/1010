@@ -17,17 +17,15 @@ namespace ControllerWindowsForms
         case EWindows.Menu:
           return new ControllerMenuWindows();
         case EWindows.GamePlay:
-          break;
+          return new ControllerGamePlayWindows();
         case EWindows.GameOver:
-          break;
+          return new ControllerMenuWindows();
         case EWindows.Records:
-          break;
+          return new ControllerMenuWindows();
         case EWindows.Help:
-          break;
-        case EWindows.Exit:
-          break;
+          return new ControllerMenuWindows();
         default:
-          break;
+          throw new ArgumentException($"No controller \"{parEWindows.ToString()}\"");
       }
     }
   }

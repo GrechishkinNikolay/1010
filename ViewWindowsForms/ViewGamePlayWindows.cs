@@ -38,7 +38,7 @@ namespace ViewWindowsForms
     public ViewGamePlayWindows(ModelGamePlay parModelGamePlay)
     {
       ModelGamePlay = parModelGamePlay;
-      Form = new Form();
+      Form = Application.OpenForms[0];
       Form.Height = 430;
       Form.Width = 345;
       Form.FormBorderStyle = FormBorderStyle.FixedSingle;

@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Controllers;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,6 @@ namespace ControllerWindowsForms
       _viewWindows = new ViewGamePlayWindows(_modelGamePlay);
       _modelGamePlay.IsGame = true;
       _viewWindows.Form.KeyDown += OnKeyDown;
-      _viewWindows.RunForm();
     }
     public void OnKeyDown(object sender, KeyEventArgs e)
     {
@@ -35,6 +35,7 @@ namespace ControllerWindowsForms
           _modelGamePlay.PutTheFigure();
           break;
         case Keys.Escape:
+          ControllerManager.GetInstance().NextWindow = EWindows.Menu;
           break;
         case Keys.Left:
           _modelGamePlay.MoveFigureLeft();

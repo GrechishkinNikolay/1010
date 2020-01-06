@@ -26,7 +26,8 @@ namespace ControllerWindowsForms
       switch (e.KeyCode)
       {
         case Keys.Enter:
-          _modelMenu.ClickOnSelectedMenuItem();
+          //_modelMenu.ClickOnSelectedMenuItem(); ToDo
+          ControllerManager.GetInstance().NextWindow = EWindows.GamePlay;
           break;
         case Keys.Escape:
           break;
