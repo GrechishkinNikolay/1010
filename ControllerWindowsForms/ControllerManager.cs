@@ -38,8 +38,9 @@ namespace ControllerWindowsForms
       //{
       //  controller.Execute();
       //  switch (controller.ExitState) { case ...: controller = ...; }
-      //}
-      _instance._controllerWindows = new ControllerGamePlayWindows();
+      //}_instance._controllerWindows = new ControllerGamePlayWindows();
+      ControllerWindows controller = new ControllerMenuWindows();
+      
       return EWindows.Exit;
     }
   }
