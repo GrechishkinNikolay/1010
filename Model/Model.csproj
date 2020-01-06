@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EWindows.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Objects\Cell.cs" />
     <Compile Include="Objects\Field.cs" />

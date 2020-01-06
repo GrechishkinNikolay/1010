@@ -34,14 +34,13 @@ namespace Controller
 
     bool exitGame = false;
 
-    public void Start()
+    public void Execute()
     {
-
-      //while (!exitGame)
-      //{
-      //  controller.Execute();
-      //  switch (controller.ExitState) { case ...: controller = ...; }
-      //}
+      while (!exitGame)
+      {
+        controller.Execute();
+        switch (controller.ExitState) { case ...: controller = ...; }
+      }
       _instance._controllerWindows = new ControllerMenuWindows();
     }
   }

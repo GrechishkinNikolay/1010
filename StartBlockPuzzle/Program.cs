@@ -19,7 +19,7 @@ namespace StartBlockPuzzle
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
       ControllerManager controllerManager = ControllerManager.GetInstance();
-      controllerManager.Start();
+      controllerManager.Execute();
       //ControllerGamePlayWindows controllerWindows = new ControllerGamePlayWindows();
     }
   }
