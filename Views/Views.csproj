@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1830BBC5-79DD-430C-BFEC-11DF180314A3}</ProjectGuid>
+    <ProjectGuid>{3731401D-E76A-43EF-B549-74CB37C6B074}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ControllerWindowsForms</RootNamespace>
-    <AssemblyName>ControllerWindowsForms</AssemblyName>
+    <RootNamespace>Views</RootNamespace>
+    <AssemblyName>Views</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,25 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerManager.cs" />
-    <Compile Include="ControllerWindows.cs" />
-    <Compile Include="ControllerGamePlayWindows.cs" />
-    <Compile Include="ControllerMenuWindows.cs" />
+    <Compile Include="ViewGameOverScreen.cs" />
+    <Compile Include="ViewGamePlay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{58D968E0-98A3-4DE4-A2EE-4F55CD7E0699}</Project>
-      <Name>Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Views\Views.csproj">
-      <Project>{3731401D-E76A-43EF-B549-74CB37C6B074}</Project>
-      <Name>Views</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ViewWindowsForms\ViewWindowsForms.csproj">
-      <Project>{4db0be87-3220-48f9-ba6f-c0a996cb2e9d}</Project>
-      <Name>ViewWindowsForms</Name>
-    </ProjectReference>
+    <Compile Include="ViewRecordsScreen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ViewWindowsForms;
 
-namespace ControllerWindowsForms
+namespace Controllers
 {
-  public abstract class ControllerWindows
+  public class ControllerRecordsScreen
   {
   }
 }

@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ViewWindowsForms;
 
-namespace ControllerWindowsForms
+namespace Controllers.Delegates
 {
-  public abstract class ControllerWindows
-  {
-  }
+  public delegate void dMoveUp();
 }

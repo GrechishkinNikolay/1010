@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ViewWindowsForms;
 
-namespace ControllerWindowsForms
+namespace Models
 {
-  public abstract class ControllerWindows
+  public enum EWindows : byte
   {
+    Menu,
+    GamePlay,
+    GameOver,
+    Records,
+    Help,
+    Exit
   }
 }

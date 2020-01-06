@@ -49,13 +49,9 @@
     <Compile Include="ViewMenuWindows.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
+    <ProjectReference Include="..\Models\Models.csproj">
       <Project>{58D968E0-98A3-4DE4-A2EE-4F55CD7E0699}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\View\View.csproj">
-      <Project>{3731401D-E76A-43EF-B549-74CB37C6B074}</Project>
-      <Name>View</Name>
+      <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
