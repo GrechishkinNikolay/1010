@@ -1,4 +1,6 @@
-﻿using ControllerWindowsForms;
+﻿using Controllers;
+using ControllerWindowsForms;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ViewWindowsForms;
 
-namespace ControllerWindowsForms
+namespace ControllerWindowsForms 
 {
-  public class ControllerManager
+  public class ControllerManager : Controller
   { 
     private ControllerWindows _controllerWindows;
     /// <summary>
@@ -30,9 +32,7 @@ namespace ControllerWindowsForms
       return _instance;
     }
 
-    bool exitGame = false;
-
-    public void Execute()
+    public override EWindows Execute()
     {
       //while (!exitGame)
       //{
@@ -40,6 +40,7 @@ namespace ControllerWindowsForms
       //  switch (controller.ExitState) { case ...: controller = ...; }
       //}
       _instance._controllerWindows = new ControllerGamePlayWindows();
+      return EWindows.Exit;
     }
   }
 }

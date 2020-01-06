@@ -54,10 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ControllerWindowsForms\ControllerWindowsForms.csproj">
-      <Project>{1830BBC5-79DD-430C-BFEC-11DF180314A3}</Project>
-      <Name>ControllerWindowsForms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{58D968E0-98A3-4DE4-A2EE-4F55CD7E0699}</Project>
       <Name>Models</Name>

@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Перечисление окон
+  /// </summary>
   public enum EWindows : byte
   {
+    /// <summary>
+    /// 
+    /// </summary>
     Menu,
     GamePlay,
     GameOver,

@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controllers\Controllers.csproj">
+      <Project>{67DC37B6-3215-41F2-8A52-76E761E2CA64}</Project>
+      <Name>Controllers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{58D968E0-98A3-4DE4-A2EE-4F55CD7E0699}</Project>
       <Name>Models</Name>
