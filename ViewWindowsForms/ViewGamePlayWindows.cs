@@ -41,7 +41,6 @@ namespace ViewWindowsForms
       Form = Application.OpenForms[0];
       Form.Height = 430;
       Form.Width = 345;
-      Form.FormBorderStyle = FormBorderStyle.FixedSingle;
 
       Graphics targetgraphics = Form.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, Form.Width, Form.Height));

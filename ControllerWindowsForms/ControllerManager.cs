@@ -34,7 +34,6 @@ namespace ControllerWindowsForms
       }
     }
     private volatile bool _changeWindow = false;
-    private ControllerWindows _controllerWindows;
     /// <summary>
     /// Объект менеджера
     /// </summary>

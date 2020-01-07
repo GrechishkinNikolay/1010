@@ -68,14 +68,29 @@ namespace ViewWindowsForms
         the.Start();
       }
     }
+    public void RunForm()
+    {
+      if (Form.InvokeRequired)
+      {
+        Form.Invoke(_redrawFormElements);
+      }
+      else
+      {
+        _redrawFormElements();
+      }
+      Application.Run(Form);
+    }
+    public void ShowMenuItems()
+    {
+      _bufferedGraphics.Graphics.DrawRectangles(Pens.White, MenuItemRectangles);
+      _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, MenuItemRectangles[ModelMenu.SelectedMenuItem]);
+    }
     public void RedrawCycle()
     {
       while (ModelMenu.IsMenu)
       {
         _bufferedGraphics.Graphics.Clear(Color.Black);
-        _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, MenuItemRectangles[0]);
-        _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, MenuItemRectangles[1]);
-        _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, MenuItemRectangles[2]);
+        ShowMenuItems();
         _bufferedGraphics.Render();
       }
     }

@@ -21,7 +21,7 @@ namespace Models
       get { return _selectedMenuItem; }
       set
       {
-        if (value >= 0 && value <= 3)
+        if (value >= 0 && value <= MenuItems.Capacity)
         {
           _selectedMenuItem = value;
         }
@@ -30,7 +30,7 @@ namespace Models
     /// <summary>
     /// Список пунктов меню
     /// </summary>
-    public List<String> MenuItems { get; private set; } = new List<string>(3) { "Играть", "Справка", "Выход" };
+    public List<String> MenuItems { get; private set; } = new List<string> { "Играть", "Справка", "Рекорды", "Выход" };
     /// <summary>
     /// Переместить указатель меню вверх
     /// </summary>
