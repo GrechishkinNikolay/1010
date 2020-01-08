@@ -8,15 +8,14 @@ namespace Models
 {
   public class ModelMenu : Model
   {
-    public delegate void _closingWindow();
-    private _closingWindow _dClosingWindow;
-    public event _closingWindow onClosingWindow;
+    public delegate void _menuItemSelection();
+    public static event _menuItemSelection onSelectMenuItem;
 
     public bool IsMenu { get; set; }
     /// <summary>
     /// Выбранный пункт меню
     /// </summary>
-    private int _selectedMenuItem;
+    public static int _selectedMenuItem;
     /// <summary>
     /// Свойство выбранного пункта меню
     /// </summary>
@@ -45,9 +44,9 @@ namespace Models
         _selectedMenuItem--;
       }
     }
-    public void ClickOnSelectedMenuItem()
+    public static void ClickOnSelectedMenuItem()
     {
-      onClosingWindow?.Invoke();
+      onSelectMenuItem?.Invoke();
     }
     /// <summary>
     /// Переместить указатель меню вниз

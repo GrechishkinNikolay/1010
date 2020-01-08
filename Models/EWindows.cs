@@ -11,14 +11,11 @@ namespace Models
   /// </summary>
   public enum EWindows : byte
   {
-    /// <summary>
-    /// 
-    /// </summary>
-    Menu,
     GamePlay,
-    GameOver,
     Records,
     Help,
-    Exit
+    Exit,
+    GameOver,
+    Menu
   }
 }

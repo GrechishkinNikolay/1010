@@ -52,12 +52,15 @@ namespace ControllerWindowsForms
         _instance = new ControllerManager();
       return _instance;
     }
-
+    public void SelectMenuItem()
+    {
+      NextWindow = (EWindows)ModelMenu._selectedMenuItem;
+    }
     public EWindows Execute()
     {
       ControllerCreatorWindows controllerCreatorWindows = new ControllerCreatorWindows();
       Controller controller = new ControllerMenuWindows();
-
+      ModelMenu.onSelectMenuItem += SelectMenuItem;
       while (true)
       {
         while (!_changeWindow)
@@ -72,7 +75,7 @@ namespace ControllerWindowsForms
         controller = controllerCreatorWindows.GetController(NextWindow);
         if (NextWindow == EWindows.Menu)
         {
-          controller
+          ModelMenu.onSelectMenuItem += SelectMenuItem;
         }
       }
       return EWindows.Exit;

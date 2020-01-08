@@ -21,18 +21,18 @@ namespace ControllerWindowsForms
       _viewWindows = new ViewMenuWindows(_modelMenu);
      _viewWindows._form.KeyDown += OnKeyDown;
     }
-    public void AppClosing()
+    public void MenuClosing()
     {
       _modelMenu.IsMenu = false;
       _viewWindows._form.KeyDown -= OnKeyDown;
-      Application.ExitThread();
     }
     public void OnKeyDown(object sender, KeyEventArgs e)
     {
       switch (e.KeyCode)
       {
         case Keys.Enter:
-          _modelMenu.ClickOnSelectedMenuItem();
+          MenuClosing();
+          ModelMenu.ClickOnSelectedMenuItem();
           break;
         case Keys.Escape:
           ControllerManager.GetInstance().NextWindow = EWindows.Exit;
