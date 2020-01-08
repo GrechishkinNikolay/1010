@@ -38,12 +38,6 @@ namespace ViewWindowsForms
     public ViewGamePlayWindows(ModelGamePlay parModelGamePlay)
     {
       ModelGamePlay = parModelGamePlay;
-      _form = Application.OpenForms[0];
-      _form.Height = 430;
-      _form.Width = 345;
-
-      Graphics targetgraphics = _form.CreateGraphics();
-      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
       FieldRectangles = new RectangleF[ModelGamePlay.COUNT_ROW][];
       for (int i = 0; i < ModelGamePlay.COUNT_ROW; i++)
       {
@@ -62,9 +56,17 @@ namespace ViewWindowsForms
       ScoreFontFamily = new FontFamily("Impact");
       ScoreFont = new Font(ScoreFontFamily, 30);
       ModelGamePlay.SpawnNewFigure();
+      InitForm();
       _drawingThread = new Thread(RedrawCycle);
       _drawingThread.IsBackground = true;
       _drawingThread.Start();
+    }
+
+    public void InitForm()
+    {
+      _form = Application.OpenForms[0];
+      Graphics targetgraphics = _form.CreateGraphics();
+      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
     }
 
     public void DrawField()

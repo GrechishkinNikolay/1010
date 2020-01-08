@@ -27,6 +27,13 @@ namespace ControllerWindowsForms
       _modelGamePlay.IsGame = true;
       _viewWindows._form.KeyDown += OnKeyDown;
     }
+
+    public void GamePlayClosing()
+    {
+      _modelGamePlay.IsGame = false;
+      _viewWindows._form.KeyDown -= OnKeyDown;
+    }
+
     public void OnKeyDown(object sender, KeyEventArgs e)
     {
       switch (e.KeyCode)
@@ -35,6 +42,7 @@ namespace ControllerWindowsForms
           _modelGamePlay.PutTheFigure();
           break;
         case Keys.Escape:
+          GamePlayClosing();
           ControllerManager.GetInstance().NextWindow = EWindows.Menu;
           break;
         case Keys.Left:

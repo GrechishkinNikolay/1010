@@ -35,7 +35,6 @@ namespace ViewWindowsForms
     public FontFamily ScoreFontFamily { get; set; }
     public ModelMenu ModelMenu { get; set; }
     public Form _form { get; set; }
-    public bool _formCreated;
 
     public ViewMenuWindows(ModelMenu parModelMenu)
     {
@@ -56,35 +55,38 @@ namespace ViewWindowsForms
       _textFormat.Alignment = StringAlignment.Center;
       _textFormat.LineAlignment = StringAlignment.Center;
       _redrawCicle = RedrawCycle;
-      _formCreated = false;
 
-      _RunFormThread = new Thread(new ThreadStart(InitForm));
-      _RunFormThread.IsBackground = true;
-      _RunFormThread.Start();
-      while (!_formCreated) { }
+      if (Application.OpenForms.Count == 0)
+      {
+        _RunFormThread = new Thread(new ThreadStart(InitForm));
+        _RunFormThread.IsBackground = true;
+        _RunFormThread.Start();
+      }
+      else
+      {
+        TakeAlreadyCreatedForm();
+      }
+      while (Application.OpenForms.Count == 0) { }
       _RedrawThread = new Thread(new ThreadStart(RedrawCycle));
       _RedrawThread.IsBackground = true;
       _RedrawThread.Start();
     }
     public void InitForm()
     {
-      if (Application.OpenForms.Count == 0)
-      {
-        _form = new Form();
-      }
-      else
-      {
-        _form = Application.OpenForms[0];
-      }
+      _form = new Form();
       _form.Height = FORM_HEIGHT;
       _form.Width = FORM_WIDTH;
       _form.FormBorderStyle = FormBorderStyle.None;
       _form.StartPosition = FormStartPosition.CenterScreen;
-
       Graphics targetgraphics = _form.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
-      _formCreated = true;
       Application.Run(_form);
+    }
+    public void TakeAlreadyCreatedForm()
+    {
+      _form = Application.OpenForms[0];
+      Graphics targetgraphics = _form.CreateGraphics();
+      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
     }
     public void ShowMenuItems()
     {
