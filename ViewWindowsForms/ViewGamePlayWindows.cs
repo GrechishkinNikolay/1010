@@ -67,11 +67,6 @@ namespace ViewWindowsForms
       _drawingThread.Start();
     }
 
-    public void RunForm()
-    {
-      Application.Run(_form);
-    }
-
     public void DrawField()
     {
       for (int i = 0; i < FieldRectangles.Length; i++)

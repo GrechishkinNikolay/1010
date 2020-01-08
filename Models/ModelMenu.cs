@@ -8,6 +8,10 @@ namespace Models
 {
   public class ModelMenu : Model
   {
+    public delegate void _closingWindow();
+    private _closingWindow _dClosingWindow;
+    public event _closingWindow onClosingWindow;
+
     public bool IsMenu { get; set; }
     /// <summary>
     /// Выбранный пункт меню
@@ -30,7 +34,7 @@ namespace Models
     /// <summary>
     /// Список пунктов меню
     /// </summary>
-    public List<String> MenuItems { get; private set; } = new List<string> { "Играть", "Справка", "Рекорды", "Выход" };
+    public List<String> MenuItems { get; private set; } = new List<string> { "Играть", "Рекорды", "Справка", "Выход" };
     /// <summary>
     /// Переместить указатель меню вверх
     /// </summary>
@@ -43,14 +47,14 @@ namespace Models
     }
     public void ClickOnSelectedMenuItem()
     {
-
+      onClosingWindow?.Invoke();
     }
     /// <summary>
     /// Переместить указатель меню вниз
     /// </summary>
     public void MoveMenuPointerDown()
     {
-      if (_selectedMenuItem != MenuItems.Capacity)
+      if (_selectedMenuItem != MenuItems.Capacity - 1)
       {
         _selectedMenuItem++;
       }

@@ -57,6 +57,7 @@ namespace ControllerWindowsForms
     {
       ControllerCreatorWindows controllerCreatorWindows = new ControllerCreatorWindows();
       Controller controller = new ControllerMenuWindows();
+
       while (true)
       {
         while (!_changeWindow)
@@ -69,6 +70,10 @@ namespace ControllerWindowsForms
           break;
         }
         controller = controllerCreatorWindows.GetController(NextWindow);
+        if (NextWindow == EWindows.Menu)
+        {
+          controller
+        }
       }
       return EWindows.Exit;
     }

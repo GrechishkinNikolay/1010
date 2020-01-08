@@ -14,6 +14,7 @@ namespace ControllerWindowsForms
   {
     private ViewMenuWindows _viewWindows;
     private ModelMenu _modelMenu;
+
     public ControllerMenuWindows()
     {
       _modelMenu = new ModelMenu();
@@ -31,8 +32,7 @@ namespace ControllerWindowsForms
       switch (e.KeyCode)
       {
         case Keys.Enter:
-          //_modelMenu.ClickOnSelectedMenuItem(); ToDo
-          ControllerManager.GetInstance().NextWindow = EWindows.GamePlay;
+          _modelMenu.ClickOnSelectedMenuItem();
           break;
         case Keys.Escape:
           ControllerManager.GetInstance().NextWindow = EWindows.Exit;

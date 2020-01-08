@@ -79,6 +79,7 @@ namespace ViewWindowsForms
       _form.Height = FORM_HEIGHT;
       _form.Width = FORM_WIDTH;
       _form.FormBorderStyle = FormBorderStyle.None;
+      _form.StartPosition = FormStartPosition.CenterScreen;
 
       Graphics targetgraphics = _form.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
