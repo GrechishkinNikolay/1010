@@ -28,7 +28,7 @@ namespace ViewWindowsForms
     private Font ScoreFont { get; set; }
     public FontFamily ScoreFontFamily { get; set; }
     public ModelGamePlay ModelGamePlay { get; set; }
-    public Form Form
+    public Form _form
     {
       get;
       set;
@@ -38,12 +38,12 @@ namespace ViewWindowsForms
     public ViewGamePlayWindows(ModelGamePlay parModelGamePlay)
     {
       ModelGamePlay = parModelGamePlay;
-      Form = Application.OpenForms[0];
-      Form.Height = 430;
-      Form.Width = 345;
+      _form = Application.OpenForms[0];
+      _form.Height = 430;
+      _form.Width = 345;
 
-      Graphics targetgraphics = Form.CreateGraphics();
-      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, Form.Width, Form.Height));
+      Graphics targetgraphics = _form.CreateGraphics();
+      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
       FieldRectangles = new RectangleF[ModelGamePlay.COUNT_ROW][];
       for (int i = 0; i < ModelGamePlay.COUNT_ROW; i++)
       {
@@ -69,7 +69,7 @@ namespace ViewWindowsForms
 
     public void RunForm()
     {
-      Application.Run(Form);
+      Application.Run(_form);
     }
 
     public void DrawField()

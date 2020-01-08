@@ -10,6 +10,6 @@ namespace ViewWindowsForms
   public interface IViewWindows
   {
     void RedrawCycle();
-    Form Form { get; set; }
+    Form _form { get; set; }
   }
 }

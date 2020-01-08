@@ -19,11 +19,11 @@ namespace ControllerWindowsForms
         case EWindows.GamePlay:
           return new ControllerGamePlayWindows();
         case EWindows.GameOver:
-          return new ControllerMenuWindows();
+          return new ControllerGameOverWindows();
         case EWindows.Records:
-          return new ControllerMenuWindows();
+          return new ControllerRecordsWindows();
         case EWindows.Help:
-          return new ControllerMenuWindows();
+          return new ControllerHelpWindows();
         default:
           throw new ArgumentException($"No controller \"{parEWindows.ToString()}\"");
       }

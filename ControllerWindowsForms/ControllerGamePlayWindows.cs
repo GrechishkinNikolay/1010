@@ -25,7 +25,7 @@ namespace ControllerWindowsForms
       _modelGamePlay = new ModelGamePlay();
       _viewWindows = new ViewGamePlayWindows(_modelGamePlay);
       _modelGamePlay.IsGame = true;
-      _viewWindows.Form.KeyDown += OnKeyDown;
+      _viewWindows._form.KeyDown += OnKeyDown;
     }
     public void OnKeyDown(object sender, KeyEventArgs e)
     {

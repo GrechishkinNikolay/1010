@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControllerWindowsForms
 {
-  class ControllerHelpWindows
+  class ControllerHelpWindows : ControllerWindows
   {
   }
 }

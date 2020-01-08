@@ -12,11 +12,17 @@ namespace ViewWindowsForms
 {
   public class ViewMenuWindows : IViewWindows
   {
+    public const int FORM_WIDTH = 345;
+    public const int FORM_HEIGHT = 500;
+    private StringFormat _textFormat;
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации
     /// </summary>
     private BufferedGraphics _bufferedGraphics = null;
-    private Thread _drawingThread;
+    private Thread _RunFormThread;
+    private Thread _RedrawThread;
+    private delegate void _dRedraw();
+    private _dRedraw _redrawCicle;
     /// <summary>
     /// Прямоугольники 
     /// </summary>
@@ -25,65 +31,68 @@ namespace ViewWindowsForms
       get;
       set;
     }
-    private Font ScoreFont { get; set; }
+    private Font Font { get; set; }
     public FontFamily ScoreFontFamily { get; set; }
     public ModelMenu ModelMenu { get; set; }
-    public Form Form { get; set; }
+    public Form _form { get; set; }
+    public bool _formCreated;
 
     public ViewMenuWindows(ModelMenu parModelMenu)
     {
       ModelMenu = parModelMenu;
-      if (Application.OpenForms.Count == 0)
-      {
-        Form = new Form();
-      }
-      else
-      {
-        Form = Application.OpenForms[0];
-      }
-      Form.Height = 500;
-      Form.Width = 345;
-      Form.FormBorderStyle = FormBorderStyle.FixedSingle;
-
-      Graphics targetgraphics = Form.CreateGraphics();
-      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, Form.Width, Form.Height));
       MenuItemRectangles = new RectangleF[ModelMenu.MenuItems.Capacity];
       for (int i = 0; i < MenuItemRectangles.Length; i++)
       {
         MenuItemRectangles[i] = new RectangleF();
         MenuItemRectangles[i].Width = 120;
         MenuItemRectangles[i].Height = 50;
-        MenuItemRectangles[i].X = Form.Width / 2 - (MenuItemRectangles[i].Width / 2);
+        MenuItemRectangles[i].X = FORM_WIDTH / 2 - (MenuItemRectangles[i].Width / 2);
         MenuItemRectangles[i].Y = 90 * i + 40;
       }
       ModelMenu.IsMenu = true;
       ScoreFontFamily = new FontFamily("Impact");
-      ScoreFont = new Font(ScoreFontFamily, 30);
-      _drawingThread = new Thread(RedrawCycle);
-      _drawingThread.IsBackground = true;
-      _drawingThread.Start();
+      Font = new Font(ScoreFontFamily, 20);
+      _textFormat = new StringFormat();
+      _textFormat.Alignment = StringAlignment.Center;
+      _textFormat.LineAlignment = StringAlignment.Center;
+      _redrawCicle = RedrawCycle;
+      _formCreated = false;
+
+      _RunFormThread = new Thread(new ThreadStart(InitForm));
+      _RunFormThread.IsBackground = true;
+      _RunFormThread.Start();
+      while (!_formCreated) { }
+      _RedrawThread = new Thread(new ThreadStart(RedrawCycle));
+      _RedrawThread.IsBackground = true;
+      _RedrawThread.Start();
+    }
+    public void InitForm()
+    {
       if (Application.OpenForms.Count == 0)
       {
-        Thread the = new Thread(() => { Application.Run(Form); });
-        the.Start();
-      }
-    }
-    public void RunForm()
-    {
-      if (Form.InvokeRequired)
-      {
-        Form.Invoke(_redrawFormElements);
+        _form = new Form();
       }
       else
       {
-        _redrawFormElements();
+        _form = Application.OpenForms[0];
       }
-      Application.Run(Form);
+      _form.Height = FORM_HEIGHT;
+      _form.Width = FORM_WIDTH;
+      _form.FormBorderStyle = FormBorderStyle.None;
+
+      Graphics targetgraphics = _form.CreateGraphics();
+      _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
+      _formCreated = true;
+      Application.Run(_form);
     }
     public void ShowMenuItems()
     {
       _bufferedGraphics.Graphics.DrawRectangles(Pens.White, MenuItemRectangles);
       _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, MenuItemRectangles[ModelMenu.SelectedMenuItem]);
+      for (int i = 0; i < ModelMenu.MenuItems.Capacity; i++)
+      {
+        _bufferedGraphics.Graphics.DrawString(ModelMenu.MenuItems[i], Font, Brushes.White, MenuItemRectangles[i], _textFormat);
+      }
     }
     public void RedrawCycle()
     {
@@ -94,7 +103,6 @@ namespace ViewWindowsForms
         _bufferedGraphics.Render();
       }
     }
-
   }
 
 

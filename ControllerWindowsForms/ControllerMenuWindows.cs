@@ -18,8 +18,13 @@ namespace ControllerWindowsForms
     {
       _modelMenu = new ModelMenu();
       _viewWindows = new ViewMenuWindows(_modelMenu);
-      _modelMenu.IsMenu = true;
-      _viewWindows.Form.KeyDown += OnKeyDown;
+     _viewWindows._form.KeyDown += OnKeyDown;
+    }
+    public void AppClosing()
+    {
+      _modelMenu.IsMenu = false;
+      _viewWindows._form.KeyDown -= OnKeyDown;
+      Application.ExitThread();
     }
     public void OnKeyDown(object sender, KeyEventArgs e)
     {
@@ -30,6 +35,7 @@ namespace ControllerWindowsForms
           ControllerManager.GetInstance().NextWindow = EWindows.GamePlay;
           break;
         case Keys.Escape:
+          ControllerManager.GetInstance().NextWindow = EWindows.Exit;
           break;
         case Keys.Up:
           _modelMenu.MoveMenuPointerUp();

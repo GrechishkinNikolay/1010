@@ -50,7 +50,7 @@ namespace Models
     /// </summary>
     public void MoveMenuPointerDown()
     {
-      if (_selectedMenuItem != 2)
+      if (_selectedMenuItem != MenuItems.Capacity)
       {
         _selectedMenuItem++;
       }

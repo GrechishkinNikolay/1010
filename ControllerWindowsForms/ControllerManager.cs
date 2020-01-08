@@ -33,7 +33,7 @@ namespace ControllerWindowsForms
         }
       }
     }
-    private volatile bool _changeWindow = false;
+    public volatile bool _changeWindow = false;
     /// <summary>
     /// Объект менеджера
     /// </summary>
