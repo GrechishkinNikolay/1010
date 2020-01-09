@@ -66,7 +66,6 @@ namespace Models
       {
         for (int j = 0; j < GameField.PlayingField[i].Length; j++)
         {
-
         }
       }
     }
