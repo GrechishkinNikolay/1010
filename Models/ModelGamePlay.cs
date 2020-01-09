@@ -13,6 +13,9 @@ namespace Models
     public const int COUNT_COLUMN = 10;
     private static Random _pseudoRandomNumberGenerator = new Random();
 
+    public delegate void _menuItemSelection();
+    public static event _menuItemSelection onSelectMenuItem;
+
     public int ActiveFigureNumber
     {
       get;
@@ -25,6 +28,7 @@ namespace Models
       get { return _isGame; }
       set { _isGame = value; }
     }
+    public bool NoPlaceForFigure { get; set; }
     public FiguresShapes FiguresShapes
     {
       get;
@@ -56,7 +60,16 @@ namespace Models
       PointerCoordinates = new Coordinates(3, 3);
       ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
     }
+    public void CheckForLoss()
+    {
+      for (int i = 0; i < GameField.PlayingField.Length; i++)
+      {
+        for (int j = 0; j < GameField.PlayingField[i].Length; j++)
+        {
 
+        }
+      }
+    }
     public void SpawnNewFigure()
     {
       for (int i = 0; i < FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
@@ -71,14 +84,14 @@ namespace Models
       }
     }
 
-    public bool CanWePlaceFigure()
+    public bool CanWePlaceFigure(int parX, int parY)
     {
       for (int i = 0; i < FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
       {
         for (int j = 0; j < FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
         {
           if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull &&
-            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull)
+            GameField.PlayingField[i + parY][j + parX].IsFull)
           {
             return false;
           }
@@ -89,7 +102,7 @@ namespace Models
 
     public void PutTheFigure()
     {
-      if (CanWePlaceFigure())
+      if (CanWePlaceFigure(PointerCoordinates.X, PointerCoordinates.Y))
       {
         for (int i = 0; i < Figure.FIGURE_SIZE; i++)
         {
@@ -109,7 +122,6 @@ namespace Models
         SpawnNewFigure();
       }
     }
-
     public void DeleteFilledRowsAndColumns()
     {
       foreach (Cell[] cells in GameField.PlayingField)
