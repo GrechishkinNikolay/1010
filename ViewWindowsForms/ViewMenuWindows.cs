@@ -13,7 +13,7 @@ namespace ViewWindowsForms
   public class ViewMenuWindows : IViewWindows
   {
     public const int FORM_WIDTH = 330;
-    public const int FORM_HEIGHT = 500;
+    public const int FORM_HEIGHT = 400;
     private StringFormat _textFormat;
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации
