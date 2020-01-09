@@ -12,7 +12,7 @@ namespace ViewWindowsForms
 {
   public class ViewMenuWindows : IViewWindows
   {
-    public const int FORM_WIDTH = 345;
+    public const int FORM_WIDTH = 330;
     public const int FORM_HEIGHT = 500;
     private StringFormat _textFormat;
     /// <summary>
