@@ -100,7 +100,14 @@ namespace ViewWindowsForms
         {
           if (ModelGamePlay.FiguresShapes.Figures[ModelGamePlay.ActiveFigureNumber].FigureShape[i][j].IsFull)
           {
-            _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, FieldRectangles[i + ModelGamePlay.PointerCoordinates.Y][j + ModelGamePlay.PointerCoordinates.X]);
+            if (ModelGamePlay.GameField.PlayingField[i + ModelGamePlay.PointerCoordinates.Y][j + ModelGamePlay.PointerCoordinates.X].IsFull)
+            {
+              _bufferedGraphics.Graphics.FillRectangle(Brushes.Red, FieldRectangles[i + ModelGamePlay.PointerCoordinates.Y][j + ModelGamePlay.PointerCoordinates.X]);
+            }
+            else
+            {
+              _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, FieldRectangles[i + ModelGamePlay.PointerCoordinates.Y][j + ModelGamePlay.PointerCoordinates.X]);
+            }
           }
         }
       }

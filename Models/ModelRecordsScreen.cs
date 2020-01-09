@@ -14,6 +14,7 @@ namespace Models
     /// </summary>
     private Dictionary<string, int> _scoreDictionary;
     private const string ScoreFileName = "records.dat";
+    public bool IsRecordsScreen { get; set; }
 
     public ModelRecordsScreen()
     {

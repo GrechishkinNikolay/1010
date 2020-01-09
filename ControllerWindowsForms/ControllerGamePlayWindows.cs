@@ -13,11 +13,6 @@ namespace ControllerWindowsForms
 {
   public class ControllerGamePlayWindows : ControllerWindows
   {
-    public ViewGamePlayWindows ViewWindows
-    {
-      get;
-      set;
-    }
     private ModelGamePlay _modelGamePlay;
     private ViewGamePlayWindows _viewWindows;
     public ControllerGamePlayWindows()
