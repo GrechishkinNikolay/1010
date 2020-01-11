@@ -12,6 +12,7 @@ namespace ViewWindowsForms
 {
   public class ViewRecordsWindow : IViewWindows
   {
+    private const int OUTPUT_PLAYERS_COUNT = 10;
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации
     /// </summary>
@@ -19,10 +20,13 @@ namespace ViewWindowsForms
     private Thread _drawingThread;
     private const int COUNT_COLUMN = 2;
     public const int COUNT_ROW = 10;
+    private StringFormat _textFormat;
+    private int NumberScores { get; set; }
+    public List<KeyValuePair<string, int>> SortedScores { get; set; }
     /// <summary>
     /// Прямоугольники 
     /// </summary>
-    public RectangleF[][] FieldRectangles
+    public RectangleF[][] TableRectangles
     {
       get;
       set;
@@ -35,43 +39,35 @@ namespace ViewWindowsForms
       get;
       set;
     }
-      //private void HighscoresWindow_Load(object sender, EventArgs e)
-      //{
-      //  lstvHighscores.Items.Clear();
-      //  var hsManager = new HighscoresManager();
-
-      //  // Список пар словаря рекордов, упорядоченный по убыванию счета
-      //  var hsOrdList = hsManager.GetScores().OrderByDescending(i => i.Value).ToList();
-
-      //  for (var i = 0; i < Math.Min(10, hsOrdList.Count()); i++)
-      //  {
-      //    var pair = hsOrdList[i];
-      //    var newItem = lstvHighscores.Items.Add((i + 1).ToString());
-      //    newItem.SubItems.Add(pair.Key);
-      //    newItem.SubItems.Add(pair.Value.ToString());
-      //  }
-      //}
 
     public ViewRecordsWindow(ModelRecordsScreen parModelRecordsScreen)
     {
       ModelRecordsScreen = parModelRecordsScreen;
-      FieldRectangles = new RectangleF[COUNT_ROW][];
-      for (int i = 0; i < COUNT_ROW; i++)
+
+      SortedScores = ModelRecordsScreen.SortedScores;
+      NumberScores = Math.Min(OUTPUT_PLAYERS_COUNT, SortedScores.Count);
+
+      TableRectangles = new RectangleF[NumberScores][];
+      for (int i = 0; i < NumberScores; i++)
       {
-        FieldRectangles[i] = new RectangleF[COUNT_COLUMN];
+        TableRectangles[i] = new RectangleF[COUNT_COLUMN];
       }
-      for (int i = 0; i < FieldRectangles.Length; i++)
+      for (int i = 0; i < TableRectangles.Length; i++)
       {
-        for (int j = 0; j < FieldRectangles[i].Length; j++)
+        for (int j = 0; j < TableRectangles[i].Length; j++)
         {
-          FieldRectangles[i][j].Width = 130;
-          FieldRectangles[i][j].Height = 35;
-          FieldRectangles[i][j].X = 100;
-          FieldRectangles[i][j].Y = 35 * i + 70;
+          TableRectangles[i][j].Width = 120;
+          TableRectangles[i][j].Height = 35;
+          TableRectangles[i][j].X = 45 + j * 120;
+          TableRectangles[i][j].Y = 35 * i + 40;
         }
       }
       ScoreFontFamily = new FontFamily("Impact");
-      ScoreFont = new Font(ScoreFontFamily, 30);
+      ScoreFont = new Font(ScoreFontFamily, 20);
+      _textFormat = new StringFormat();
+      _textFormat.Alignment = StringAlignment.Center;
+      _textFormat.LineAlignment = StringAlignment.Center;
+
       InitForm();
       _drawingThread = new Thread(RedrawCycle);
       _drawingThread.IsBackground = true;
@@ -84,18 +80,33 @@ namespace ViewWindowsForms
       Graphics targetgraphics = _form.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
     }
-    
+
     public void DrawTitle()
     {
-      _bufferedGraphics.Graphics.DrawString("Players records", ScoreFont, Brushes.Chocolate, 10, 10);
+      _bufferedGraphics.Graphics.DrawString("Players records", ScoreFont, Brushes.Chocolate, 70, 5);
+    }
+    public void DrawScores()
+    {
+      for (int i = 0; i < NumberScores; i++)
+      {
+        KeyValuePair<string, int> item = SortedScores[i];
+
+        string nick = item.Key;
+        int score = item.Value;
+
+        _bufferedGraphics.Graphics.DrawRectangles(Pens.White, TableRectangles[i]);
+        _bufferedGraphics.Graphics.DrawString(nick, ScoreFont, Brushes.Chocolate, TableRectangles[i][0], _textFormat);
+        _bufferedGraphics.Graphics.DrawString(score.ToString(), ScoreFont, Brushes.Chocolate, TableRectangles[i][1], _textFormat);
+      }
     }
 
     public void RedrawCycle()
     {
-      while (ModelRecordsScreen.IsRecordsScreen)
+      while (ModelRecordsScreen.IsRunning)
       {
         _bufferedGraphics.Graphics.Clear(Color.Black);
         DrawTitle();
+        DrawScores();
         _bufferedGraphics.Render();
       }
     }
