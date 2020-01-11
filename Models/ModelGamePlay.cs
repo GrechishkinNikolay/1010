@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Models
@@ -125,9 +126,9 @@ namespace Models
         PointerCoordinates.X = 3;
         PointerCoordinates.Y = 3;
         SpawnNewFigure();
-        //Thread.Sleep(1000);
         if (!IsTherePlaceForFigure())
         {
+          Thread.Sleep(1000);
           IsGame = false;
           onLose?.Invoke();
         }

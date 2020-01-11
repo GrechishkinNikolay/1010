@@ -56,11 +56,16 @@ namespace ControllerWindowsForms
     {
       NextWindow = (EWindows)ModelMenu._selectedMenuItem;
     }
+    public void Losing()
+    {
+      NextWindow = EWindows.GameOver;
+    }
     public EWindows Execute()
     {
       ControllerCreatorWindows controllerCreatorWindows = new ControllerCreatorWindows();
       Controller controller = new ControllerMenuWindows();
       ModelMenu.onSelectMenuItem += SelectMenuItem;
+      ModelGamePlay.onLose += Losing;
       while (true)
       {
         while (!_changeWindow)
