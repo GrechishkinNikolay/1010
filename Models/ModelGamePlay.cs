@@ -13,8 +13,8 @@ namespace Models
     public const int COUNT_COLUMN = 10;
     private static Random _pseudoRandomNumberGenerator = new Random();
 
-    public delegate void _menuItemSelection();
-    public static event _menuItemSelection onSelectMenuItem;
+    public delegate void _dLoseGame();
+    public static event _dLoseGame onLose;
 
     public int ActiveFigureNumber
     {
@@ -60,14 +60,20 @@ namespace Models
       PointerCoordinates = new Coordinates(3, 3);
       ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
     }
-    public void CheckForLoss()
+
+    public bool IsTherePlaceForFigure()
     {
-      for (int i = 0; i < GameField.PlayingField.Length; i++)
+      for (int i = 0; i < GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; i++)
       {
-        for (int j = 0; j < GameField.PlayingField[i].Length; j++)
+        for (int j = 0; j < GameField.PlayingField[i].Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; j++)
         {
+          if (CanWePlaceFigure(i, j))
+          {
+            return true;
+          }
         }
       }
+      return false;
     }
     public void SpawnNewFigure()
     {
@@ -119,6 +125,12 @@ namespace Models
         PointerCoordinates.X = 3;
         PointerCoordinates.Y = 3;
         SpawnNewFigure();
+        //Thread.Sleep(1000);
+        if (!IsTherePlaceForFigure())
+        {
+          IsGame = false;
+          onLose?.Invoke();
+        }
       }
     }
     public void DeleteFilledRowsAndColumns()
