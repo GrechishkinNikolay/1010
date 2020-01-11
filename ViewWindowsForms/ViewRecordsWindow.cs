@@ -35,7 +35,22 @@ namespace ViewWindowsForms
       get;
       set;
     }
+      //private void HighscoresWindow_Load(object sender, EventArgs e)
+      //{
+      //  lstvHighscores.Items.Clear();
+      //  var hsManager = new HighscoresManager();
 
+      //  // Список пар словаря рекордов, упорядоченный по убыванию счета
+      //  var hsOrdList = hsManager.GetScores().OrderByDescending(i => i.Value).ToList();
+
+      //  for (var i = 0; i < Math.Min(10, hsOrdList.Count()); i++)
+      //  {
+      //    var pair = hsOrdList[i];
+      //    var newItem = lstvHighscores.Items.Add((i + 1).ToString());
+      //    newItem.SubItems.Add(pair.Key);
+      //    newItem.SubItems.Add(pair.Value.ToString());
+      //  }
+      //}
 
     public ViewRecordsWindow(ModelRecordsScreen parModelRecordsScreen)
     {

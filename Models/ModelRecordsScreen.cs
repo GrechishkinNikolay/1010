@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-  public class ModelRecordsScreen
+  public class ModelRecordsScreen : Model
   {
     /// <summary>
     /// Словарь рекордов
