@@ -24,8 +24,10 @@ namespace Models.Objects
     private static readonly string BIG_SQUARE = "111111111";
     private static readonly string POINT = "100000000";
 
-    private static readonly string[] _figuresCodes = new String[] { LONG_I_FIGURE_HORIZONTAL, LONG_I_FIGURE_VERTICAL, LONG_L_FIGURE_LEFT_B, LONG_L_FIGURE_LEFT_T, LONG_L_FIGURE_RIGHT_T, LONG_L_FIGURE_RIGHT_B,
-      SHORT_L_FIGURE_LEFT_B, SHORT_L_FIGURE_LEFT_T, SHORT_L_FIGURE_RIGHT_T, SHORT_L_FIGURE_RIGHT_B, SHORT_I_FIGURE_HORIZONTAL, SHORT_I_FIGURE_VERTICAL, SMALL_SQUARE, BIG_SQUARE, POINT};
+    //private static readonly string[] _figuresCodes = new String[] { LONG_I_FIGURE_HORIZONTAL, LONG_I_FIGURE_VERTICAL, LONG_L_FIGURE_LEFT_B, LONG_L_FIGURE_LEFT_T, LONG_L_FIGURE_RIGHT_T, LONG_L_FIGURE_RIGHT_B,
+    //  SHORT_L_FIGURE_LEFT_B, SHORT_L_FIGURE_LEFT_T, SHORT_L_FIGURE_RIGHT_T, SHORT_L_FIGURE_RIGHT_B, SHORT_I_FIGURE_HORIZONTAL, SHORT_I_FIGURE_VERTICAL, SMALL_SQUARE, BIG_SQUARE, POINT};
+    private static readonly string[] _figuresCodes = new String[] { LONG_L_FIGURE_RIGHT_B };
+
 
     public static string[] FiguresCodes
     {

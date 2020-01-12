@@ -61,21 +61,6 @@ namespace Models
       PointerCoordinates = new Coordinates(3, 3);
       ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
     }
-
-    public bool IsTherePlaceForFigure()
-    {
-      for (int i = 0; i < GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
-      {
-        for (int j = 0; j < GameField.PlayingField[i].Length - FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
-        {
-          if (!CanWePlaceFigure(j, i))
-          {
-            return false;
-          }
-        }
-      }
-      return true;
-    }
     public void SpawnNewFigure()
     {
       for (int i = 0; i < FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
@@ -89,7 +74,6 @@ namespace Models
         }
       }
     }
-
     public bool CanWePlaceFigure(int parX, int parY)
     {
       for (int i = 0; i < FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
@@ -105,7 +89,20 @@ namespace Models
       }
       return true;
     }
-
+    public bool IsTherePlaceForFigure()
+    {
+      for (int i = 0; i < GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; i++)
+      {
+        for (int j = 0; j < GameField.PlayingField[i].Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; j++)
+        {
+          if (CanWePlaceFigure(i, j))
+          {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
     public void PutTheFigure()
     {
       if (CanWePlaceFigure(PointerCoordinates.X, PointerCoordinates.Y))
@@ -126,19 +123,13 @@ namespace Models
         PointerCoordinates.X = 3;
         PointerCoordinates.Y = 3;
         SpawnNewFigure();
-        if (IsTherePlaceForFigure())
+        if (!IsTherePlaceForFigure())
         {
           Thread.Sleep(3000);
-          if (SortedScores[0].Value < Score)
-          {
+          //if (SortedScores[2].Value < Score)
+          //{
             IsGame = false;
             onLose?.Invoke();
-          }
-          else
-          {
-            //LastGameResults.Score = Score;
-
-          }
 
         }
       }
