@@ -22,6 +22,9 @@ namespace ViewWindowsForms
     public const int COUNT_ROW = 10;
     private StringFormat _textFormat;
     private int NumberScores { get; set; }
+    /// <summary>
+    /// Список отсортированных рекордов 
+    /// </summary>
     public List<KeyValuePair<string, int>> SortedScores { get; set; }
     /// <summary>
     /// Прямоугольники 

@@ -64,17 +64,17 @@ namespace Models
 
     public bool IsTherePlaceForFigure()
     {
-      for (int i = 0; i < GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; i++)
+      for (int i = 0; i < GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
       {
-        for (int j = 0; j < GameField.PlayingField[i].Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; j++)
+        for (int j = 0; j < GameField.PlayingField[i].Length - FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
         {
-          if (CanWePlaceFigure(i, j))
+          if (!CanWePlaceFigure(j, i))
           {
-            return true;
+            return false;
           }
         }
       }
-      return false;
+      return true;
     }
     public void SpawnNewFigure()
     {
@@ -126,11 +126,20 @@ namespace Models
         PointerCoordinates.X = 3;
         PointerCoordinates.Y = 3;
         SpawnNewFigure();
-        if (!IsTherePlaceForFigure())
+        if (IsTherePlaceForFigure())
         {
-          Thread.Sleep(1000);
-          IsGame = false;
-          onLose?.Invoke();
+          Thread.Sleep(3000);
+          if (SortedScores[0].Value < Score)
+          {
+            IsGame = false;
+            onLose?.Invoke();
+          }
+          else
+          {
+            //LastGameResults.Score = Score;
+
+          }
+
         }
       }
     }

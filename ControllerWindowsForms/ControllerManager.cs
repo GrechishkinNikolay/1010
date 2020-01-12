@@ -55,10 +55,11 @@ namespace ControllerWindowsForms
     public void SelectMenuItem()
     {
       NextWindow = (EWindows)ModelMenu._selectedMenuItem;
+      ModelMenu.onSelectMenuItem -= SelectMenuItem;
     }
     public void Losing()
     {
-      NextWindow = EWindows.GameOver;
+      NextWindow = EWindows.Menu;
     }
     public EWindows Execute()
     {
