@@ -66,7 +66,7 @@ namespace ViewWindowsForms
         }
       }
       ScoreFontFamily = new FontFamily("Impact");
-      ScoreFont = new Font(ScoreFontFamily, 20);
+      ScoreFont = new Font(ScoreFontFamily, 16);
       _textFormat = new StringFormat();
       _textFormat.Alignment = StringAlignment.Center;
       _textFormat.LineAlignment = StringAlignment.Center;
@@ -86,7 +86,7 @@ namespace ViewWindowsForms
 
     public void DrawTitle()
     {
-      _bufferedGraphics.Graphics.DrawString("Players records", ScoreFont, Brushes.Chocolate, 70, 5);
+      _bufferedGraphics.Graphics.DrawString("Players records", ScoreFont, Brushes.Chocolate, 95, 5);
     }
     public void DrawScores()
     {

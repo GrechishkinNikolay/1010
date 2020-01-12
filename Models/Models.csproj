@@ -44,6 +44,7 @@
     <Compile Include="EWindows.cs" />
     <Compile Include="LastGameResults.cs" />
     <Compile Include="Model.cs" />
+    <Compile Include="ModelHelp.cs" />
     <Compile Include="Objects\Cell.cs" />
     <Compile Include="Objects\Field.cs" />
     <Compile Include="Objects\Figure.cs" />

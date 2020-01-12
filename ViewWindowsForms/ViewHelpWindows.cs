@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ViewWindowsForms
 {
-    class ViewHelpWindows : IViewWindows
+  public class ViewHelpWindows : IViewWindows
   {
     private const int OUTPUT_PLAYERS_COUNT = 10;
     /// <summary>
@@ -18,48 +19,23 @@ namespace ViewWindowsForms
     private BufferedGraphics _bufferedGraphics = null;
     private Thread _drawingThread;
     private StringFormat _textFormat;
-    /// <summary>
-    /// Список отсортированных рекордов 
-    /// </summary>
-    public List<KeyValuePair<string, int>> SortedScores { get; set; }
-    /// <summary>
-    /// Прямоугольники 
-    /// </summary>
-    public RectangleF LabelRectangle { get; set; }
     private Font ScoreFont { get; set; }
     public FontFamily ScoreFontFamily { get; set; }
 
-    public ModelHelpScreen ModelRecordsScreen { get; set; }
+    public ModelHelp ModelHelp { get; set; }
     public Form _form
     {
       get;
       set;
     }
+    public Rectangle TextHelpRectangle { get; set; }
 
-    public ViewRecordsWindow(ModelRecordsScreen parModelRecordsScreen)
+    public ViewHelpWindows(ModelHelp parModelHelp)
     {
-      ModelRecordsScreen = parModelRecordsScreen;
-
-      SortedScores = ModelRecordsScreen.SortedScores;
-      NumberScores = Math.Min(OUTPUT_PLAYERS_COUNT, SortedScores.Count);
-
-      LabelRectangle = new RectangleF[NumberScores][];
-      for (int i = 0; i < NumberScores; i++)
-      {
-        LabelRectangle[i] = new RectangleF[COUNT_COLUMN];
-      }
-      for (int i = 0; i < LabelRectangle.Length; i++)
-      {
-        for (int j = 0; j < LabelRectangle[i].Length; j++)
-        {
-          LabelRectangle[i][j].Width = 120;
-          LabelRectangle[i][j].Height = 35;
-          LabelRectangle[i][j].X = 45 + j * 120;
-          LabelRectangle[i][j].Y = 35 * i + 40;
-        }
-      }
+      ModelHelp = parModelHelp;
       ScoreFontFamily = new FontFamily("Impact");
-      ScoreFont = new Font(ScoreFontFamily, 20);
+      ScoreFont = new Font(ScoreFontFamily, 14);
+      TextHelpRectangle = new Rectangle(0, 0, 330, 400);
       _textFormat = new StringFormat();
       _textFormat.Alignment = StringAlignment.Center;
       _textFormat.LineAlignment = StringAlignment.Center;
@@ -77,32 +53,18 @@ namespace ViewWindowsForms
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
     }
 
-    public void DrawTitle()
+    public void DrawHelpText()
     {
-      _bufferedGraphics.Graphics.DrawString("Players records", ScoreFont, Brushes.Chocolate, 70, 5);
-    }
-    public void DrawScores()
-    {
-      for (int i = 0; i < NumberScores; i++)
-      {
-        KeyValuePair<string, int> item = SortedScores[i];
-
-        string nick = item.Key;
-        int score = item.Value;
-
-        _bufferedGraphics.Graphics.DrawRectangles(Pens.White, LabelRectangle[i]);
-        _bufferedGraphics.Graphics.DrawString(nick, ScoreFont, Brushes.Chocolate, LabelRectangle[i][0], _textFormat);
-        _bufferedGraphics.Graphics.DrawString(score.ToString(), ScoreFont, Brushes.Chocolate, LabelRectangle[i][1], _textFormat);
-      }
+      _bufferedGraphics.Graphics.DrawRectangle(Pens.Black, TextHelpRectangle);
+      _bufferedGraphics.Graphics.DrawString(ModelHelp.HelpText, ScoreFont, Brushes.Chocolate, TextHelpRectangle, _textFormat);
     }
 
     public void RedrawCycle()
     {
-      while (ModelRecordsScreen.IsRunning)
+      while (ModelHelp.IsRunning)
       {
         _bufferedGraphics.Graphics.Clear(Color.Black);
-        DrawTitle();
-        DrawScores();
+        DrawHelpText();
         _bufferedGraphics.Render();
       }
     }
