@@ -59,14 +59,14 @@ namespace ControllerWindowsForms
     }
     public void Losing()
     {
-      NextWindow = EWindows.Menu;
+      NextWindow = EWindows.GameOver;
     }
     public EWindows Execute()
     {
       ControllerCreatorWindows controllerCreatorWindows = new ControllerCreatorWindows();
       Controller controller = new ControllerMenuWindows();
       ModelMenu.onSelectMenuItem += SelectMenuItem;
-      ModelGamePlay.onLose += Losing;
+      ModelGamePlay.OnLose += Losing;
       while (true)
       {
         while (!_changeWindow)

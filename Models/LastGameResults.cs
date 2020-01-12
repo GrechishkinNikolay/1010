@@ -9,8 +9,16 @@ namespace Models
   public class LastGameResults
   {
     private static int _score;
+    private static string _name;
 
-    public static int Score
+    public string Name
+    {
+      get { return _name; }
+      set { _name = value; }
+    }
+
+
+    public int Score
     {
       get { return _score; }
       set
@@ -21,6 +29,5 @@ namespace Models
         }
       }
     }
-
   }
 }

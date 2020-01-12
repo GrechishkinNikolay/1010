@@ -15,7 +15,8 @@ namespace Models
     private static Random _pseudoRandomNumberGenerator = new Random();
 
     public delegate void _dLoseGame();
-    public static event _dLoseGame onLose;
+    public static event _dLoseGame OnLose;
+    public static event _dLoseGame OnLoseToMenu;
 
     public int ActiveFigureNumber
     {
@@ -91,11 +92,11 @@ namespace Models
     }
     public bool IsTherePlaceForFigure()
     {
-      for (int i = 0; i < GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; i++)
+      for (int i = 0; i < GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
       {
-        for (int j = 0; j < GameField.PlayingField[i].Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; j++)
+        for (int j = 0; j < GameField.PlayingField[i].Length - FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
         {
-          if (CanWePlaceFigure(i, j))
+          if (CanWePlaceFigure(j, i))
           {
             return true;
           }
@@ -103,7 +104,7 @@ namespace Models
       }
       return false;
     }
-    public void PutTheFigure()
+    public bool PutTheFigure()
     {
       if (CanWePlaceFigure(PointerCoordinates.X, PointerCoordinates.Y))
       {
@@ -125,14 +126,21 @@ namespace Models
         SpawnNewFigure();
         if (!IsTherePlaceForFigure())
         {
-          Thread.Sleep(3000);
-          //if (SortedScores[2].Value < Score)
-          //{
-            IsGame = false;
-            onLose?.Invoke();
+          Thread.Sleep(2000);
+          IsGame = false;
+          if (SortedScores[Math.Min(9, SortedScores.Count)].Value < Score)
+          {
 
+            OnLose?.Invoke();
+          }
+          else
+          {
+            OnLoseToMenu?.Invoke();
+          }
+          return true;
         }
       }
+      return false;
     }
     public void DeleteFilledRowsAndColumns()
     {

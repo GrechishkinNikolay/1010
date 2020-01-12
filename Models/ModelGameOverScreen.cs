@@ -8,5 +8,17 @@ namespace Models
 {
   public class ModelGameOverScreen : Model
   {
+    private LastGameResults _lastGameResults;
+
+    public LastGameResults LastGameResults
+    {
+      get { return _lastGameResults; }
+      set { _lastGameResults = value; }
+    }
+
+    public ModelGameOverScreen()
+    {
+      _lastGameResults = new LastGameResults();
+    }
   }
 }

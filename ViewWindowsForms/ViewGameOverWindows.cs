@@ -66,7 +66,7 @@ namespace ViewWindowsForms
     public void DrawInputField()
     {
       _bufferedGraphics.Graphics.DrawRectangle(Pens.White, InputRectangle);
-     // _bufferedGraphics.Graphics.DrawString(nick, ScoreFont, Brushes.Chocolate, InputRectangle, _textFormat);
+      _bufferedGraphics.Graphics.DrawString(ModelGameOverScreen.LastGameResults.Name, ScoreFont, Brushes.Chocolate, InputRectangle, _textFormat);
     }
 
     public void RedrawCycle()

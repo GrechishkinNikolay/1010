@@ -34,7 +34,10 @@ namespace ControllerWindowsForms
       switch (e.KeyCode)
       {
         case Keys.Enter:
-          _modelGamePlay.PutTheFigure();
+          if (_modelGamePlay.PutTheFigure())
+          {
+            GamePlayClosing();
+          }
           break;
         case Keys.Escape:
           GamePlayClosing();
