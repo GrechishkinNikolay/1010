@@ -132,7 +132,7 @@ namespace Models
           Thread.Sleep(2000);
           IsGame = false;
           _lastGameResults.Score = Score;
-          if (SortedScores[Math.Min(9, SortedScores.Count)].Value < Score)
+          if ((SortedScores.Capacity == 0) || (SortedScores[Math.Min(9, SortedScores.Count - 1)].Value < Score))
           {
             OnLose?.Invoke();
           }
