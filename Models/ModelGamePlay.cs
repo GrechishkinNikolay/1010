@@ -18,6 +18,8 @@ namespace Models
     public static event _dLoseGame OnLose;
     public static event _dLoseGame OnLoseToMenu;
 
+    private LastGameResults _lastGameResults;
+
     public int ActiveFigureNumber
     {
       get;
@@ -61,6 +63,7 @@ namespace Models
       FiguresShapes = new FiguresShapes(FigureCodeKeeper.FiguresCodes);
       PointerCoordinates = new Coordinates(3, 3);
       ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
+      _lastGameResults = new LastGameResults();
     }
     public void SpawnNewFigure()
     {
@@ -92,9 +95,9 @@ namespace Models
     }
     public bool IsTherePlaceForFigure()
     {
-      for (int i = 0; i < GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
+      for (int i = 0; i <= GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
       {
-        for (int j = 0; j < GameField.PlayingField[i].Length - FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
+        for (int j = 0; j <= GameField.PlayingField[i].Length - FiguresShapes.Figures[ActiveFigureNumber].WidthFigure; j++)
         {
           if (CanWePlaceFigure(j, i))
           {
@@ -128,9 +131,9 @@ namespace Models
         {
           Thread.Sleep(2000);
           IsGame = false;
+          _lastGameResults.Score = Score;
           if (SortedScores[Math.Min(9, SortedScores.Count)].Value < Score)
           {
-
             OnLose?.Invoke();
           }
           else

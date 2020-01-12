@@ -8,7 +8,15 @@ namespace Models
 {
   public class Model
   {
-    protected ScoreManager _scoresManager = new ScoreManager();
+    protected static ScoreManager _scoresManager = new ScoreManager();
+
+    public ScoreManager ScoreManager
+    {
+      get
+      {
+        return _scoresManager;
+      }
+    }
 
     public List<KeyValuePair<string, int>> SortedScores
     {

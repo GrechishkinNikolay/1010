@@ -29,45 +29,31 @@ namespace ControllerWindowsForms
 
     public void OnKeyDown(object sender, KeyEventArgs e)
     {
-      switch (e.KeyCode)
-      {
-        case Keys.Enter:
-          GameOverClosing();
-          ControllerManager.GetInstance().NextWindow = EWindows.Menu;
-          break;
-        case Keys.Escape:
-          GameOverClosing();
-          ControllerManager.GetInstance().NextWindow = EWindows.Menu;
-          break;
-        case Keys.Back:
-          GameOverClosing();
-          ControllerManager.GetInstance().NextWindow = EWindows.Menu;
-          break;
-        default:
-          break;
-      }
-
       char buffer = Convert.ToChar(e.KeyValue);
       InputLanguage l = InputLanguage.CurrentInputLanguage;
       if (e.KeyCode == Keys.Enter)
       {
-        
+        if (!String.IsNullOrEmpty(_modelGameOverScreen.LastGameResults.Name))
+        {
+          _modelGameOverScreen.ScoreManager.UpdateScore(_modelGameOverScreen.LastGameResults.Name, _modelGameOverScreen.LastGameResults.Score);
+        }
+        GameOverClosing();
+        ControllerManager.GetInstance().NextWindow = EWindows.Menu;
       }
-      if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Back)
+      if (e.KeyCode != Keys.Back)
       {
         if (e.Shift)
         {
-          AddSymbol(buffer);
+          _modelGameOverScreen.AddSimbolToName(buffer);
         }
         else
         {
-          AddSymbol(Char.ToLower(buffer));
+          _modelGameOverScreen.AddSimbolToName(Char.ToLower(buffer));
         }
-
       }
       if (e.KeyCode == Keys.Back)
       {
-        DeleteSymbol();
+        _modelGameOverScreen.DeleteSymbol();
       }
 
     }

@@ -39,7 +39,7 @@ namespace ViewWindowsForms
     {
       ModelGameOverScreen = parModelGameOverScreen;
 
-      InputRectangle = new Rectangle(30, 110, 200, 35);
+      InputRectangle = new Rectangle(60, 110, 205, 35);
       ScoreFontFamily = new FontFamily("Impact");
       ScoreFont = new Font(ScoreFontFamily, 20);
       _textFormat = new StringFormat();
