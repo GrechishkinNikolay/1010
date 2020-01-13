@@ -11,10 +11,22 @@ using ViewWindowsForms;
 
 namespace ControllerWindowsForms
 {
+  /// <summary>
+  /// Контроллер окна геймплея
+  /// </summary>
   public class ControllerGamePlayWindows : ControllerWindows
   {
+    /// <summary>
+    /// Модель окна геймплея
+    /// </summary>
     private ModelGamePlay _modelGamePlay;
+    /// <summary>
+    /// Представление окна геймплея
+    /// </summary>
     private ViewGamePlayWindows _viewWindows;
+    /// <summary>
+    /// Конструктор
+    /// </summary>
     public ControllerGamePlayWindows()
     {
       _modelGamePlay = new ModelGamePlay();
@@ -22,13 +34,17 @@ namespace ControllerWindowsForms
       _modelGamePlay.IsGame = true;
       _viewWindows._form.KeyDown += OnKeyDown;
     }
-
+    /// <summary>
+    /// Завершение работы с окном геймплея
+    /// </summary>
     public void GamePlayClosing()
     {
       _modelGamePlay.IsGame = false;
       _viewWindows._form.KeyDown -= OnKeyDown;
     }
-
+    /// <summary>
+    /// Обработчик нажатия на клавиши
+    /// </summary>
     public void OnKeyDown(object sender, KeyEventArgs e)
     {
       switch (e.KeyCode)

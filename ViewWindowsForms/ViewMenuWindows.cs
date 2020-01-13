@@ -10,32 +10,63 @@ using System.Windows.Forms;
 
 namespace ViewWindowsForms
 {
+  /// <summary>
+  /// Представление окна меню
+  /// </summary>
   public class ViewMenuWindows : IViewWindows
   {
+    /// <summary>
+    /// Ширина окна
+    /// </summary>
     public const int FORM_WIDTH = 330;
+    /// <summary>
+    /// Высота окна
+    /// </summary>
     public const int FORM_HEIGHT = 400;
+    /// <summary>
+    /// Строка формата
+    /// </summary>
     private StringFormat _textFormat;
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации
     /// </summary>
     private BufferedGraphics _bufferedGraphics = null;
-    private Thread _RunFormThread;
-    private Thread _RedrawThread;
-    private delegate void _dRedraw();
-    private _dRedraw _redrawCicle;
     /// <summary>
-    /// Прямоугольники 
+    /// Поток запуска формы
     /// </summary>
-    public RectangleF[] MenuItemRectangles
-    {
-      get;
-      set;
-    }
+    private Thread _RunFormThread;
+    /// <summary>
+    /// Поток отрисовки
+    /// </summary>
+    private Thread _RedrawThread;
+    /// <summary>
+    /// Делегат 
+    /// </summary>
+    private delegate void _dRedraw();
+    /// <summary>
+    /// Прямоугольники кнопок
+    /// </summary>
+    public RectangleF[] MenuItemRectangles { get; set; }
+    /// <summary>
+    /// Шрифт
+    /// </summary>
     private Font Font { get; set; }
+    /// <summary>
+    /// Семейство шрифтов
+    /// </summary>
     public FontFamily ScoreFontFamily { get; set; }
+    /// <summary>
+    /// Модель меню
+    /// </summary>
     public ModelMenu ModelMenu { get; set; }
+    /// <summary>
+    /// Форма
+    /// </summary>
     public Form _form { get; set; }
-
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="parModelMenu">Модель меню</param>
     public ViewMenuWindows(ModelMenu parModelMenu)
     {
       ModelMenu = parModelMenu;
@@ -54,7 +85,6 @@ namespace ViewWindowsForms
       _textFormat = new StringFormat();
       _textFormat.Alignment = StringAlignment.Center;
       _textFormat.LineAlignment = StringAlignment.Center;
-      _redrawCicle = RedrawCycle;
 
       if (Application.OpenForms.Count == 0)
       {
@@ -71,6 +101,9 @@ namespace ViewWindowsForms
       _RedrawThread.IsBackground = true;
       _RedrawThread.Start();
     }
+    /// <summary>
+    /// Инициальизация формы
+    /// </summary>
     public void InitForm()
     {
       _form = new Form();
@@ -82,12 +115,18 @@ namespace ViewWindowsForms
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
       Application.Run(_form);
     }
+    /// <summary>
+    /// Взять уже созданную форму
+    /// </summary>
     public void TakeAlreadyCreatedForm()
     {
       _form = Application.OpenForms[0];
       Graphics targetgraphics = _form.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
     }
+    /// <summary>
+    /// Отрисовать элементы меню
+    /// </summary>
     public void ShowMenuItems()
     {
       _bufferedGraphics.Graphics.DrawRectangles(Pens.White, MenuItemRectangles);
@@ -97,6 +136,9 @@ namespace ViewWindowsForms
         _bufferedGraphics.Graphics.DrawString(ModelMenu.MenuItems[i], Font, Brushes.White, MenuItemRectangles[i], _textFormat);
       }
     }
+    /// <summary>
+    /// Цикл перерисовки
+    /// </summary>
     public void RedrawCycle()
     {
       while (ModelMenu.IsMenu)
@@ -107,6 +149,4 @@ namespace ViewWindowsForms
       }
     }
   }
-
-
 }

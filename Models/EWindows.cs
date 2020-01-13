@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Models
 {
   /// <summary>
-  /// Перечисление переключения окон
+  /// Идентификаторы окон
   /// </summary>
   public enum EWindows : byte
   {

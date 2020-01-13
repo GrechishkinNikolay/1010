@@ -9,10 +9,22 @@ using ViewWindowsForms;
 
 namespace ControllerWindowsForms
 {
+  /// <summary>
+  /// Контроллер окна проигрыша
+  /// </summary>
   class ControllerGameOverWindows : ControllerWindows
   {
+    /// <summary>
+    /// Модель окна проигрыша
+    /// </summary>
     private ModelGameOverScreen _modelGameOverScreen;
+    /// <summary>
+    /// Представление окана проигрыша
+    /// </summary>
     private ViewGameOverWindows _viewGameOverWindows;
+    /// <summary>
+    /// Конструктор
+    /// </summary>
     public ControllerGameOverWindows()
     {
       _modelGameOverScreen = new ModelGameOverScreen();
@@ -20,13 +32,17 @@ namespace ControllerWindowsForms
       _modelGameOverScreen.IsRunning = true;
       _viewGameOverWindows._form.KeyDown += OnKeyDown;
     }
-
+    /// <summary>
+    /// Завершения работы с окном проигрыша
+    /// </summary>
     public void GameOverClosing()
     {
       _modelGameOverScreen.IsRunning = false;
       _viewGameOverWindows._form.KeyDown -= OnKeyDown;
     }
-
+    /// <summary>
+    /// Обработчик нажатия на клавишу
+    /// </summary>
     public void OnKeyDown(object sender, KeyEventArgs e)
     {
       char buffer = Convert.ToChar(e.KeyValue);
@@ -55,7 +71,6 @@ namespace ControllerWindowsForms
       {
         _modelGameOverScreen.DeleteSymbol();
       }
-
     }
   }
 }

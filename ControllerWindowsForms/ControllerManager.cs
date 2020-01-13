@@ -11,10 +11,30 @@ using ViewWindowsForms;
 
 namespace ControllerWindowsForms
 {
+  /// <summary>
+  /// Менеджер контроллеров окон
+  /// </summary>
   public class ControllerManager : Controller
   {
+    /// <summary>
+    /// Перечисление переключения окон
+    /// </summary>
     private EWindows _nextWindow;
+    /// <summary>
+    /// Объект-заглушка для синхронизации потоков
+    /// </summary>
     private readonly Object _lockNextWindow = new Object();
+    /// <summary>
+    /// Нужно ли поменять окно
+    /// </summary>
+    public volatile bool _changeWindow = false;
+    /// <summary>
+    /// Объект менеджера
+    /// </summary>
+    private static ControllerManager _instance = null;
+    /// <summary>
+    /// Следующее окно
+    /// </summary>
     public EWindows NextWindow
     {
       get
@@ -33,17 +53,12 @@ namespace ControllerWindowsForms
         }
       }
     }
-    public volatile bool _changeWindow = false;
-    /// <summary>
-    /// Объект менеджера
-    /// </summary>
-    private static ControllerManager _instance = null;
     /// <summary>
     /// Приватный конструктор
     /// </summary>
     private ControllerManager() { }
     /// <summary>
-    /// Метод получения экземпляра 
+    /// Метод получения экземпляра менеджера окон
     /// </summary>
     /// <returns></returns>
     public static ControllerManager GetInstance()
@@ -52,21 +67,33 @@ namespace ControllerWindowsForms
         _instance = new ControllerManager();
       return _instance;
     }
+    /// <summary>
+    /// Обработчик нажатия на пункт меню 
+    /// </summary>
     public void SelectMenuItem()
     {
       NextWindow = (EWindows)ModelMenu._selectedMenuItem;
       ModelMenu.OnSelectMenuItem -= SelectMenuItem;
     }
+    /// <summary>
+    /// Обработчик события проигрыша 
+    /// </summary>
     public void Losing()
     {
       ModelGamePlay.OnLose -= Losing;
       NextWindow = EWindows.GameOver;
     }
+    /// <summary>
+    /// Обработчик события проигрыша и выхода в меню
+    /// </summary>
     public void GoToMenu()
     {
       ModelGamePlay.OnLoseToMenu -= GoToMenu;
       NextWindow = EWindows.Menu;
     }
+    /// <summary>
+    /// Метод выполнения менеджера контроллеров
+    /// </summary>
     public EWindows Execute()
     {
       ControllerWindows controllerWindows = new ControllerMenuWindows();

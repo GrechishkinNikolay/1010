@@ -9,13 +9,15 @@ using ViewWindowsForms;
 
 namespace ControllerWindowsForms
 {
+  /// <summary>
+  /// Базовый класс контроллеров
+  /// </summary>
   public abstract class ControllerWindows : Controller
   {
     /// <summary>
-    /// 
+    /// Фабричный метод создания контроллера
     /// </summary>
-    /// <param name="parEWindows"></param>
-    /// <returns></returns>
+    /// <param name="parEWindows">Идинтификатор типа</param>
     public static ControllerWindows CreateController(EWindows parEWindows)
     {
       switch (parEWindows)

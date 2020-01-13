@@ -10,31 +10,43 @@ using System.Windows.Forms;
 
 namespace ViewWindowsForms
 {
+  /// <summary>
+  /// Представление окна геймплея
+  /// </summary>
   public class ViewGamePlayWindows : IViewWindows
   {
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации
     /// </summary>
     private BufferedGraphics _bufferedGraphics = null;
+    /// <summary>
+    /// Поток перерисовки
+    /// </summary>
     private Thread _drawingThread;
     /// <summary>
-    /// Прямоугольники 
+    /// Прямоугольники игрового поля
     /// </summary>
-    public RectangleF[][] FieldRectangles
-    {
-      get;
-      set;
-    }
+    public RectangleF[][] FieldRectangles { get; set; }
+    /// <summary>
+    /// Шрифт счета
+    /// </summary>
     private Font ScoreFont { get; set; }
+    /// <summary>
+    /// Семейство шрифтов
+    /// </summary>
     public FontFamily ScoreFontFamily { get; set; }
+    /// <summary>
+    /// Модель окна геймплея
+    /// </summary>
     public ModelGamePlay ModelGamePlay { get; set; }
-    public Form _form
-    {
-      get;
-      set;
-    }
-
-
+    /// <summary>
+    /// Форма
+    /// </summary>
+    public Form _form { get; set; }
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="parModelGamePlay">Модель окна геймплея</param>
     public ViewGamePlayWindows(ModelGamePlay parModelGamePlay)
     {
       ModelGamePlay = parModelGamePlay;
@@ -61,14 +73,18 @@ namespace ViewWindowsForms
       _drawingThread.IsBackground = true;
       _drawingThread.Start();
     }
-
+    /// <summary>
+    /// Инициализация формы
+    /// </summary>
     public void InitForm()
     {
       _form = Application.OpenForms[0];
       Graphics targetgraphics = _form.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
     }
-
+    /// <summary>
+    /// Отрисовать игровое поле
+    /// </summary>
     public void DrawField()
     {
       for (int i = 0; i < FieldRectangles.Length; i++)
@@ -86,12 +102,16 @@ namespace ViewWindowsForms
         }
       }
     }
-
+    /// <summary>
+    /// Отрисовать счет игрока
+    /// </summary>
     public void DrawScore()
     {
       _bufferedGraphics.Graphics.DrawString("Score: " + ModelGamePlay.Score, ScoreFont, Brushes.Chocolate, 10, 10);
     }
-
+    /// <summary>
+    /// Отрисовать активную фигуру
+    /// </summary>
     public void DrawActiveFigure()
     {
       for (int i = 0; i < ModelGamePlay.FiguresShapes.Figures[ModelGamePlay.ActiveFigureNumber].HeightFigure; i++)
@@ -112,7 +132,9 @@ namespace ViewWindowsForms
         }
       }
     }
-
+    /// <summary>
+    /// Цикл перерисовки
+    /// </summary>
     public void RedrawCycle()
     {
       while (ModelGamePlay.IsGame)

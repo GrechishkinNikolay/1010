@@ -10,39 +10,67 @@ using System.Windows.Forms;
 
 namespace ViewWindowsForms
 {
+  /// <summary>
+  /// Представление окна рекордов
+  /// </summary>
   public class ViewRecordsWindow : IViewWindows
   {
+    /// <summary>
+    /// 
+    /// </summary>
     private const int OUTPUT_PLAYERS_COUNT = 10;
     /// <summary>
     /// Рисование с использованием технологии двойной буферизации
     /// </summary>
     private BufferedGraphics _bufferedGraphics = null;
+    /// <summary>
+    /// Поток отрисовки
+    /// </summary>
     private Thread _drawingThread;
+    /// <summary>
+    /// Число столбцов таблицы
+    /// </summary>
     private const int COUNT_COLUMN = 2;
-    public const int COUNT_ROW = 10;
+    /// <summary>
+    /// Число строк таблицы
+    /// </summary>
+    private const int COUNT_ROW = 10;
+    /// <summary>
+    /// Форматная строка
+    /// </summary>
     private StringFormat _textFormat;
+    /// <summary>
+    /// Число результатов
+    /// </summary>
     private int NumberScores { get; set; }
     /// <summary>
     /// Список отсортированных рекордов 
     /// </summary>
     public List<KeyValuePair<string, int>> SortedScores { get; set; }
     /// <summary>
-    /// Прямоугольники 
+    /// Прямоугольники таблицы
     /// </summary>
-    public RectangleF[][] TableRectangles
-    {
-      get;
-      set;
-    }
+    public RectangleF[][] TableRectangles { get; set; }
+    /// <summary>
+    /// Шрифт
+    /// </summary>
     private Font ScoreFont { get; set; }
+    /// <summary>
+    /// Семейство шрифтов
+    /// </summary>
     public FontFamily ScoreFontFamily { get; set; }
+    /// <summary>
+    /// Модель окна рекордов
+    /// </summary>
     public ModelRecordsScreen ModelRecordsScreen { get; set; }
-    public Form _form
-    {
-      get;
-      set;
-    }
-
+    /// <summary>
+    /// Форма
+    /// </summary>
+    public Form _form { get; set; }
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="parModelRecordsScreen">Модель окна рекордов</param>
     public ViewRecordsWindow(ModelRecordsScreen parModelRecordsScreen)
     {
       ModelRecordsScreen = parModelRecordsScreen;
@@ -76,18 +104,25 @@ namespace ViewWindowsForms
       _drawingThread.IsBackground = true;
       _drawingThread.Start();
     }
-
+    /// <summary>
+    /// Инициализация формы
+    /// </summary>
     public void InitForm()
     {
       _form = Application.OpenForms[0];
       Graphics targetgraphics = _form.CreateGraphics();
       _bufferedGraphics = BufferedGraphicsManager.Current.Allocate(targetgraphics, new Rectangle(0, 0, _form.Width, _form.Height));
     }
-
+    /// <summary>
+    /// Отрисвоать надпись "Players records"
+    /// </summary>
     public void DrawTitle()
     {
       _bufferedGraphics.Graphics.DrawString("Players records", ScoreFont, Brushes.Chocolate, 95, 5);
     }
+    /// <summary>
+    /// Отрисовать результаты игровков
+    /// </summary>
     public void DrawScores()
     {
       for (int i = 0; i < NumberScores; i++)
@@ -102,7 +137,9 @@ namespace ViewWindowsForms
         _bufferedGraphics.Graphics.DrawString(score.ToString(), ScoreFont, Brushes.Chocolate, TableRectangles[i][1], _textFormat);
       }
     }
-
+    /// <summary>
+    /// Цикл перерисвоки 
+    /// </summary>
     public void RedrawCycle()
     {
       while (ModelRecordsScreen.IsRunning)

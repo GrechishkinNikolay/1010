@@ -10,22 +10,39 @@ using ViewWindowsForms;
 
 namespace ControllerWindowsForms
 {
+  /// <summary>
+  /// Контроллер окна меню
+  /// </summary>
   public class ControllerMenuWindows : ControllerWindows
   {
+    /// <summary>
+    /// Представление окна меню
+    /// </summary>
     private ViewMenuWindows _viewWindows;
+    /// <summary>
+    /// Модель меню
+    /// </summary>
     private ModelMenu _modelMenu;
-
+    /// <summary>
+    /// Конструктор
+    /// </summary>
     public ControllerMenuWindows()
     {
       _modelMenu = new ModelMenu();
       _viewWindows = new ViewMenuWindows(_modelMenu);
      _viewWindows._form.KeyDown += OnKeyDown;
     }
+    /// <summary>
+    /// Завершить работу с окном меню
+    /// </summary>
     public void MenuClosing()
     {
       _modelMenu.IsMenu = false;
       _viewWindows._form.KeyDown -= OnKeyDown;
     }
+    /// <summary>
+    /// Обработчик нажатия на клавиши
+    /// </summary>
     public void OnKeyDown(object sender, KeyEventArgs e)
     {
       switch (e.KeyCode)
