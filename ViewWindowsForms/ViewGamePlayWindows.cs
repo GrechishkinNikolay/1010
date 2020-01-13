@@ -137,7 +137,7 @@ namespace ViewWindowsForms
     /// </summary>
     public void RedrawCycle()
     {
-      while (ModelGamePlay.IsGame)
+      while (ModelGamePlay.IsRunning)
       {
         _bufferedGraphics.Graphics.Clear(Color.Black);
         DrawField();

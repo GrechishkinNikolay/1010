@@ -16,6 +16,10 @@ namespace Models
     /// </summary>
     protected static ScoreManager _scoresManager = new ScoreManager();
     /// <summary>
+    /// Активно ли окно
+    /// </summary>
+    public volatile bool _isRunning;
+    /// <summary>
     /// Свойство менеджера рекордов
     /// </summary>
     public ScoreManager ScoreManager
@@ -38,6 +42,16 @@ namespace Models
     /// <summary>
     /// Активно ли окно
     /// </summary>
-    public bool IsRunning { get; set; }
+    public  bool IsRunning
+    {
+      get
+      {
+        return _isRunning;
+      }
+      set
+      {
+        _isRunning = value;
+      }
+    }
   }
 }

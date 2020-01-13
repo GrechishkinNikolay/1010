@@ -14,11 +14,11 @@ namespace Models
     /// <summary>
     /// Делегат выбора элемента меню
     /// </summary>
-    public delegate void _menuItemSelection();
+    public delegate void dEnuItemSelection();
     /// <summary>
     /// Событие выбора элемента меню
     /// </summary>
-    public static event _menuItemSelection OnSelectMenuItem;
+    public static event dEnuItemSelection OnSelectMenuItem;
     /// <summary>
     /// Выбранный пункт меню
     /// </summary>

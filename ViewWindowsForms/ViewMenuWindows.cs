@@ -42,7 +42,7 @@ namespace ViewWindowsForms
     /// <summary>
     /// Делегат 
     /// </summary>
-    private delegate void _dRedraw();
+    private delegate void dRedraw();
     /// <summary>
     /// Прямоугольники кнопок
     /// </summary>

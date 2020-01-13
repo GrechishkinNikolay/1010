@@ -26,21 +26,17 @@ namespace Models
     /// </summary>
     private static Random _pseudoRandomNumberGenerator = new Random();
     /// <summary>
-    /// Активно ли окно игры
-    /// </summary>
-    private bool _isGame;
-    /// <summary>
     /// Делегат проигрыша
     /// </summary>
-    public delegate void _dLoseGame();
+    public delegate void dLoseGame();
     /// <summary>
     /// Событие проигрыша 
     /// </summary>
-    public static event _dLoseGame OnLose;
+    public static event dLoseGame OnLose;
     /// <summary>
     /// Событие проигрыша и перехода в меню
     /// </summary>
-    public static event _dLoseGame OnLoseToMenu;
+    public static event dLoseGame OnLoseToMenu;
     /// <summary>
     /// Результаты последнего игрока 
     /// </summary>
@@ -52,14 +48,6 @@ namespace Models
     {
       get;
       set;
-    }
-    /// <summary>
-    /// Активно ли окно игры
-    /// </summary>
-    public bool IsGame
-    {
-      get { return _isGame; }
-      set { _isGame = value; }
     }
     /// <summary>
     /// Хранилище фигур
@@ -180,7 +168,6 @@ namespace Models
         SpawnNewFigure();
         if (!IsTherePlaceForFigure())
         {
-          Thread.Sleep(2000);
           _lastGameResults.Score = Score;
          if ((SortedScores.Capacity == 0) || (SortedScores.Capacity < 10) || (SortedScores[Math.Min(9, SortedScores.Count - 1)].Value < Score))
           {

@@ -31,7 +31,7 @@ namespace ControllerWindowsForms
     {
       _modelGamePlay = new ModelGamePlay();
       _viewWindows = new ViewGamePlayWindows(_modelGamePlay);
-      _modelGamePlay.IsGame = true;
+      _modelGamePlay.IsRunning = true;
       _viewWindows._form.KeyDown += OnKeyDown;
     }
     /// <summary>
@@ -39,7 +39,7 @@ namespace ControllerWindowsForms
     /// </summary>
     public void GamePlayClosing()
     {
-      _modelGamePlay.IsGame = false;
+      _modelGamePlay.IsRunning = false;
       _viewWindows._form.KeyDown -= OnKeyDown;
     }
     /// <summary>
