@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Базовый класс модели
+  /// </summary>
   public class Model
   {
+    /// <summary>
+    /// Менеджер рекордов
+    /// </summary>
     protected static ScoreManager _scoresManager = new ScoreManager();
-
+    /// <summary>
+    /// Свойство менеджера рекордов
+    /// </summary>
     public ScoreManager ScoreManager
     {
       get
@@ -17,7 +25,9 @@ namespace Models
         return _scoresManager;
       }
     }
-
+    /// <summary>
+    /// Список отсортированных рекордов
+    /// </summary>
     public List<KeyValuePair<string, int>> SortedScores
     {
       get
@@ -25,6 +35,9 @@ namespace Models
         return _scoresManager.GetScores().OrderByDescending(i => i.Value).ToList();
       }
     }
+    /// <summary>
+    /// Активно ли окно
+    /// </summary>
     public bool IsRunning { get; set; }
   }
 }

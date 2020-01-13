@@ -7,54 +7,59 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Менеджер счета игроков
+  /// </summary>
   public class ScoreManager
   {
     /// <summary>
     /// Словарь рекордов
     /// </summary>
     private Dictionary<string, int> _scoreDictionary;
-    private const string ScoreFileName = "records.dat";
-    public static int ScoreAfterGameOver { get; set; }
+    /// <summary>
+    /// Имя файла
+    /// </summary>
+    private const string _scoreFileName = "records.dat";
+    /// <summary>
+    /// Активно ли окно рекордов
+    /// </summary>
     public bool IsRecordsScreen { get; set; }
-
+    /// <summary>
+    /// Возвращает копию словаря с рекордами
+    /// </summary>
+    public Dictionary<string, int> GetScores() => new Dictionary<string, int>(_scoreDictionary);
     public ScoreManager()
     {
       _scoreDictionary = new Dictionary<string, int>();
       ReadFromFile();
     }
     /// <summary>
-    /// Возвращает копию словаря с рекордами
-    /// </summary>
-    public Dictionary<string, int> GetScores() => new Dictionary<string, int>(_scoreDictionary);
-
-    /// <summary>
     /// Обновить счет игрока, если был поставлен новый рекорд
     /// </summary>
     public void UpdateScore(string nick, int score)
     {
-      if (_scoreDictionary.ContainsKey(nick)) // Если ник присутствует в рекордах
+      if (_scoreDictionary.ContainsKey(nick))
       {
-        if (_scoreDictionary[nick] < score) // Если старый счет меньше нового
+        if (_scoreDictionary[nick] < score)
         {
           _scoreDictionary[nick] = score;
         }
       }
-      else // Ника нет в рекордах
+      else
       {
         _scoreDictionary.Add(nick, score);
       }
 
       WriteDictToFile();
     }
-
     /// <summary>
     /// Прочитать словарь с рекордами из файла
     /// </summary>
     private void ReadFromFile()
     {
       _scoreDictionary.Clear();
-      if (!File.Exists(ScoreFileName)) return;
-      using (BinaryReader reader = new BinaryReader(new FileStream(ScoreFileName, FileMode.Open)))
+      if (!File.Exists(_scoreFileName)) return;
+      using (BinaryReader reader = new BinaryReader(new FileStream(_scoreFileName, FileMode.Open)))
       {
         var count = reader.ReadInt32();
         for (int i = 0; i < count; i++)
@@ -65,13 +70,12 @@ namespace Models
         }
       }
     }
-
     /// <summary>
     /// Записать словарь с рекордами в файл
     /// </summary>
     private void WriteDictToFile()
     {
-      using (BinaryWriter writer = new BinaryWriter(new FileStream(ScoreFileName, FileMode.Create)))
+      using (BinaryWriter writer = new BinaryWriter(new FileStream(_scoreFileName, FileMode.Create)))
       {
         writer.Write(_scoreDictionary.Count);
         foreach (var entry in _scoreDictionary)

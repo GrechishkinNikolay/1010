@@ -55,7 +55,7 @@ namespace ControllerWindowsForms
     public void SelectMenuItem()
     {
       NextWindow = (EWindows)ModelMenu._selectedMenuItem;
-      ModelMenu.onSelectMenuItem -= SelectMenuItem;
+      ModelMenu.OnSelectMenuItem -= SelectMenuItem;
     }
     public void Losing()
     {
@@ -69,9 +69,9 @@ namespace ControllerWindowsForms
     }
     public EWindows Execute()
     {
-      ControllerCreatorWindows controllerCreatorWindows = new ControllerCreatorWindows();
+      FactoryMethodControllersWindows controllerCreatorWindows = new FactoryMethodControllersWindows();
       Controller controller = new ControllerMenuWindows();
-      ModelMenu.onSelectMenuItem += SelectMenuItem;
+      ModelMenu.OnSelectMenuItem += SelectMenuItem;
       ModelGamePlay.OnLose += Losing;
       ModelGamePlay.OnLoseToMenu += GoToMenu;
       while (true)
@@ -88,7 +88,7 @@ namespace ControllerWindowsForms
         controller = controllerCreatorWindows.GetController(NextWindow);
         if (NextWindow == EWindows.Menu)
         {
-          ModelMenu.onSelectMenuItem += SelectMenuItem;
+          ModelMenu.OnSelectMenuItem += SelectMenuItem;
         }
       }
       return EWindows.Exit;

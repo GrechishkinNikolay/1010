@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Controllers
 {
+  /// <summary>
+  /// Абстрактный контроллер
+  /// </summary>
   public abstract class Controller
   {
   }

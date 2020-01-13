@@ -8,55 +8,94 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Модель игрового окна
+  /// </summary>
   public class ModelGamePlay : Model
   {
+    /// <summary>
+    /// Число строк игрового поля 
+    /// </summary>
     public const int COUNT_ROW = 10;
+    /// <summary>
+    /// Число колонок игрового поля
+    /// </summary>
     public const int COUNT_COLUMN = 10;
+    /// <summary>
+    /// Генератор случайных чисел
+    /// </summary>
     private static Random _pseudoRandomNumberGenerator = new Random();
-
+    /// <summary>
+    /// Активно ли окно игры
+    /// </summary>
+    private bool _isGame;
+    /// <summary>
+    /// Делегат проигрыша
+    /// </summary>
     public delegate void _dLoseGame();
+    /// <summary>
+    /// Событие проигрыша 
+    /// </summary>
     public static event _dLoseGame OnLose;
+    /// <summary>
+    /// Событие проигрыша и перехода в меню
+    /// </summary>
     public static event _dLoseGame OnLoseToMenu;
-
+    /// <summary>
+    /// Результаты последнего игрока 
+    /// </summary>
     private LastGameResults _lastGameResults;
-
+    /// <summary>
+    /// Номер активной фигуры
+    /// </summary>
     public int ActiveFigureNumber
     {
       get;
       set;
     }
-    private bool _isGame;
-
+    /// <summary>
+    /// Активно ли окно игры
+    /// </summary>
     public bool IsGame
     {
       get { return _isGame; }
       set { _isGame = value; }
     }
-    public bool NoPlaceForFigure { get; set; }
+    /// <summary>
+    /// Хранилище фигур
+    /// </summary>
     public FiguresShapes FiguresShapes
     {
       get;
       set;
     }
-
+    /// <summary>
+    /// Координаты указателя
+    /// </summary>
     public Coordinates PointerCoordinates
     {
       get;
       set;
     }
-
+    /// <summary>
+    /// Игровое поле
+    /// </summary>
     public Field GameField
     {
       get;
       set;
     }
-
+    /// <summary>
+    /// Счет
+    /// </summary>
     public int Score
     {
       get;
       set;
     }
-
+    /// <summary>
+    /// Конструктор
+    /// </summary>
     public ModelGamePlay()
     {
       GameField = new Field(COUNT_ROW, COUNT_COLUMN);
@@ -78,6 +117,11 @@ namespace Models
         }
       }
     }
+    /// <summary>
+    /// Можем ли мы вставить фигуру относительно данных координат
+    /// </summary>
+    /// <param name="parX">Координата Х</param>
+    /// <param name="parY">Координата Y</param>
     public bool CanWePlaceFigure(int parX, int parY)
     {
       for (int i = 0; i < FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
@@ -93,6 +137,9 @@ namespace Models
       }
       return true;
     }
+    /// <summary>
+    /// Есть ли место для активной фигуры на игровом поле
+    /// </summary>
     public bool IsTherePlaceForFigure()
     {
       for (int i = 0; i <= GameField.PlayingField.Length - FiguresShapes.Figures[ActiveFigureNumber].HeightFigure; i++)
@@ -107,6 +154,10 @@ namespace Models
       }
       return false;
     }
+    /// <summary>
+    /// Поставить фигуру
+    /// </summary>
+    /// <returns>Удалось ли поставить фигуру</returns>
     public bool PutTheFigure()
     {
       if (CanWePlaceFigure(PointerCoordinates.X, PointerCoordinates.Y))
@@ -144,6 +195,9 @@ namespace Models
       }
       return false;
     }
+    /// <summary>
+    /// Удалить заполненные горизонтальные и вертикальные линии
+    /// </summary>
     public void DeleteFilledRowsAndColumns()
     {
       foreach (Cell[] cells in GameField.PlayingField)
@@ -171,7 +225,10 @@ namespace Models
         }
       }
     }
-
+    /// <summary>
+    /// Очистить колонку
+    /// </summary>
+    /// <param name="parI">Номер удаляемой колонки</param>
     public void ClearColumn(int parI)
     {
       for (int j = 0; j < COUNT_ROW; j++)
@@ -179,7 +236,10 @@ namespace Models
         GameField.PlayingField[j][parI].IsFull = false;
       }
     }
-
+    /// <summary>
+    /// Полная ли линия
+    /// </summary>
+    /// <param name="parCellsSet">Линия</param>
     public bool IsFullCellsSet(Cell[] parCellsSet)
     {
       foreach (Cell cell in parCellsSet)
@@ -191,7 +251,9 @@ namespace Models
       }
       return true;
     }
-
+    /// <summary>
+    /// Передвинуть фигуру вверх
+    /// </summary>
     public void MoveFigureUp()
     {
       if (PointerCoordinates.Y > 0)
@@ -199,6 +261,9 @@ namespace Models
         PointerCoordinates.Y -= 1;
       }
     }
+    /// <summary>
+    /// Передвинуть фигуру влево
+    /// </summary>
     public void MoveFigureLeft()
     {
       if (PointerCoordinates.X > 0)
@@ -206,6 +271,9 @@ namespace Models
         PointerCoordinates.X -= 1;
       }
     }
+    /// <summary>
+    /// Передвинуть фигуру вниз
+    /// </summary>
     public void MoveFigureDown()
     {
       if (PointerCoordinates.Y + FiguresShapes.Figures[ActiveFigureNumber].HeightFigure < COUNT_ROW)
@@ -213,6 +281,9 @@ namespace Models
         PointerCoordinates.Y += 1;
       }
     }
+    /// <summary>
+    /// Передвинуть фигуру вправо
+    /// </summary>
     public void MoveFigureRight()
     {
       if (PointerCoordinates.X + FiguresShapes.Figures[ActiveFigureNumber].WidthFigure < COUNT_COLUMN)
@@ -220,6 +291,5 @@ namespace Models
         PointerCoordinates.X += 1;
       }
     }
-
   }
 }

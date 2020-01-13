@@ -8,8 +8,16 @@ using System.Threading.Tasks;
 
 namespace ControllerWindowsForms
 {
-  class ControllerCreatorWindows : ControllerCreator
+  /// <summary>
+  /// Создатель контроллеров 
+  /// </summary>
+  class FactoryMethodControllersWindows : ControllerCreator
   {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="parEWindows"></param>
+    /// <returns></returns>
     public override Controller GetController(EWindows parEWindows)
     {
       switch (parEWindows)

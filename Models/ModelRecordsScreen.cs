@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Модель окна рекордов
+  /// </summary>
   public class ModelRecordsScreen : Model
   {
   }

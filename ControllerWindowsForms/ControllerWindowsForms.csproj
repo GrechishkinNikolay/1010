@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerCreatorWindows.cs" />
+    <Compile Include="FactoryMethodControllersWindows.cs" />
     <Compile Include="ControllerGameOverWindows.cs" />
     <Compile Include="ControllerHelpWindows.cs" />
     <Compile Include="ControllerManager.cs" />

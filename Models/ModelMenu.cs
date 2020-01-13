@@ -6,16 +6,27 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Модель меню
+  /// </summary>
   public class ModelMenu : Model
   {
+    /// <summary>
+    /// Делегат выбора элемента меню
+    /// </summary>
     public delegate void _menuItemSelection();
-    public static event _menuItemSelection onSelectMenuItem;
-
-    public bool IsMenu { get; set; }
+    /// <summary>
+    /// Событие выбора элемента меню
+    /// </summary>
+    public static event _menuItemSelection OnSelectMenuItem;
     /// <summary>
     /// Выбранный пункт меню
     /// </summary>
     public static int _selectedMenuItem;
+    /// <summary>
+    /// Активно ли окно меню
+    /// </summary>
+    public bool IsMenu { get; set; }
     /// <summary>
     /// Свойство выбранного пункта меню
     /// </summary>
@@ -44,9 +55,12 @@ namespace Models
         _selectedMenuItem--;
       }
     }
+    /// <summary>
+    /// Вызов события нажатия на элемент меню
+    /// </summary>
     public static void ClickOnSelectedMenuItem()
     {
-      onSelectMenuItem?.Invoke();
+      OnSelectMenuItem?.Invoke();
     }
     /// <summary>
     /// Переместить указатель меню вниз

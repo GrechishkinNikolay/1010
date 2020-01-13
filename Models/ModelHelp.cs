@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Модель справки 
+  /// </summary>
   public class ModelHelp : Model
   {
     /// <summary>
@@ -21,6 +24,9 @@ namespace Models
 "главное меню - esc. Очки начисляются за составление " +
 "линий и за размещение фугуры. Игра будет продолжаться, " +
 "пока на поле есть место для текущей фигуры.";
+    /// <summary>
+    /// Свойство получения текста справки 
+    /// </summary>
     public string HelpText
     {
       get { return HELP_TEXT; }
