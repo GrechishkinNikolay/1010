@@ -69,8 +69,7 @@ namespace ControllerWindowsForms
     }
     public EWindows Execute()
     {
-      FactoryMethodControllersWindows controllerCreatorWindows = new FactoryMethodControllersWindows();
-      Controller controller = new ControllerMenuWindows();
+      ControllerWindows controllerWindows = new ControllerMenuWindows();
       ModelMenu.OnSelectMenuItem += SelectMenuItem;
       ModelGamePlay.OnLose += Losing;
       ModelGamePlay.OnLoseToMenu += GoToMenu;
@@ -85,7 +84,7 @@ namespace ControllerWindowsForms
         {
           break;
         }
-        controller = controllerCreatorWindows.GetController(NextWindow);
+        controllerWindows = ControllerWindows.CreateController(NextWindow);
         if (NextWindow == EWindows.Menu)
         {
           ModelMenu.OnSelectMenuItem += SelectMenuItem;
