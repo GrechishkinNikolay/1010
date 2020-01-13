@@ -57,12 +57,12 @@ namespace Models
     /// <summary>
     /// Добавить вводимый символ к имени 
     /// </summary>
-    /// <param name="parSimbol">Вводимый символ</param>
-    public void AddSimbolToName(char parSimbol)
+    /// <param name="parSymbol">Вводимый символ</param>
+    public void AddSymbolToName(char parSymbol)
     {
-      if (IsValidChar(parSimbol))
+      if (IsValidChar(parSymbol))
       {
-        LastGameResults.Name += parSimbol;
+        LastGameResults.Name += parSymbol;
       }
     }
     /// <summary>

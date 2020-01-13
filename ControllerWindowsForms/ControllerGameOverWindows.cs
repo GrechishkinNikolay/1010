@@ -60,11 +60,11 @@ namespace ControllerWindowsForms
       {
         if (e.Shift)
         {
-          _modelGameOverScreen.AddSimbolToName(buffer);
+          _modelGameOverScreen.AddSymbolToName(buffer);
         }
         else
         {
-          _modelGameOverScreen.AddSimbolToName(Char.ToLower(buffer));
+          _modelGameOverScreen.AddSymbolToName(Char.ToLower(buffer));
         }
       }
       if (e.KeyCode == Keys.Back)
