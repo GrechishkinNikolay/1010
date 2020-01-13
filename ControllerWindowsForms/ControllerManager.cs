@@ -59,7 +59,13 @@ namespace ControllerWindowsForms
     }
     public void Losing()
     {
+      ModelGamePlay.OnLose -= Losing;
       NextWindow = EWindows.GameOver;
+    }
+    public void GoToMenu()
+    {
+      ModelGamePlay.OnLoseToMenu -= GoToMenu;
+      NextWindow = EWindows.Menu;
     }
     public EWindows Execute()
     {
@@ -67,6 +73,7 @@ namespace ControllerWindowsForms
       Controller controller = new ControllerMenuWindows();
       ModelMenu.onSelectMenuItem += SelectMenuItem;
       ModelGamePlay.OnLose += Losing;
+      ModelGamePlay.OnLoseToMenu += GoToMenu;
       while (true)
       {
         while (!_changeWindow)

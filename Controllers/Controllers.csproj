@@ -43,10 +43,6 @@
   <ItemGroup>
     <Compile Include="Controller.cs" />
     <Compile Include="ControllerCreator.cs" />
-    <Compile Include="ControllerGameOverScreen.cs" />
-    <Compile Include="ControllerGamePlay.cs" />
-    <Compile Include="ControllerMenu.cs" />
-    <Compile Include="ControllerRecordsScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
