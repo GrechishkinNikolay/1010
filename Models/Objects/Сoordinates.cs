@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Координаты
+  /// </summary>
   public class Coordinates
   {
+    /// <summary>
+    /// Координата Х
+    /// </summary>
     private int _x;
+    /// <summary>
+    /// Координата Y
+    /// </summary>
     private int _y;
 
-
+    /// <summary>
+    /// Свойство координаты Х
+    /// </summary>
     public int X
     {
       get
@@ -23,7 +34,9 @@ namespace Models
         _x = value;
       }
     }
-
+    /// <summary>
+    /// Свойство координаты Y
+    /// </summary>
     public int Y
     {
       get
@@ -35,11 +48,15 @@ namespace Models
         _y = value;
       }
     }
-
-    public Coordinates(int x, int y)
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="parX">Кордината Х</param>
+    /// <param name="parY">Координата Y</param>
+    public Coordinates(int parX, int parY)
     {
-      _x = x;
-      _y = y;
+      _x = parX;
+      _y = parY;
     }
   }
 }

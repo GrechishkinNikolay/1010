@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Клетка
+  /// </summary>
   public class Cell
   {
     /// <summary>
@@ -20,7 +23,10 @@ namespace Models
     /// Заполнена ли клетка активной фигурой
     /// </summary>
     public bool IsFilledWithFigures { get; set; }
-
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="parIsFull">Заполнена ли клетка</param>
     public Cell(bool parIsFull)
     {
       IsFull = parIsFull;

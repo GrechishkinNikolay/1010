@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Views
 {
+  /// <summary>
+  /// Интерфейс игрового окна
+  /// </summary>
   public interface IViewGamePlay
   {
     void DrawField();

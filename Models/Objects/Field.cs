@@ -6,14 +6,24 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+  /// <summary>
+  /// Поле
+  /// </summary>
   public class Field
   {
+    /// <summary>
+    /// Клетки поля
+    /// </summary>
     public Cell[][] PlayingField
     {
       get;
       set;
     }
-
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="parRowCount">Число строк</param>
+    /// <param name="parColomnCount">Число столбцов</param>
     public Field(int parRowCount, int parColomnCount)
     {
       PlayingField = new Cell[parRowCount][];
