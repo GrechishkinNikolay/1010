@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControllerWindowsForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace StartConsole
   {
     static void Main(string[] args)
     {
+      ControllerManager.GetInstance().Execute();
     }
   }
 }

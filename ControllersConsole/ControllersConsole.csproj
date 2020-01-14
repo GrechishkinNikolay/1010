@@ -41,8 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleController.cs" />
+    <Compile Include="ControllerManager.cs" />
     <Compile Include="ControllerMenuConsole.cs" />
+    <Compile Include="ControllerWindows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controllers\Controllers.csproj">
+      <Project>{67DC37B6-3215-41F2-8A52-76E761E2CA64}</Project>
+      <Name>Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{1196009B-7BED-4865-9704-FD347B19F7ED}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewsConsole\ViewsConsole.csproj">
+      <Project>{C34DEBA5-A5BB-4AA6-B57E-3BEA33D5B799}</Project>
+      <Name>ViewsConsole</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

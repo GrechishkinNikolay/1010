@@ -79,7 +79,6 @@ namespace ViewWindowsForms
         MenuItemRectangles[i].X = FORM_WIDTH / 2 - (MenuItemRectangles[i].Width / 2);
         MenuItemRectangles[i].Y = 90 * i + 40;
       }
-      ModelMenu.IsMenu = true;
       ScoreFontFamily = new FontFamily("Impact");
       Font = new Font(ScoreFontFamily, 20);
       _textFormat = new StringFormat();

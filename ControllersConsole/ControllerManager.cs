@@ -1,5 +1,5 @@
 ﻿using Controllers;
-using ControllerWindowsForms;
+using ControllersConsole;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using ViewWindowsForms;
 
 namespace ControllerWindowsForms
 {
@@ -91,32 +90,54 @@ namespace ControllerWindowsForms
       ModelGamePlay.OnLoseToMenu -= GoToMenu;
       NextWindow = EWindows.Menu;
     }
+    ///// <summary>
+    ///// Метод выполнения менеджера контроллеров
+    ///// </summary>
+    //public EWindows Execute()
+    //{
+    //  ControllerWindows controllerWindows = new ControllerMenuWindows();
+    //  ModelMenu.OnSelectMenuItem += SelectMenuItem;
+    //  ModelGamePlay.OnLose += Losing;
+    //  ModelGamePlay.OnLoseToMenu += GoToMenu;
+    //  while (true)
+    //  {
+    //    while (!_changeWindow)
+    //    {
+    //      Thread.Sleep(100);
+    //    }
+    //    _changeWindow = false;
+    //    if (NextWindow == EWindows.Exit)
+    //    {
+    //      break;
+    //    }
+    //    controllerWindows = ControllerWindows.CreateController(NextWindow);
+    //    if (NextWindow == EWindows.Menu)
+    //    {
+    //      ModelMenu.OnSelectMenuItem += SelectMenuItem;
+    //    }
+    //  }
+    //  return EWindows.Exit;
+    //}
     /// <summary>
-    /// Метод выполнения менеджера контроллеров
+    /// Запуск контроллера
     /// </summary>
+    /// <returns>Window.Terminate</returns>
     public EWindows Execute()
     {
-      ControllerWindows controllerWindows = new ControllerMenuWindows();
+      ConsoleController controller = new ControllerMenuConsole();
       ModelMenu.OnSelectMenuItem += SelectMenuItem;
-      ModelGamePlay.OnLose += Losing;
-      ModelGamePlay.OnLoseToMenu += GoToMenu;
+      EWindows nextWindow;
+
       while (true)
       {
-        while (!_changeWindow)
-        {
-          Thread.Sleep(100);
-        }
-        _changeWindow = false;
-        if (NextWindow == EWindows.Exit)
+        nextWindow = controller.Execute();
+        if (nextWindow == EWindows.Exit)
         {
           break;
         }
-        controllerWindows = ControllerWindows.CreateController(NextWindow);
-        if (NextWindow == EWindows.Menu)
-        {
-          ModelMenu.OnSelectMenuItem += SelectMenuItem;
-        }
+        controller = ControllerWindows.CreateController(nextWindow);
       }
+
       return EWindows.Exit;
     }
   }

@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllersConsole", "Contr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewsConsole", "ViewsConsole\ViewsConsole.csproj", "{C34DEBA5-A5BB-4AA6-B57E-3BEA33D5B799}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerWindowsForms", "ControllerWindowsForms\ControllerWindowsForms.csproj", "{1830BBC5-79DD-430C-BFEC-11DF180314A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewWindowsForms", "ViewWindowsForms\ViewWindowsForms.csproj", "{4DB0BE87-3220-48F9-BA6F-C0A996CB2E9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,12 @@ Global
 		{C34DEBA5-A5BB-4AA6-B57E-3BEA33D5B799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C34DEBA5-A5BB-4AA6-B57E-3BEA33D5B799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C34DEBA5-A5BB-4AA6-B57E-3BEA33D5B799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1830BBC5-79DD-430C-BFEC-11DF180314A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1830BBC5-79DD-430C-BFEC-11DF180314A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1830BBC5-79DD-430C-BFEC-11DF180314A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DB0BE87-3220-48F9-BA6F-C0A996CB2E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DB0BE87-3220-48F9-BA6F-C0A996CB2E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DB0BE87-3220-48F9-BA6F-C0A996CB2E9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
