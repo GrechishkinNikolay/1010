@@ -77,7 +77,6 @@ namespace ControllerWindowsForms
     {
       ConsoleController controller = new ControllerMenuConsole();
       EWindows nextWindow;
-
       while (true)
       {
         nextWindow = controller.Execute();

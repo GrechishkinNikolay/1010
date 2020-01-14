@@ -43,6 +43,9 @@ namespace ControllersConsole
           case ConsoleKey.LeftArrow:
             _model.MoveFigureLeft();
             break;
+          case ConsoleKey.Enter:
+            _model.PutTheFigure();
+            break;
           case ConsoleKey.Escape:
             _model.IsRunning = false;
             _model.InvokeLose();

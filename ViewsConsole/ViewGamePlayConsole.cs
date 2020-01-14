@@ -13,11 +13,19 @@ namespace ViewsConsole
     /// <summary>
     /// Количество символов, печатающихся на каждый блок
     /// </summary>
-    public const short WIDTH_BLOCK = 3;
+    public const short WIDTH_BLOCK = 2;
     /// <summary>
     /// Количество символов, печатающихся на каждый блок
     /// </summary>
-    public const short HEIGHT_BLOCK = 2;
+    public const short HEIGHT_BLOCK = 1;   
+    /// <summary>
+    /// Смещение по Х
+    /// </summary>
+    public const short X_OFFSET = 6;  
+    /// <summary>
+    /// Смещение по Y
+    /// </summary>
+    public const short Y_OFFSET = 5;
     /// <summary>
     /// Количество строк, выделяемых на блок информации об игре
     /// </summary>
@@ -76,23 +84,25 @@ namespace ViewsConsole
     /// </summary>
     private void DrawActiveFigure()
     {
-      //for (int i = 0; i < _model.FiguresShapes.Figures[_model.ActiveFigureNumber].HeightFigure; i++)
-      //{
-      //  for (int j = 0; j < _model.FiguresShapes.Figures[_model.ActiveFigureNumber].WidthFigure; j++)
-      //  {
-      //    if (_model.FiguresShapes.Figures[_model.ActiveFigureNumber].FigureShape[i][j].IsFull)
-      //    {
-      //      if (_model.GameField.PlayingField[i + _model.PointerCoordinates.Y][j + _model.PointerCoordinates.X].IsFull)
-      //      {
-      //        _bufferedGraphics.Graphics.FillRectangle(Brushes.Red, FieldRectangles[i + _model.PointerCoordinates.Y][j + _model.PointerCoordinates.X]);
-      //      }
-      //      else
-      //      {
-      //        _bufferedGraphics.Graphics.FillRectangle(Brushes.Chocolate, FieldRectangles[i + _model.PointerCoordinates.Y][j + _model.PointerCoordinates.X]);
-      //      }
-      //    }
-      //  }
-      //}
+      for (int i = 0; i < _model.FiguresShapes.Figures[_model.ActiveFigureNumber].HeightFigure; i++)
+      {
+        for (int j = 0; j < _model.FiguresShapes.Figures[_model.ActiveFigureNumber].WidthFigure; j++)
+        {
+          if (_model.FiguresShapes.Figures[_model.ActiveFigureNumber].FigureShape[i][j].IsFull)
+          {
+            if (_model.GameField.PlayingField[i + _model.PointerCoordinates.Y][j + _model.PointerCoordinates.X].IsFull)
+            {
+              _graphics.PrintString((short)((j + _model.PointerCoordinates.X) * WIDTH_BLOCK + X_OFFSET),
+                                     (short)((i + _model.PointerCoordinates.Y) * HEIGHT_BLOCK + Y_OFFSET), CELL_CHAR, ConsoleColor.DarkRed);
+            }
+            else
+            {
+              _graphics.PrintString((short)((j + _model.PointerCoordinates.X) * WIDTH_BLOCK + X_OFFSET),
+                                    (short)((i + _model.PointerCoordinates.Y) * HEIGHT_BLOCK + Y_OFFSET), CELL_CHAR, ConsoleColor.White);
+            }
+          }
+        }
+      }
     }
 
     private void DrawField()
@@ -103,11 +113,11 @@ namespace ViewsConsole
         {
           if (_model.GameField.PlayingField[i][j].IsFull)
           {
-            _graphics.PrintString((short)(j * WIDTH_BLOCK + 2), (short)(i * HEIGHT_BLOCK + 3), CELL_CHAR, ConsoleColor.Red);
+            _graphics.PrintString((short)(j * WIDTH_BLOCK + X_OFFSET), (short)(i * HEIGHT_BLOCK + Y_OFFSET), CELL_CHAR, ConsoleColor.Red);
           }
           else
           {
-            _graphics.PrintString((short)(j * WIDTH_BLOCK + 2), (short)(i * HEIGHT_BLOCK + 3), CELL_CHAR, ConsoleColor.DarkGray);
+            _graphics.PrintString((short)(j * WIDTH_BLOCK + X_OFFSET), (short)(i * HEIGHT_BLOCK + Y_OFFSET), CELL_CHAR, ConsoleColor.DarkGray);
           }
         }
       }
