@@ -11,7 +11,7 @@ namespace ViewsConsole
   public class KernelGraphics
   {
     public short SCREEN_WIDTH_SYMBOLS = 40;
-    public short SCREEN_HEIGHT_SYMBOLS = 43;
+    public short SCREEN_HEIGHT_SYMBOLS = 23;
     [StructLayout(LayoutKind.Sequential)]
     private struct Coord
     {
@@ -105,8 +105,8 @@ namespace ViewsConsole
       _width = SCREEN_WIDTH_SYMBOLS;
       _height = SCREEN_HEIGHT_SYMBOLS;
 
-      Console.SetBufferSize(_width, _height);
       Console.SetWindowSize(_width, _height);
+      Console.SetBufferSize(_width, _height);
 
       Console.CursorVisible = false;
 

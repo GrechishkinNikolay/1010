@@ -24,6 +24,7 @@ namespace ViewsConsole
     /// Поток отрисовки
     /// </summary>
     private Thread _RedrawThread;
+    private ConsoleColor _color;
     /// <summary>
     /// Отрисовщик
     /// </summary>
@@ -70,10 +71,16 @@ namespace ViewsConsole
         int itemOffsetX = _model.MenuItems[i].Length / 2;
         int x = middleX - itemOffsetX;
 
-        bool itemSelected = _model.SelectedMenuItem == i;
-        ConsoleColor color = itemSelected ? SELECTED_MENU_ITEM_COLOR : UNSELECTED_MENU_ITEM_COLOR;
+        if (_model.SelectedMenuItem == i)
+        {
+          _color = SELECTED_MENU_ITEM_COLOR;
+        }
+        else
+        {
+          _color = UNSELECTED_MENU_ITEM_COLOR;
+        }
 
-        _graphics.PrintString((short)x, (short)y, _model.MenuItems[i], color);
+        _graphics.PrintString((short)x, (short)y, _model.MenuItems[i], _color);
 
         y++;
       }

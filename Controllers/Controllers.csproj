@@ -49,10 +49,6 @@
       <Project>{58D968E0-98A3-4DE4-A2EE-4F55CD7E0699}</Project>
       <Name>Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ViewWindowsForms\ViewWindowsForms.csproj">
-      <Project>{4DB0BE87-3220-48F9-BA6F-C0A996CB2E9D}</Project>
-      <Name>ViewWindowsForms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Views\Views.csproj">
       <Project>{3731401D-E76A-43EF-B549-74CB37C6B074}</Project>
       <Name>Views</Name>
