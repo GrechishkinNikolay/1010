@@ -18,7 +18,7 @@ namespace ViewsConsole
     /// <summary>
     /// Цвет выделенного пункта меню
     /// </summary>
-    private const ConsoleColor SELECTED_MENU_ITEM_COLOR = ConsoleColor.Yellow;
+    private const ConsoleColor SELECTED_MENU_ITEM_COLOR = ConsoleColor.DarkYellow;
     public ModelMenu _model;
     /// <summary>
     /// Поток отрисовки
@@ -29,7 +29,6 @@ namespace ViewsConsole
     /// Отрисовщик
     /// </summary>
     private readonly KernelGraphics _graphics;
-
     /// <summary>
     /// Конструктор
     /// </summary>
@@ -49,9 +48,12 @@ namespace ViewsConsole
     /// </summary>
     public void Redraw()
     {
-      DrawMenuItems();
-      _graphics.Flush();
-      Thread.Sleep(1000 / FPS);
+      while (_model.IsRunning)
+      {
+        DrawMenuItems();
+        _graphics.Flush();
+        Thread.Sleep(1000 / FPS);
+      }
     }
 
     /// <summary>
@@ -67,7 +69,6 @@ namespace ViewsConsole
 
       for (int i = 0; i < _model.MenuItems.Count; i++)
       {
-
         int itemOffsetX = _model.MenuItems[i].Length / 2;
         int x = middleX - itemOffsetX;
 

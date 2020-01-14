@@ -24,14 +24,14 @@ namespace ControllerWindowsForms
       {
         case EWindows.Menu:
           return new ControllerMenuConsole();
-        //case EWindows.GamePlay:
-        //  return new ControllerGamePlayWindows();
-        //case EWindows.GameOver:
-        //  return new ControllerGameOverWindows();
-        //case EWindows.Records:
-        //  return new ControllerRecordsWindows();
-        //case EWindows.Help:
-        //  return new ControllerHelpWindows();
+        case EWindows.GamePlay:
+          return new ControllerGamePlayConsole();
+        case EWindows.GameOver:
+          return new ControllerGameOverConsole();
+        case EWindows.Records:
+          return new ControllerRecordsConsole();
+        case EWindows.Help:
+          return new ControllerHelpConsole();
         default:
           throw new ArgumentException($"No controller \"{parEWindows.ToString()}\"");
       }

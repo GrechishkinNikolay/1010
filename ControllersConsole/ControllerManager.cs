@@ -16,10 +16,6 @@ namespace ControllerWindowsForms
   public class ControllerManager : Controller
   {
     /// <summary>
-    /// Перечисление переключения окон
-    /// </summary>
-    private EWindows _nextWindow;
-    /// <summary>
     /// Объект-заглушка для синхронизации потоков
     /// </summary>
     private readonly Object _lockNextWindow = new Object();
@@ -31,27 +27,6 @@ namespace ControllerWindowsForms
     /// Объект менеджера
     /// </summary>
     private static ControllerManager _instance = null;
-    /// <summary>
-    /// Следующее окно
-    /// </summary>
-    public EWindows NextWindow
-    {
-      get
-      {
-        lock (_lockNextWindow)
-        {
-          return _nextWindow;
-        }
-      }
-      set
-      {
-        lock (_lockNextWindow)
-        {
-          _nextWindow = value;
-          _changeWindow = true;
-        }
-      }
-    }
     /// <summary>
     /// Приватный конструктор
     /// </summary>
@@ -65,30 +40,6 @@ namespace ControllerWindowsForms
       if (_instance == null)
         _instance = new ControllerManager();
       return _instance;
-    }
-    /// <summary>
-    /// Обработчик нажатия на пункт меню 
-    /// </summary>
-    public void SelectMenuItem()
-    {
-      NextWindow = (EWindows)ModelMenu._selectedMenuItem;
-      ModelMenu.OnSelectMenuItem -= SelectMenuItem;
-    }
-    /// <summary>
-    /// Обработчик события проигрыша 
-    /// </summary>
-    public void Losing()
-    {
-      ModelGamePlay.OnLose -= Losing;
-      NextWindow = EWindows.GameOver;
-    }
-    /// <summary>
-    /// Обработчик события проигрыша и выхода в меню
-    /// </summary>
-    public void GoToMenu()
-    {
-      ModelGamePlay.OnLoseToMenu -= GoToMenu;
-      NextWindow = EWindows.Menu;
     }
     ///// <summary>
     ///// Метод выполнения менеджера контроллеров
@@ -125,7 +76,6 @@ namespace ControllerWindowsForms
     public EWindows Execute()
     {
       ConsoleController controller = new ControllerMenuConsole();
-      ModelMenu.OnSelectMenuItem += SelectMenuItem;
       EWindows nextWindow;
 
       while (true)

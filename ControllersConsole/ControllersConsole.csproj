@@ -42,8 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleController.cs" />
+    <Compile Include="ControllerGameOverConsole.cs" />
+    <Compile Include="ControllerGamePlayConsole.cs" />
+    <Compile Include="ControllerHelpConsole.cs" />
     <Compile Include="ControllerManager.cs" />
     <Compile Include="ControllerMenuConsole.cs" />
+    <Compile Include="ControllerRecordsConsole.cs" />
     <Compile Include="ControllerWindows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ControllerWindowsForms;
 using Models;
 using ViewsConsole;
 
@@ -16,7 +17,7 @@ namespace ControllersConsole
     {
       _model = new ModelMenu();
       _view = new ViewMenuConsole(_model);
-
+      _model.IsRunning = true;
       EWindows? nextWindow = null;
       while (nextWindow == null)
       {
@@ -29,8 +30,11 @@ namespace ControllersConsole
           case ConsoleKey.DownArrow:
             _model.MoveMenuPointerDown();
             break;
+          case ConsoleKey.Escape:
+            nextWindow = EWindows.Exit;
+            break;
           case ConsoleKey.Enter:
-            ModelMenu.ClickOnSelectedMenuItem();
+            nextWindow = (EWindows)_model.SelectedMenuItem;
             break;
         }
       }
