@@ -10,7 +10,7 @@ namespace ViewsConsole
   /// </summary>
   public class KernelGraphics
   {
-    public short SCREEN_WIDTH_SYMBOLS = 40;
+    public short SCREEN_WIDTH_SYMBOLS = 31;
     public short SCREEN_HEIGHT_SYMBOLS = 23;
     [StructLayout(LayoutKind.Sequential)]
     private struct Coord

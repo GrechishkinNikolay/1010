@@ -46,7 +46,7 @@ namespace ViewsConsole
     /// <summary>
     /// Перерисовка окна
     /// </summary>
-    public void Redraw()
+    public override void Redraw()
     {
       while (_model.IsRunning)
       {
@@ -54,6 +54,7 @@ namespace ViewsConsole
         _graphics.Flush();
         Thread.Sleep(1000 / FPS);
       }
+      _graphics.Clear();
     }
 
     /// <summary>

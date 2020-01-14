@@ -34,6 +34,7 @@ namespace ControllersConsole
             nextWindow = EWindows.Exit;
             break;
           case ConsoleKey.Enter:
+            _model.IsRunning = false;
             nextWindow = (EWindows)_model.SelectedMenuItem;
             break;
         }

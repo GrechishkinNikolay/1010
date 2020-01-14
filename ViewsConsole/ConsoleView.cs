@@ -10,5 +10,6 @@ namespace ViewsConsole
   public abstract class ConsoleView
   {
     public int FPS = 60;
+    public abstract void Redraw();
   }
 }

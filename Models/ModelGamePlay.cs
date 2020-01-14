@@ -171,7 +171,7 @@ namespace Models
           _lastGameResults.Score = Score;
          if ((SortedScores.Capacity == 0) || (SortedScores.Capacity < 10) || (SortedScores[Math.Min(9, SortedScores.Count - 1)].Value < Score))
           {
-            OnLose?.Invoke();
+            InvokeLose();
           }
           else
           {
@@ -181,6 +181,13 @@ namespace Models
         }
       }
       return false;
+    }
+    /// <summary>
+    /// Вызывть событие проигрыша
+    /// </summary>
+    public void InvokeLose()
+    {
+      OnLose?.Invoke();
     }
     /// <summary>
     /// Удалить заполненные горизонтальные и вертикальные линии
