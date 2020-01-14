@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ConsoleView.cs" />
     <Compile Include="KernelGraphics.cs" />
+    <Compile Include="ViewGameOverConsole.cs" />
     <Compile Include="ViewGamePlayConsole.cs" />
     <Compile Include="ViewMenuConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -44,7 +44,7 @@ namespace ControllersConsole
             _model.MoveFigureLeft();
             break;
           case ConsoleKey.Enter:
-            _model.PutTheFigure();
+              _model.IsRunning = !_model.PutTheFigure();
             break;
           case ConsoleKey.Escape:
             _model.IsRunning = false;
@@ -52,8 +52,7 @@ namespace ControllersConsole
             break;
         }
       }
-      // ToDo
-      return EWindows.Menu;
+      return EWindows.GameOver;
     }
 
     /// <summary>
