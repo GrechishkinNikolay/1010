@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ViewsConsole
 {
+  /// <summary>
+  /// Представление геймплея
+  /// </summary>
   public class ViewGamePlayConsole : ConsoleView
   {
     /// <summary>
@@ -30,6 +33,9 @@ namespace ViewsConsole
     /// Количество строк, выделяемых на блок информации об игре
     /// </summary>
     private const short INFO_BLOCK_ROWS_COUNT = 1;
+    /// <summary>
+    /// Символ рисования
+    /// </summary>
     public const string CELL_CHAR = "██";
     /// <summary>
     /// Горизонтальный отступ блока информации об игре
@@ -43,6 +49,9 @@ namespace ViewsConsole
     /// Отрисовщик
     /// </summary>
     private readonly KernelGraphics _graphics;
+    /// <summary>
+    /// Модель
+    /// </summary>
     private ModelGamePlay _model;
     /// <summary>
     /// Конструктор
@@ -96,7 +105,9 @@ namespace ViewsConsole
         }
       }
     }
-
+    /// <summary>
+    /// Отрисовать игровое поле
+    /// </summary>
     private void DrawField()
     {
       for (int i = 0; i < _model.GameField.PlayingField.Length; i++)
@@ -114,7 +125,9 @@ namespace ViewsConsole
         }
       }
     }
-
+    /// <summary>
+    /// Отобразить счет
+    /// </summary>
     private void DrawScore()
     {
       _graphics.PrintString(2, 1, "Score: " + _model.Score, ConsoleColor.DarkYellow);

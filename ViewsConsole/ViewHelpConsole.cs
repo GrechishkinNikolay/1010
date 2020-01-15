@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ViewsConsole
 {
+  /// <summary>
+  /// Представления справки
+  /// </summary>
   public class ViewHelpConsole : ConsoleView
   {
     /// <summary>
@@ -47,6 +50,7 @@ namespace ViewsConsole
         _graphics.PrintString(1, (short)(1 + (i / 32)), _model.HelpText.Substring(i,32));
         }
       }
+      _graphics.PrintString(1, 15, _model.HelpText.Substring(446, 17));
     }
   }
 }

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ViewsConsole
 {
+  /// <summary>
+  /// Представление окна рекордов
+  /// </summary>
   public class ViewRecordsConsole : ConsoleView
   {
     /// <summary>
@@ -17,6 +20,9 @@ namespace ViewsConsole
     /// Отрисовщик
     /// </summary>
     private readonly KernelGraphics _graphics;
+    /// <summary>
+    /// Модель
+    /// </summary>
     private ModelRecordsScreen _model;
     /// <summary>
     /// Конструктор
@@ -28,7 +34,6 @@ namespace ViewsConsole
       _graphics = KernelGraphics.Instance;
       Redraw();
     }
-
     /// <summary>
     /// Перерисовка окна
     /// </summary>

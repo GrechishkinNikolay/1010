@@ -9,10 +9,23 @@ using ViewsConsole;
 
 namespace ControllersConsole
 {
+  /// <summary>
+  /// Контороллер меню
+  /// </summary>
   public class ControllerMenuConsole : ConsoleController
   {
+    /// <summary>
+    /// Модель
+    /// </summary>
     public ModelMenu _model;
+    /// <summary>
+    /// Представление
+    /// </summary>
     public ViewMenuConsole _view;
+    /// <summary>
+    /// Запуск контроллера
+    /// </summary>
+    /// <returns></returns>
     public override EWindows Execute()
     {
       _model = new ModelMenu();

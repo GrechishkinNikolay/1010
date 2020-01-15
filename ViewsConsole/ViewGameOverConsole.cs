@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ViewsConsole
 {
+  /// <summary>
+  /// Представление окна проигрыша 
+  /// </summary>
   public class ViewGameOverConsole : ConsoleView
   {
     /// <summary>
@@ -18,6 +21,9 @@ namespace ViewsConsole
     /// Поток отрисовки
     /// </summary>
     private Thread _RedrawThread;
+    /// <summary>
+    /// Модель
+    /// </summary>
     private ModelGameOverScreen _model;
     /// <summary>
     /// Конструктор

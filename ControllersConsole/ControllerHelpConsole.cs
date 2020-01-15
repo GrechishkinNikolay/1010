@@ -8,12 +8,18 @@ using ViewsConsole;
 
 namespace ControllersConsole
 {
+  /// <summary>
+  /// Контроллер справки 
+  /// </summary>
   public class ControllerHelpConsole : ConsoleController
   {
     /// <summary>
     /// Отображение окна
     /// </summary>
     private ViewHelpConsole _view;
+    /// <summary>
+    /// Модель
+    /// </summary>
     private ModelHelp _model;
     /// <summary>
     /// Запуск контроллера

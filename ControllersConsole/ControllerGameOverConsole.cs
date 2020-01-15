@@ -8,6 +8,9 @@ using ViewsConsole;
 
 namespace ControllersConsole
 {
+  /// <summary>
+  /// Контроллер окна проигрыша
+  /// </summary>
   public class ControllerGameOverConsole : ConsoleController
   {
     /// <summary>

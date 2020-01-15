@@ -8,12 +8,18 @@ using ViewsConsole;
 
 namespace ControllersConsole
 {
+  /// <summary>
+  /// Контроллер окна геймплея
+  /// </summary>
   public class ControllerGamePlayConsole : ConsoleController
   {
     /// <summary>
     /// Отображение окна
     /// </summary>
     public ViewGamePlayConsole _view;
+    /// <summary>
+    /// Модель
+    /// </summary>
     public ModelGamePlay _model;
     /// <summary>
     /// Запуск контроллера
@@ -54,7 +60,6 @@ namespace ControllersConsole
       }
       return EWindows.GameOver;
     }
-
     /// <summary>
     /// Обработчик события завершения игры
     /// </summary>

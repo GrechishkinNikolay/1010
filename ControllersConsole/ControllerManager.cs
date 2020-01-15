@@ -41,34 +41,6 @@ namespace ControllerWindowsForms
         _instance = new ControllerManager();
       return _instance;
     }
-    ///// <summary>
-    ///// Метод выполнения менеджера контроллеров
-    ///// </summary>
-    //public EWindows Execute()
-    //{
-    //  ControllerWindows controllerWindows = new ControllerMenuWindows();
-    //  ModelMenu.OnSelectMenuItem += SelectMenuItem;
-    //  ModelGamePlay.OnLose += Losing;
-    //  ModelGamePlay.OnLoseToMenu += GoToMenu;
-    //  while (true)
-    //  {
-    //    while (!_changeWindow)
-    //    {
-    //      Thread.Sleep(100);
-    //    }
-    //    _changeWindow = false;
-    //    if (NextWindow == EWindows.Exit)
-    //    {
-    //      break;
-    //    }
-    //    controllerWindows = ControllerWindows.CreateController(NextWindow);
-    //    if (NextWindow == EWindows.Menu)
-    //    {
-    //      ModelMenu.OnSelectMenuItem += SelectMenuItem;
-    //    }
-    //  }
-    //  return EWindows.Exit;
-    //}
     /// <summary>
     /// Запуск контроллера
     /// </summary>

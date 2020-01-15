@@ -8,12 +8,18 @@ using ViewsConsole;
 
 namespace ControllersConsole
 {
+  /// <summary>
+  /// Контроллер окна рекордов
+  /// </summary>
   public class ControllerRecordsConsole : ConsoleController
   {
     /// <summary>
     /// Отображение окна
     /// </summary>
     private ViewRecordsConsole _view;
+    /// <summary>
+    /// Модель
+    /// </summary>
     private ModelRecordsScreen _model;
     /// <summary>
     /// Запуск контроллера

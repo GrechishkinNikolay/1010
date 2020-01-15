@@ -9,6 +9,9 @@ using System.Threading;
 
 namespace ViewsConsole
 {
+  /// <summary>
+  /// Представление окна меню
+  /// </summary>
   public class ViewMenuConsole : ConsoleView
   {
     /// <summary>
@@ -24,6 +27,9 @@ namespace ViewsConsole
     /// Поток отрисовки
     /// </summary>
     private Thread _RedrawThread;
+    /// <summary>
+    /// Цвет
+    /// </summary>
     private ConsoleColor _color;
     /// <summary>
     /// Отрисовщик
@@ -81,9 +87,7 @@ namespace ViewsConsole
         {
           _color = UNSELECTED_MENU_ITEM_COLOR;
         }
-
         _graphics.PrintString((short)x, (short)y, _model.MenuItems[i], _color);
-
         y++;
       }
     }

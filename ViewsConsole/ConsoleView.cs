@@ -7,9 +7,18 @@ using System.Threading.Tasks;
 
 namespace ViewsConsole
 {
+  /// <summary>
+  /// Базовый абстрактный класс представления консоли
+  /// </summary>
   public abstract class ConsoleView
   {
+    /// <summary>
+    /// Число обновлений в секунду
+    /// </summary>
     public int FPS = 60;
+    /// <summary>
+    /// Метод перерисовки
+    /// </summary>
     public abstract void Redraw();
   }
 }
