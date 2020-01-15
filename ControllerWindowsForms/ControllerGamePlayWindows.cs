@@ -53,6 +53,7 @@ namespace ControllerWindowsForms
           if (_modelGamePlay.PutTheFigure())
           {
             GamePlayClosing();
+            ControllerManager.GetInstance().NextWindow = EWindows.GameOver;
           }
           break;
         case Keys.Escape:

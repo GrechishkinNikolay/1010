@@ -50,7 +50,10 @@ namespace ControllersConsole
           _model.AddSymbolToName(symbol);
         }
       }
-      _model.ScoreManager.UpdateScore(_model.LastGameResults.Name, _model.LastGameResults.Score);
+      if (!String.IsNullOrEmpty(_model.LastGameResults.Name))
+      {
+        _model.ScoreManager.UpdateScore(_model.LastGameResults.Name, _model.LastGameResults.Score);
+      }
       return EWindows.Menu;
     }
   }

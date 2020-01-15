@@ -18,7 +18,7 @@ namespace Models
     /// <summary>
     /// Имя игрока 
     /// </summary>
-    private static string _name;
+    private static string _name = "";
     /// <summary>
     /// Свойство имени игрока
     /// </summary>
