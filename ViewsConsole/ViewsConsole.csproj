@@ -45,8 +45,10 @@
     <Compile Include="KernelGraphics.cs" />
     <Compile Include="ViewGameOverConsole.cs" />
     <Compile Include="ViewGamePlayConsole.cs" />
+    <Compile Include="ViewHelpConsole.cs" />
     <Compile Include="ViewMenuConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewRecordsConsole.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

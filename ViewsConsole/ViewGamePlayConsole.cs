@@ -36,14 +36,6 @@ namespace ViewsConsole
     /// </summary>
     private const short INFO_BLOCK_HORIZONAL_PADDING = 4;
     /// <summary>
-    /// Ширина экрана в символах
-    /// </summary>
-    public const short SCREEN_WIDTH_SYMBOLS = 30;
-    /// <summary>
-    /// Высота экрана в символах
-    /// </summary>
-    public const short SCREEN_HEIGHT_SYMBOLS = 30;
-    /// <summary>
     /// Поток отрисовки
     /// </summary>
     private Thread _RedrawThread;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
+using ViewsConsole;
 
 namespace ControllersConsole
 {
@@ -13,65 +14,41 @@ namespace ControllersConsole
     /// Отображение окна
     /// </summary>
     private ViewGameOverConsole _view;
-
+    /// <summary>
+    /// Модель
+    /// </summary>
+    public ModelGameOverScreen _model;
     /// <summary>
     /// Запуск контроллера
     /// </summary>
     /// <returns>окно, на которое нужно перейти после выполнения метода</returns>
     public override EWindows Execute()
     {
-      _model = new GameOverModel();
-      _view = new GameOverView(_model);
+      _model = new ModelGameOverScreen();
+      _view = new ViewGameOverConsole(_model);
+      _model.IsRunning = true;
 
-      bool exit = false;
-      while (!exit)
+      while (_model.IsRunning)
       {
         ConsoleKeyInfo keyPressedInfo = Console.ReadKey(true);
         ConsoleKey keyPressed = keyPressedInfo.Key;
-
-        char? keyAsChar = ConsoleKeyToChar(keyPressed);
+        char symbol = keyPressedInfo.KeyChar;
 
         if (keyPressed == ConsoleKey.Enter)
         {
-          exit = true;
+          _model.IsRunning = false;
         }
-        else if (keyAsChar != null)
+        else if (keyPressed == ConsoleKey.Backspace)
         {
-          _model.Nickname.Append(keyAsChar);
-          _view.Redraw();
+          _model.DeleteSymbol();
+        }
+        else
+        {
+          _model.AddSymbolToName(symbol);
         }
       }
-
-      _model.UpdatePlayerScore();
-
-      return Window.MainMenu;
-    }
-
-    /// <summary>
-    /// Преобразует константу из перечисление ConsoleKey в char, если это возможно,
-    /// иначе возвращает null
-    /// </summary>
-    /// <param name="parKey">Константа ConsoleKey, которая будет преобразовываться</param>
-    /// <returns>константа ConsoleKey, преобразованная в char, если это возможно,
-    /// иначе null</returns>
-    private char? ConsoleKeyToChar(ConsoleKey parKey)
-    {
-      bool alphaKey = parKey >= ConsoleKey.A && parKey <= ConsoleKey.Z;
-      bool numericKey = parKey >= ConsoleKey.D0 && parKey <= ConsoleKey.D9;
-
-      char? result = null;
-      if (alphaKey)
-      {
-        int offset = (int)parKey - (int)ConsoleKey.A;
-        result = (char)('A' + offset);
-      }
-      else if (numericKey)
-      {
-        int offset = (int)parKey - (int)ConsoleKey.D0;
-        result = (char)('0' + offset);
-      }
-
-      return result;
+      _model.ScoreManager.UpdateScore(_model.LastGameResults.Name, _model.LastGameResults.Score);
+      return EWindows.Menu;
     }
   }
 }
