@@ -58,5 +58,8 @@
     <Compile Include="Objects\Сoordinates.cs" />
     <Compile Include="ScoreManager.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ModelsDiagramcd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

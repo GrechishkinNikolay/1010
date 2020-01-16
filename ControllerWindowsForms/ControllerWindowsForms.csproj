@@ -69,5 +69,8 @@
       <Name>ViewWindowsForms</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ControllersWindowsFormsDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

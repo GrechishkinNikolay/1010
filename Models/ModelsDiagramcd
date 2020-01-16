@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Models.Cell" Collapsed="true">
+    <Position X="0.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Field" Collapsed="true">
+    <Position X="4.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Field.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Figure" Collapsed="true">
+    <Position X="0.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAAAAABAAAAAAAAAAAAEAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Objects\Figure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Coordinates" Collapsed="true">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Objects\Сoordinates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Objects.FigureCodeKeeper" Collapsed="true">
+    <Position X="2.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAIEAAACAAQAAEAAEgAgCAAAAAQAIAAQAAAIg=</HashCode>
+      <FileName>Objects\FigureCodeKeeper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Objects.FiguresShapes" Collapsed="true">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\FiguresShapes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.LastGameResults" Collapsed="true">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAggAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LastGameResults.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAgAAAAEAAIAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.ModelGameOverScreen" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAASAABAIAAAAIAAAAAABAAAAAAASAgAAAAAAgAA=</HashCode>
+      <FileName>ModelGameOverScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.ModelGamePlay" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAgAAAAAAAMAQAgKAACCAAQIAAECAgICAABgAAAACAA=</HashCode>
+      <FileName>ModelGamePlay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.ModelHelp" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelHelp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.ModelMenu" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAEAABAAAAAIBAAAAAAAAABAgEAAAAAAAAA=</HashCode>
+      <FileName>ModelMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.ModelRecordsScreen" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelRecordsScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.ScoreManager" Collapsed="true">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAgAAAgAACBAAAAAAAAgAAQAAA=</HashCode>
+      <FileName>ScoreManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Models.EWindows">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAgAAAAAIIAAAAAAAAAAAAAAAIAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>EWindows.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

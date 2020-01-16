@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ViewsConsole.ConsoleView" Collapsed="true">
+    <Position X="4" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>ConsoleView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewsConsole.KernelGraphics" Collapsed="true">
+    <Position X="7.5" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="ViewsConsole.KernelGraphics.Coord" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>KernelGraphics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ViewsConsole.KernelGraphics.CharUnion" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>KernelGraphics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ViewsConsole.KernelGraphics.CharInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>KernelGraphics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ViewsConsole.KernelGraphics.SmallRect" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>KernelGraphics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAEgBAiABCAAAAAAAQAAAEAABAACAAAQAAAAABIBgA=</HashCode>
+      <FileName>KernelGraphics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewsConsole.ViewGameOverConsole" Collapsed="true">
+    <Position X="5.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAACCgAAAAAAAAAAAAACAABAAAAAAAA=</HashCode>
+      <FileName>ViewGameOverConsole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewsConsole.ViewGamePlayConsole" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAQCgAQAIAAAAAAAAACQADAAgAAAAM=</HashCode>
+      <FileName>ViewGamePlayConsole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewsConsole.ViewHelpConsole" Collapsed="true">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAACAABBAAAAAAA=</HashCode>
+      <FileName>ViewHelpConsole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewsConsole.ViewMenuConsole" Collapsed="true">
+    <Position X="7.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAIAAAACgAAAAAgAAAAAAACAABAAAAAAAA=</HashCode>
+      <FileName>ViewMenuConsole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewsConsole.ViewRecordsConsole" Collapsed="true">
+    <Position X="2.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgEAAAAAAAgAAAAAAAAAAAAACAABAAAAAAAA=</HashCode>
+      <FileName>ViewRecordsConsole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

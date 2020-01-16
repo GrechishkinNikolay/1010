@@ -150,16 +150,7 @@ namespace Models
     {
       if (CanWePlaceFigure(PointerCoordinates.X, PointerCoordinates.Y))
       {
-        for (int i = 0; i < Figure.FIGURE_SIZE; i++)
-        {
-          for (int j = 0; j < Figure.FIGURE_SIZE; j++)
-          {
-            if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull)
-            {
-              GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull = true;
-            }
-          }
-        }
+        FillTheFieldCellsWithAShape();
         DeleteFilledRowsAndColumns();
         Score += FiguresShapes.Figures[ActiveFigureNumber].PointsForFigure;
         ActiveFigureNumber = _pseudoRandomNumberGenerator.Next(0, FiguresShapes.Figures.Length);
@@ -181,6 +172,22 @@ namespace Models
         }
       }
       return false;
+    }
+    /// <summary>
+    /// Заполнить нужные ячейки активной фигурой
+    /// </summary>
+    public void FillTheFieldCellsWithAShape()
+    {
+      for (int i = 0; i < Figure.FIGURE_SIZE; i++)
+      {
+        for (int j = 0; j < Figure.FIGURE_SIZE; j++)
+        {
+          if (FiguresShapes.Figures[ActiveFigureNumber].FigureShape[i][j].IsFull)
+          {
+            GameField.PlayingField[i + PointerCoordinates.Y][j + PointerCoordinates.X].IsFull = true;
+          }
+        }
+      }
     }
     /// <summary>
     /// Вызывть событие проигрыша

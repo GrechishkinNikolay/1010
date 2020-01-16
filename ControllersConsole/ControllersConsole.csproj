@@ -66,5 +66,8 @@
       <Name>ViewsConsole</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ControllersConsoleDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
